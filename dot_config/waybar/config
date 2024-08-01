@@ -1,0 +1,118 @@
+{
+	"layer": "top",
+	"modules-left": ["custom/power","clock#date","clock#time","custom/media"],
+	"modules-center": ["sway/workspaces", "hyprland/workspaces"],
+	"modules-right": ["custom/updates","backlight","pulseaudio","battery","tray","custom/notifications"],
+
+	"bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format-on": "",
+  "format-off": "󰂲",
+	"format-disabled": "", // an empty format will hide the module
+	"format-connected": "󰂱 ",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+  "on-click": "bash ~/.config/rofi/rofi-bluetooth",
+},
+	"pulseaudio": {
+    "tooltip": false,
+		"scroll-step": 5,
+    "states": {
+      "zero": 0,
+      "toolow": 19,
+      "low": 39,
+      "medium": 69,
+      "high": 100,
+    },
+		"format": "{icon} {volume}%",
+		"format-muted": "󰝟 {volume}%",
+    "format-bluetooth": "󰂰 {volume}%",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-zero": "󰖁 0%",
+    "format-toolow": "󰕿 {volume}%",
+    "format-low": " {volume}%",
+    "format-medium": "󰕾 {volume}%",
+    "format-high": " {volume}%",
+	},
+
+  "sway/window": {
+    "max-length": 80,
+    "tooltip": false
+  },
+	"network": {
+    "interface": "wlp1s0",
+		"tooltip": true,
+    "tooltip-format": "SSID: {essid}\nSignal: {signalStrength}%",
+    "format-disconnected": "󰤭 ",
+		"format": "{icon}",
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+    "on-click": "bash ~/.config/rofi/rofi-wifi-menu",
+	},
+	"backlight": {
+    "on-click": "brightnessctl set 1%+",
+    "on-click-right": "brightnessctl set 1%-",
+		"tooltip": false,
+		"format": " {}%",
+    "interval":1,
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+	"tray":{
+		"icon-size":18,
+		"spacing": 10
+	},
+    "clock#date": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%a, %e %b}"
+        // "format": "{:󰃶 %a, %e %b   %R}"
+        //"format": "{: %I:%M %p  󰃶 %d/%m/%Y}"
+    },
+    "clock#time": {
+        "format": "{:%R}"
+        // "format": "{:󰃶 %a, %e %b   %R}"
+        //"format": "{: %I:%M %p  󰃶 %d/%m/%Y}"
+    },
+    "cpu": {
+        "interval": 15,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "sway/workspaces": {
+        "disable-scroll": false,
+//        "persistent_workspaces": {
+//          "1": [],
+//          "2": [],
+//          "3": [],
+//          "4": [],
+//        },
+        "all-outputs": false,
+    },
+    "hyprland/workspaces": {
+     "format": "{icon}",
+     "on-scroll-up": "hyprctl dispatch workspace e+1",
+     "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "custom/notifications": {
+        "format": " ",
+        "on-click": "swaync-client -t -sw"
+    },
+}
+

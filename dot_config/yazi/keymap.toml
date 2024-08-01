@@ -1,0 +1,34 @@
+[[manager.append_keymap]]
+on   = [ "g", "o" ]
+run = 'cd ~/Syncthing/ORT/Semestre\ 5/'
+desc = "Go to school dir"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "t" ]
+run = 'cd ~/.local/share/Trash/files/'
+desc = "Go to trash"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "p" ]
+run = 'cd ~/Pictures/'
+desc = "Go to pictures"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "D" ]
+run = 'cd ~/Documents/'
+desc = "Go to documents"
+
+[[manager.append_keymap]]
+on   = [ "g", "r" ]
+run = 'cd ~/Repos/'
+desc = "Go to repos"
+
+[[manager.append_keymap]]
+on   = [ "g", "T" ]
+run = 'cd /tmp'
+desc = "Go to tmp dir"
+
+[[manager.append_keymap]]
+on   = [ "g", "n" ]
+run = 'cd /home/bruno/Nextcloud/Notes/'
+desc = "Go to Nextcloud notes"

@@ -1,0 +1,49 @@
+[shell]
+program = "/bin/zsh"
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+TERM = "xterm-256color"
+
+[window]
+padding = { x = 0, y = 0 }
+dynamic_padding = true
+opacity = 1.0
+dynamic_title = false
+decorations = "Full"
+
+[scrolling]
+history = 0
+
+[font]
+size = 15.0
+normal = { family = "JetBrains Mono Nerd Font", style = "Medium" }
+bold = { family = "JetBrains Mono Nerd Font", style = "Bold" }
+italic = { family = "JetBrains Mono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrains Mono Nerd Font", style = "Bold Italic" }
+offset = { x = -1, y = -2 }
+
+[colors]
+[colors.primary]
+background = "0x282828"
+foreground = "0xd1d5da"
+
+[colors.normal]
+black = "0x24292e"
+red = "0xf14c4c"
+green = "0x23d18b"
+yellow = "0xe2e210"
+blue = "0x3b8eea"
+magenta = "0xbc3fbc"
+cyan = "0x29b7da"
+white = "0xd1d5da"
+
+[colors.bright]
+black = "0x666666"
+red = "0xf14c4c"
+green = "0x23d18b"
+yellow = "0xf5f543"
+blue = "0x3b8eea"
+magenta = "0xd670d6"
+cyan = "0x29b7da"
+white = "0xd1d5da"

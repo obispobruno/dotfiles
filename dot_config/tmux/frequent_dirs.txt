@@ -1,0 +1,19 @@
+/
+~/
+~/Nextcloud/
+~/Nextcloud/Notes/
+~/Nextcloud/Documents/
+~/.var/app/
+~/Personal/
+~/Syncthing/
+~/Syncthing/ORT/
+~/Syncthing/ORT/Semestre\ 5/
+~/Syncthing/ORT/Semestre\ 5/TeoríaComputación/
+~/Syncthing/ORT/Semestre\ 5/AdminGeneral/
+~/Syncthing/ORT/Semestre\ 5/Redes/
+~/Syncthing/ORT/Semestre\ 5/Diseño1/
+~/Syncthing/ORT/Semestre\ 5/BD2/
+~/Repos/
+~/.config/
+~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/common/
+~/.var/app/com.valvesoftware.Steam/.local/share/Steam/

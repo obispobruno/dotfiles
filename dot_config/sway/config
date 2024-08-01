@@ -1,0 +1,271 @@
+# Variables
+set $mod Mod4
+set $left n
+set $down e
+set $up i
+set $right o
+set $term kitty
+set $menu rofi -terminal $term -show combi -combi-modes drun#run -modes combi
+set $screenshot ~/.local/bin/screenshot.sh
+set $clipboard_screenshot "grim - | wl-copy"
+set $screenclip ~/.local/bin/screenclip.sh
+set $savescreenclip ~/.local/bin/save_screenclip.sh
+set $leave ~/.local/bin/leave.sh
+set $terminal $term tmux new-session -As main
+set $notes "flatpak run net.cozic.joplin_desktop"
+set $nextcloud "flatpak run com.nextcloud.desktopclient.nextcloud"
+set $opentabletdriver "flatpak run net.opentabletdriver.OpenTabletDriver"
+# set $browser "flatpak run io.gitlab.librewolf-community"
+set $browser "flatpak run org.mozilla.firefox"
+set $file_explorer $term tmux new-session -As Ex
+set $discord "flatpak run dev.vencord.Vesktop"
+set $steam "steam"
+set $freetube "flatpak run io.freetubeapp.FreeTube"
+set $jellyfin "flatpak run com.github.iwalton3.jellyfin-media-player"
+set $email "flatpak run com.tutanota.Tutanota"
+set $whatsapp "flatpak run io.github.mimbrero.WhatsAppDesktop"
+set $polkit /usr/libexec/polkit-gnome-authentication-agent-1
+# set $wallpaper ~/Pictures/Wallpapers/green.jpg
+set $lock ~/.config/sway/lock
+set $keyring gnome-keyring-daemon --start --components=secrets,ssh,gpg
+
+# Autostart
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment DISPLAY
+# exec $polkit
+exec $discord
+exec $whatsapp
+exec $steam
+exec $email
+exec blueman-applet
+exec swayidle before-sleep swaylock
+exec waybar
+exec corectrl
+exec $nextcloud
+exec $opentabletdriver
+exec swaync
+# exec $keyring
+
+# output * bg /usr/share/backgrounds/default.png fill
+output * bg ~/Syncthing/jonatan-pie-aurora.jpg fill
+output DP-1 mode 1920x1080@165hz adaptive_sync off position 1920,0
+output HDMI-A-1 mode 1920x1080@60hz position 0,0
+
+# Keybindings
+bindsym $mod+q kill
+bindsym $mod+Return exec $terminal
+bindsym $mod+space exec $menu
+bindsym $mod+z exec "bemenu-run"
+bindsym $mod+Shift+W exec $whatsapp
+bindsym $mod+y exec $freetube
+bindsym $mod+Shift+J exec $jellyfin
+bindsym $mod+l exec $browser
+bindsym $mod+Shift+L exec "flatpak run net.mullvad.MullvadBrowser"
+bindsym $mod+j exec $notes
+bindsym $mod+Shift+S exec $leave
+bindsym $mod+u exec $file_explorer
+bindsym $mod+Shift+Print exec $savescreenclip
+bindsym Print exec $screenshot
+bindsym $mod+b exec $clipboard_screenshot
+bindsym $mod+Shift+m exec "swaync-client -t -sw"
+bindsym --release Shift+Print exec $screenclip
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86TouchpadToggle exec "swaymsg input type:touchpad events toggle enabled disabled"
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+t fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+r layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+f layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+# bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# font
+font pango:JetBrains Mono Nerd Font 6
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+for_window [workspace="4"] layout tabbed
+for_window [workspace="5"] layout tabbed
+for_window [workspace="6"] layout tabbed
+# for_window [workspace="7"] layout tabbed
+
+# assign [class="LibreWolf"] 1
+assign [class="firefox"] 1
+assign [class="Xournalpp"] 4
+assign [class="Joplin"] 4
+assign [class="steam"] 7
+assign [class="gamescope"] 8
+assign [class="Whatsapp-for-linux"] 5
+assign [class="whatsapp-for-linux"] 5
+assign [class="whatsapp-desktop-linux"] 5
+assign [class="teams-for-linux"] 5
+assign [class="discord"] 5
+assign [class="WebCord"] 5
+assign [class="vesktop"] 5
+assign [class="tutanota-desktop"] 5
+# assign [class="Jellyfin Media Player"] 6
+
+workspace "1" output DP-1
+workspace "2" output HDMI-A-1
+workspace "3" output DP-1
+workspace "4" output DP-1
+workspace "5" output DP-1
+workspace "6" output DP-1
+workspace "7" output DP-1
+workspace "8" output DP-1
+workspace "9" output DP-1
+workspace "10" output DP-1
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+  bindsym $left resize shrink width 10 px or 10 ppt
+  bindsym $down resize grow height 10 px or 10 ppt
+  bindsym $up resize shrink height 10 px or 10 ppt
+  bindsym $right resize grow width 10 px or 10 ppt
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+p mode "default"
+}
+
+bindsym $mod+p mode "resize"
+
+# class                 border  bground text    indicator child_border
+client.focused          #83CAFA #51A2DA #FFFFFF #83CAFA   #51A2DA
+client.focused_inactive #8C8C8C #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
+client.unfocused        #4C4C4C #222222 #888888 #292D2E   #222222
+client.urgent           #EC69A0 #DB3279 #FFFFFF #DB3279   #DB3279
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+for_window [app_id="Alacritty"] opacity 0.9
+for_window [class="Alacritty"] opacity 0.9
+for_window [app_id="kitty"] opacity 0.85
+for_window [class="kitty"] opacity 0.85
+for_window [app_id="foot"] opacity 0.9
+for_window [class="foot"] opacity 0.9
+# Window borders
+default_border pixel 2
+default_floating_border normal
+hide_edge_borders --i3 smart
+smart_gaps on
+gaps inner 0
+
+# client.background       #FFFFFF
+
+input "type:touchpad" {
+  events disabled
+}
+
+# input "type:touchpad" {
+#   accel_profile adaptive
+#   left_handed disabled
+#   tap enabled
+#   natural_scroll enabled
+#   dwt enabled
+#   pointer_accel 0.74 # set mouse sensitivity (between -1 and 1)
+# }
+
+input * {
+  xkb_model     pc104angle
+  xkb_layout    us(cmk_ed_dh)
+  xkb_options   lv5:caps_switch_lock,misc:extend,compose:menu
+}

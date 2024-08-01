@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<PROFILE active="true" name="_global_" exe="_global_">
+	<CPU active="true" socketId="0">
+		<CPU_CPUFREQ_MODE active="true" mode="CPU_CPUFREQ">
+			<NOOP active="false" />
+			<CPU_CPUFREQ active="true" scalingGovernor="ondemand" />
+		</CPU_CPUFREQ_MODE>
+		<CPU_FREQ_PACK active="true" />
+	</CPU>
+	<GPU active="true" index="0" deviceid="73DF" revision="C1">
+		<AMD_PM_PERFMODE active="true" mode="AMD_PM_ADVANCED">
+			<NOOP active="false" />
+			<AMD_PM_AUTO active="false" />
+			<AMD_PM_FIXED active="false" mode="low" />
+			<AMD_PM_ADVANCED active="true">
+				<AMD_PM_POWERCAP active="true" value="186" />
+				<AMD_PM_POWER_PROFILE active="true" mode="3D_FULL_SCREEN" />
+				<AMD_PM_OVERDRIVE active="true">
+					<AMD_PM_VOLT_OFFSET active="true" value="-90" />
+					<AMD_PM_FREQ_RANGE active="true" id="sclk">
+						<STATE index="0" freq="500" />
+						<STATE index="1" freq="2600" />
+					</AMD_PM_FREQ_RANGE>
+					<AMD_PM_FREQ_RANGE active="true" id="mclk">
+						<STATE index="1" freq="1000" />
+					</AMD_PM_FREQ_RANGE>
+				</AMD_PM_OVERDRIVE>
+			</AMD_PM_ADVANCED>
+		</AMD_PM_PERFMODE>
+		<AMD_GPU_FREQ active="true" />
+		<AMD_MEM_FREQ active="true" />
+		<AMD_GPU_TEMP active="true" />
+		<AMD_GPU_MEMORY_TEMP active="true" />
+		<AMD_FAN_MODE active="true" mode="AMD_FAN_AUTO">
+			<NOOP active="false" />
+			<AMD_FAN_AUTO active="true" />
+			<AMD_FAN_FIXED active="false" value="25" fanStop="false" fanStartValue="21" />
+			<AMD_FAN_CURVE active="false" fanStop="false" fanStartValue="21">
+				<CURVE>
+					<POINT temp="35" pwm="20" />
+					<POINT temp="52" pwm="22" />
+					<POINT temp="67" pwm="30" />
+					<POINT temp="78" pwm="50" />
+					<POINT temp="85" pwm="82" />
+				</CURVE>
+			</AMD_FAN_CURVE>
+		</AMD_FAN_MODE>
+		<AMD_GPU_VOLT active="true" />
+		<AMD_POWER active="true" />
+		<AMD_GPU_JUNCTION_TEMP active="true" />
+		<AMD_MEM_USAGE active="true" />
+		<AMD_ACTIVITY active="true" />
+		<AMD_FAN_SPEED_RPM active="true" />
+	</GPU>
+</PROFILE>
