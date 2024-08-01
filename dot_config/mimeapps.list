@@ -1,0 +1,25 @@
+[Default Applications]
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop
+text/*=nvim.desktop
+text/plain=nvim.desktop
+text/markdown=nvim.desktop
+inode/directory=lf.desktop
+image/*=imv.desktop
+image/jpeg=imv.desktop
+image/png=imv.desktop
+image/jpg=imv.desktop
+image/gif=mpv.desktop
+video/*=io.mpv.Mpv.desktop
+video/gif=io.mpv.Mpv.desktop
+video/mp4=io.mpv.Mpv.desktop
+video/mkv=io.mpv.Mpv.desktop
+application/gzip=com.github.xournalpp.xournalpp.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+application/vnd.jgraph.mxfile=com.jgraph.drawio.desktop
+application/yaml=org.libreoffice.LibreOffice.writer.desktop
+
+[Added Associations]
+application/vnd.jgraph.mxfile=com.jgraph.drawio.desktop;
+application/yaml=org.libreoffice.LibreOffice.writer.desktop;
+image/png=com.jgraph.drawio.desktop.desktop;
+application/x-xopp=com.github.xournalpp.xournalpp.desktop;
