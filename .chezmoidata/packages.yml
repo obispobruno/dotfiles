@@ -1,6 +1,6 @@
 packages:
   linux:
-    brews:
+    brew:
       - chezmoi
       - zsh-autocomplete
       - zsh-autosuggestions

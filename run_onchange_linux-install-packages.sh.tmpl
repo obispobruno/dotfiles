@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
-{{ range .packages.linux.brews -}}
+{{ range .packages.linux.brew -}}
 brew {{ . | quote }}
 {{ end -}}
 EOF
