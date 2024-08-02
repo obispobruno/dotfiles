@@ -1,3 +1,5 @@
+# vim: set ft=swayconfig :
+
 # Variables
 set $mod Mod4
 set $left n
@@ -51,6 +53,7 @@ exec swaync
 output * bg ~/Syncthing/jonatan-pie-aurora.jpg fill
 output DP-1 mode 1920x1080@165hz adaptive_sync off position 1920,0
 output HDMI-A-1 mode 1920x1080@60hz position 0,0
+input 1386:890:Wacom_One_by_Wacom_S_Pen map_to_output DP-1
 
 # Keybindings
 bindsym $mod+q kill
@@ -134,9 +137,6 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-
-# font
-font pango:JetBrains Mono Nerd Font 6
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -249,23 +249,36 @@ hide_edge_borders --i3 smart
 smart_gaps on
 gaps inner 0
 
-# client.background       #FFFFFF
+{{- if eq .chezmoi.hostname "desktop-sericea" }}
+font pango:JetBrains Mono Nerd Font 6
 
 input "type:touchpad" {
   events disabled
 }
-
-# input "type:touchpad" {
-#   accel_profile adaptive
-#   left_handed disabled
-#   tap enabled
-#   natural_scroll enabled
-#   dwt enabled
-#   pointer_accel 0.74 # set mouse sensitivity (between -1 and 1)
-# }
 
 input * {
   xkb_model     pc104angle
   xkb_layout    us(cmk_ed_dh)
   xkb_options   lv5:caps_switch_lock,misc:extend,compose:menu
 }
+{{- end }}
+
+{{- if eq .chezmoi.hostname "laptop-sericea" }}
+font pango:JetBrains Mono Nerd Font 13
+
+input "type:touchpad" {
+  accel_profile adaptive
+  left_handed disabled
+  tap enabled
+  natural_scroll enabled
+  dwt enabled
+  pointer_accel 0.74 # set mouse sensitivity (between -1 and 1)
+}
+
+input * {
+  xkb_model     pc105angle
+  xkb_layout    us
+  xkb_variant   cmk_ed_dh
+  xkb_options   lv5:caps_switch_lock,misc:extend,compose:menu
+}
+{{- end }}

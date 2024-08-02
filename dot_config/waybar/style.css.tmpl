@@ -1,37 +1,4 @@
-/* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
-
-/* -----------------------------------------------------------------------------
- * Keyframes
- * -------------------------------------------------------------------------- */
-
-@keyframes blink-warning {
-  70% {
-    color: white;
-  }
-
-  to {
-    color: white;
-    background-color: orange;
-  }
-}
-
-@keyframes blink-critical {
-  70% {
-    color: white;
-  }
-
-  to {
-    color: white;
-    background-color: red;
-  }
-}
-
+/* vim: set ft=css : */
 /* -----------------------------------------------------------------------------
  * Base styles
  * -------------------------------------------------------------------------- */
@@ -39,7 +6,12 @@
 /* Reset all styles */
 * {
   font-family: JetBrains Mono Nerd Font;
+  {{- if eq .chezmoi.hostname "desktop-sericea" }}
   font-size: 12px;
+  {{- end }}
+  {{- if eq .chezmoi.hostname "laptop-sericea" }}
+  font-size: 15px;
+  {{- end }}
   border: none;
   border-radius: 0;
   min-height: 0;

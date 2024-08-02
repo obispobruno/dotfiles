@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+frequent_dirs=$(tr '\n' ' ' <~/.config/tmux/frequent_dirs.txt)
+
+if [[ $# -ge 1 ]]; then
+	selected=$1
+else
+	selected=$(eval "find $frequent_dirs -mindepth 1 -maxdepth 1 -type d" | /home/linuxbrew/.linuxbrew/bin/sk)
+fi
+
+if [[ -z $selected ]]; then
+	exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+	tmux new-session -s "$selected_name" -c "$selected"
+	exit 0
+fi
+
+new=false
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+	tmux new-session -ds "$selected_name" -c "$selected"
+  new=true
+fi
+
+tmux switch-client -t "$selected_name"
+
+if [[ $# -eq 2 ]] && $new; then
+  tmux send-keys -t "$selected_name" "$2" Enter
+fi
