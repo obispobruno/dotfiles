@@ -1,0 +1,42 @@
+packages:
+  linux:
+    brews:
+      - chezmoi
+      - zsh-autocomplete
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      - eza
+      - bat
+      - yazi
+      - starship
+      - vim
+      - ncdu
+      - rust
+      - tmux
+      - htop
+      - wget
+      - curl
+      - gcc
+      - neovim
+      - npm
+      - binutils
+      - ripgrep
+      - fd
+      - fzf
+      - fastfetch
+      - p7zip
+      - procs
+      - btop
+      - zoxide
+      - gh
+      - lf
+      - unzip
+      - unar
+      - trash-cli
+      - tealdeer
+      - ghc
+      - haskell-language-server
+      - dotnet@6
+      - mpv
+      - inetutils
+      - yewtube

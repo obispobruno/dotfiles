@@ -1,0 +1,9 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .packages.linux.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+EOF
+{{ end -}}
