@@ -40,3 +40,4 @@ packages:
       - mpv
       - inetutils
       - yewtube
+      - cmatrix

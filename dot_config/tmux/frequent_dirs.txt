@@ -7,12 +7,7 @@
 ~/Personal/
 ~/Syncthing/
 ~/Syncthing/ORT/
-~/Syncthing/ORT/Semestre\ 5/
-~/Syncthing/ORT/Semestre\ 5/TeoríaComputación/
-~/Syncthing/ORT/Semestre\ 5/AdminGeneral/
-~/Syncthing/ORT/Semestre\ 5/Redes/
-~/Syncthing/ORT/Semestre\ 5/Diseño1/
-~/Syncthing/ORT/Semestre\ 5/BD2/
+~/.local/share/
 ~/Repos/
 ~/.config/
 ~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/common/
