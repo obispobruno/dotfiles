@@ -36,18 +36,19 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment DISPLAY
 # exec $polkit
-exec $discord
-exec $whatsapp
-exec $steam
-exec $email
 exec blueman-applet
 exec swayidle before-sleep swaylock
 exec waybar
-exec corectrl
 exec $nextcloud
 exec $opentabletdriver
 exec swaync
-# exec $keyring
+{{- if eq .chezmoi.hostname "desktop-sericea" }}
+exec $email
+exec $discord
+exec $whatsapp
+exec $steam
+exec corectrl
+{{- end }}
 
 output * bg /usr/share/backgrounds/ublue/aurora.jpg fill
 output DP-1 mode 1920x1080@165hz adaptive_sync off position 1920,0
