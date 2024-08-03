@@ -26,9 +26,9 @@ alias qw="setxkbmap us && setxkbmap -model 'asus_laptop'"
 alias yz="yazi"
 alias w='wl-copy'
 alias cfg='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
-alias ccm='cfg checkout main'
-alias ccd='cfg checkout desktop'
-alias ccl='cfg checkout laptop'
+alias ce='chezmoi edit'
+alias ccd='chezmoi cd'
+alias cea='chezmoi edit --apply'
 alias cat='bat'
 alias ls='eza'
 alias la='eza -la'
