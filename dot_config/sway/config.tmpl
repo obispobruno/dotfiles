@@ -27,7 +27,6 @@ set $jellyfin "flatpak run com.github.iwalton3.jellyfin-media-player"
 set $email "flatpak run com.tutanota.Tutanota"
 set $whatsapp "flatpak run io.github.mimbrero.WhatsAppDesktop"
 set $polkit /usr/libexec/polkit-gnome-authentication-agent-1
-# set $wallpaper ~/Pictures/Wallpapers/green.jpg
 set $lock ~/.config/sway/lock
 set $keyring gnome-keyring-daemon --start --components=secrets,ssh,gpg
 
@@ -35,7 +34,6 @@ set $keyring gnome-keyring-daemon --start --components=secrets,ssh,gpg
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment DISPLAY
-# exec $polkit
 exec blueman-applet
 exec swayidle before-sleep swaylock
 exec waybar
