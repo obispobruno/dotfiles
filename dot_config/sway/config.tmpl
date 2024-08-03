@@ -256,7 +256,7 @@ input "type:touchpad" {
   events disabled
 }
 
-input * {
+input "type:keyboard" {
   xkb_model     pc104angle
   xkb_layout    us(cmk_ed_dh)
   xkb_options   lv5:caps_switch_lock,misc:extend,compose:menu
@@ -275,7 +275,7 @@ input "type:touchpad" {
   pointer_accel 0.74 # set mouse sensitivity (between -1 and 1)
 }
 
-input * {
+input "type:keyboard" {
   xkb_model     pc105angle
   xkb_layout    us
   xkb_variant   cmk_ed_dh

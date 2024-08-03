@@ -1,8 +1,10 @@
+// vim: set ft=json :
+
 {
 	"layer": "top",
 	"modules-left": ["custom/power","clock#date","clock#time","custom/media"],
-	"modules-center": ["sway/workspaces", "hyprland/workspaces"],
-	"modules-right": ["custom/updates","backlight","pulseaudio","battery","tray","custom/notifications"],
+	"modules-center": ["sway/workspaces"],
+	"modules-right": ["backlight","privacy","pulseaudio","pulseaudio#microphone","battery","tray","custom/notifications"],
 
 	"bluetooth": {
 	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
@@ -14,7 +16,24 @@
 	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
 	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
   "on-click": "bash ~/.config/rofi/rofi-bluetooth",
-},
+  },
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 18,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      }
+    ]
+  },
 	"pulseaudio": {
     "tooltip": false,
 		"scroll-step": 5,
@@ -35,7 +54,13 @@
     "format-medium": "󰕾 {volume}%",
     "format-high": " {volume}%",
 	},
-
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "",
+    "format-source-muted": " ",
+    "on-click-right": "pavucontrol",
+    "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle"
+  },
   "sway/window": {
     "max-length": 80,
     "tooltip": false
