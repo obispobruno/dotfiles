@@ -29,8 +29,12 @@
       },
       {
         "type": "audio-in",
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": " ",
         "tooltip": true,
-        "tooltip-icon-size": 24
+        "tooltip-icon-size": 24,
+        "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle"
       }
     ]
   },
