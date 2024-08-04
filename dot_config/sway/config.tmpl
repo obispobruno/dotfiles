@@ -35,6 +35,7 @@ exec swayidle before-sleep swaylock
 exec waybar
 exec $nextcloud
 exec swaync
+exec /home/linuxbrew/.linuxbrew/opt/syncthing/bin/syncthing -no-browser -no-restart
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
 exec $email
 exec $discord
