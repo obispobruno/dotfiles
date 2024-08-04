@@ -20,14 +20,11 @@ set $opentabletdriver "flatpak run net.opentabletdriver.OpenTabletDriver"
 set $browser "flatpak run org.mozilla.firefox"
 set $file_explorer $term tmux new-session -As Ex
 set $discord "flatpak run dev.vencord.Vesktop"
-set $steam "steam"
+set $steam "flatpak run com.valvesoftware.Steam"
 set $freetube "flatpak run io.freetubeapp.FreeTube"
 set $jellyfin "flatpak run com.github.iwalton3.jellyfin-media-player"
 set $email "flatpak run com.tutanota.Tutanota"
 set $whatsapp "flatpak run io.github.mimbrero.WhatsAppDesktop"
-set $polkit /usr/libexec/polkit-gnome-authentication-agent-1
-set $lock ~/.config/sway/lock
-set $keyring gnome-keyring-daemon --start --components=secrets,ssh,gpg
 
 # Autostart
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -37,7 +34,6 @@ exec blueman-applet
 exec swayidle before-sleep swaylock
 exec waybar
 exec $nextcloud
-exec $opentabletdriver
 exec swaync
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
 exec $email
@@ -45,6 +41,9 @@ exec $discord
 exec $whatsapp
 exec $steam
 exec corectrl
+{{- end }}
+{{- if eq .chezmoi.hostname "laptop-sericea" }}
+exec nm-applet
 {{- end }}
 
 output * bg /usr/share/backgrounds/ublue/aurora.jpg fill
@@ -150,7 +149,6 @@ set $ws10 "10"
 for_window [workspace="4"] layout tabbed
 for_window [workspace="5"] layout tabbed
 for_window [workspace="6"] layout tabbed
-# for_window [workspace="7"] layout tabbed
 
 # assign [class="LibreWolf"] 1
 assign [class="firefox"] 1
