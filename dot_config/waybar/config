@@ -4,7 +4,7 @@
 	"layer": "top",
 	"modules-left": ["custom/power","clock#date","clock#time","custom/media"],
 	"modules-center": ["sway/workspaces", "sway/scratchpad"],
-	"modules-right": ["backlight","privacy","pulseaudio","pulseaudio#microphone","battery","tray","sway/language","custom/notifications"],
+	"modules-right": ["idle_inhibitor","backlight","privacy","pulseaudio","pulseaudio#microphone","battery","tray","sway/language","custom/notifications"],
 
 	"bluetooth": {
 	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
