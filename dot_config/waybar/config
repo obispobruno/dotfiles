@@ -147,8 +147,8 @@
         "tooltip-format": "{app}: {title}"
     },
     "sway/language": {
-    "format": "{}",
-    "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+      "format": " ",
+      "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
   },
 }
 
