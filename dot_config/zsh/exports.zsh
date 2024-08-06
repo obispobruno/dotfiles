@@ -7,6 +7,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/home/linuxbrew/.linuxbrew/opt/binutils/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/opt/dotnet@6/bin:$PATH"
 export HOMEBREW_AUTO_UPDATE_SECS=1800
+export HOMEBREW_TEMP=/var/tmp
 export EDITOR=nvim
 
 function yy() {
