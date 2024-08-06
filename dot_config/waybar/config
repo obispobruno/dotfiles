@@ -48,7 +48,7 @@
       "medium": 69,
       "high": 100,
     },
-		"format": "{icon}  {volume}%",
+		"format": "{icon} {volume}%",
 		"format-muted": "󰝟 {volume}%",
     "format-bluetooth": "󰂰 {volume}%",
 		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -56,7 +56,7 @@
     "format-toolow": "󰕿 {volume}%",
     "format-low": " {volume}%",
     "format-medium": "󰕾 {volume}%",
-    "format-high": " {volume}%",
+    "format-high": "  {volume}%",
 	},
   "pulseaudio#microphone": {
     "format": "{format_source}",
