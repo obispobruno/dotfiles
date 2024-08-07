@@ -2,6 +2,8 @@ packages:
   linux:
     brew:
       - chezmoi
+      - sk
+      - syncthing
       - zsh-autocomplete
       - zsh-autosuggestions
       - zsh-syntax-highlighting
@@ -41,4 +43,3 @@ packages:
       - mpv
       - inetutils
       - yewtube
-      - sk
