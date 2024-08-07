@@ -2,19 +2,31 @@ packages:
   linux:
     brew:
       - chezmoi
-      - sk
       - syncthing
+      - atuin
+      - ugrep
       - zsh-autocomplete
       - zsh-autosuggestions
       - zsh-syntax-highlighting
       - eza
       - bat
+      - sk
       - yazi
       - starship
+      - fd
+      - fzf
+      - procs
+      - btop
+      - zoxide
+      - trash-cli
+      - tealdeer
+      - ripgrep
+      - fastfetch
+      - gh
+      - tmux
       - vim
       - ncdu
       - rust
-      - tmux
       - htop
       - wget
       - curl
@@ -22,21 +34,10 @@ packages:
       - neovim
       - npm
       - binutils
-      - ripgrep
-      - fd
-      - fzf
-      - fastfetch
       - p7zip
-      - procs
-      - btop
-      - zoxide
-      - gh
-      - lf
       - gcc@11
       - unzip
       - unar
-      - trash-cli
-      - tealdeer
       - ghc
       - haskell-language-server
       - dotnet@6
