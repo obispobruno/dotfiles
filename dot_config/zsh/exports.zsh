@@ -1,4 +1,3 @@
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 export FPATH="$FPATH:/home/linuxbrew/.linuxbrew/share/zsh/site-functions"
 export FPATH="$FPATH:/usr/share/zsh/vendor-completions"
 export PATH="$PATH:/home/bruno/.local/bin"
