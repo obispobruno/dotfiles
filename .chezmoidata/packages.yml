@@ -44,3 +44,5 @@ packages:
       - mpv
       - inetutils
       - yewtube
+      - wireshark
+      - termshark
