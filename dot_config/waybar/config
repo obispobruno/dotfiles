@@ -129,7 +129,7 @@
         "all-outputs": false,
     },
     "custom/notifications": {
-        "format": "  ",
+        "format": " ",
         "on-click": "swaync-client -t -sw"
     },
     "idle_inhibitor": {
@@ -147,7 +147,7 @@
         "tooltip-format": "{app}: {title}"
     },
     "sway/language": {
-      "format": "  ",
+      "format": " ",
       "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
   },
 }
