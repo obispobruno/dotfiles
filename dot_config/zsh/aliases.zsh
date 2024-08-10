@@ -35,6 +35,7 @@ alias la='eza -la'
 alias ll='eza -l'
 alias l='eza -l'
 alias lt='eza --tree --level 2 --icons --git'
+alias tree='eza --tree'
 alias yz='yazi'
 alias fwine="flatpak run org.winehq.Wine"
 alias gpudriver="glxinfo | grep -iE 'vendor:|device:|version:'"
