@@ -135,8 +135,8 @@
     "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-        "activated": "",
-        "deactivated": ""
+        "activated": " ",
+        "deactivated": " "
     }
   },
       "sway/scratchpad": {
@@ -147,7 +147,7 @@
         "tooltip-format": "{app}: {title}"
     },
     "sway/language": {
-      "format": " ",
+      "format": "  ",
       "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
   },
 }
