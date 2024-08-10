@@ -46,3 +46,4 @@ packages:
       - yewtube
       - wireshark
       - termshark
+      - sshs
