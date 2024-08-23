@@ -37,6 +37,7 @@ set $secondary-monitor "HDMI-A-1"
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment DISPLAY
+exec nm-applet
 exec blueman-applet
 exec waybar
 exec $nextcloud
@@ -48,7 +49,6 @@ exec $whatsapp
 exec $steam
 exec corectrl
 {{- end }}
-exec nm-applet
 
 # Sleep and lock
 exec swayidle -w \
