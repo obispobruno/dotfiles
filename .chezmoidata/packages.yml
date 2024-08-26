@@ -40,7 +40,7 @@ packages:
       - unar
       - ghc
       - haskell-language-server
-      - dotnet@6
+      - dotnet
       - mpv
       - inetutils
       - yewtube
