@@ -41,6 +41,7 @@ packages:
       - ghc
       - haskell-language-server
       - dotnet
+      - openjdk
       - mpv
       - inetutils
       - yewtube
