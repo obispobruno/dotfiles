@@ -62,6 +62,11 @@ local plugins = {
     end,
   },
   {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+  },
+  {
     'windwp/nvim-ts-autotag',
     config = function()
       require('nvim-ts-autotag').setup()
@@ -83,7 +88,7 @@ local plugins = {
     'sainnhe/gruvbox-material',
     config = function()
       vim.g.gruvbox_material_foreground = 'original' -- material, mix, original
-      vim.g.gruvbox_material_background = 'medium' -- hard, medium, soft
+      vim.g.gruvbox_material_background = 'medium'   -- hard, medium, soft
     end,
   },
   'navarasu/onedark.nvim',
