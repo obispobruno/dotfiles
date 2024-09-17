@@ -47,7 +47,7 @@ require('mason-lspconfig').setup({
     'bashls',
     'dockerls',
     'docker_compose_language_service',
-    'tsserver',
+    'ts_ls',
     'vimls',
     'html',
     'cssls',
