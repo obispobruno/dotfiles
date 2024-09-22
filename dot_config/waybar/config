@@ -52,6 +52,7 @@
 		"format-muted": "󰝟 {volume}%",
     "format-bluetooth": "󰂰 {volume}%",
 		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
     "format-zero": "󰖁 0%",
     "format-toolow": "󰕿 {volume}%",
     "format-low": " {volume}%",
