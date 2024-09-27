@@ -49,3 +49,4 @@ packages:
       - wireshark
       - termshark
       - sshs
+      - httpie
