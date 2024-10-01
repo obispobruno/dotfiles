@@ -1,5 +1,5 @@
 [shell]
-program = "/bin/zsh"
+program = "/home/linuxbrew/.linuxbrew/bin/zsh"
 
 [env]
 WINIT_X11_SCALE_FACTOR = "1.0"
@@ -10,7 +10,7 @@ padding = { x = 0, y = 0 }
 dynamic_padding = true
 opacity = 1.0
 dynamic_title = false
-decorations = "Full"
+decorations = "None"
 
 [scrolling]
 history = 0
