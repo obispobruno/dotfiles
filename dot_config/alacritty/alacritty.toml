@@ -1,5 +1,5 @@
 [shell]
-program = "/home/linuxbrew/.linuxbrew/bin/zsh"
+program = "/var/home/linuxbrew/.linuxbrew/bin/zsh"
 
 [env]
 WINIT_X11_SCALE_FACTOR = "1.0"
