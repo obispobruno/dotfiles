@@ -2,6 +2,7 @@
 export FPATH="$FPATH:/var/usr/share/zsh/vendor-completions"
 export PATH="$PATH:/var/home/bruno/.local/bin"
 export PATH="$PATH:/var/home/bruno/.cargo/bin"
+export PATH="$PATH:/home/bruno/.dotnet/tools"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/var/home/linuxbrew/.linuxbrew/opt/binutils/bin:$PATH"
 export XDG_DATA_DIRS="/var/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
