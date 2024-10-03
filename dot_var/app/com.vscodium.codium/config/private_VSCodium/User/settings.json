@@ -9,4 +9,12 @@
         "overrideName": true
         }
     },
+    "files.exclude": {
+        "**/.idea": true,
+        "**/.vscode": true,
+        "**/bin": true,
+        "**/obj": true
+    },
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "editor.lineNumbers": "relative",
 }
