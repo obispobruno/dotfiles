@@ -17,12 +17,8 @@ local sources = {
     },
   }),
 
-  b.formatting.csharpier.with({
-    filetypes = {
-      'c#',
-      'cs',
-    },
-  }),
+  -- C#
+  b.formatting.csharpier,
 
   -- bash
   b.formatting.shfmt,
@@ -31,7 +27,12 @@ local sources = {
   b.formatting.stylua,
 
   -- C/C++
-  b.formatting.clang_format,
+  b.formatting.clang_format.with({
+    filetypes = {
+      'c',
+      'cpp',
+    },
+  }),
 
   -- SQL
   -- b.formatting.sqlfmt,
