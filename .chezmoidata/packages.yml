@@ -5,6 +5,7 @@ packages:
       - syncthing
       - atuin
       - ugrep
+      - zsh
       - zsh-autocomplete
       - zsh-autosuggestions
       - zsh-syntax-highlighting
