@@ -1,5 +1,6 @@
 local nmap = require('core.keymap').nmap
 local xmap = require('core.keymap').xmap
+local tmap = require('core.keymap').tmap
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
@@ -42,3 +43,7 @@ nmap('<C-h>', '<C-w>h', 'Move to left split')
 nmap('<C-j>', '<C-w>j', 'Move to bottom split')
 nmap('<C-k>', '<C-w>k', 'Move to top split')
 nmap('<C-l>', '<C-w>l', 'Move to right split')
+
+tmap('<C-n>', '<C-\\><C-n>', 'Exit terminal mode')
+
+nmap('<leader>T', '<cmd>term<cr>', 'Enter terminal mode')
