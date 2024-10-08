@@ -20,6 +20,7 @@ local plugins = {
   'github/copilot.vim',
   'akinsho/org-bullets.nvim',
   'nvim-orgmode/orgmode',
+  'jamestthompson3/nvim-remote-containers',
   {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -88,7 +89,7 @@ local plugins = {
     'sainnhe/gruvbox-material',
     config = function()
       vim.g.gruvbox_material_foreground = 'original' -- material, mix, original
-      vim.g.gruvbox_material_background = 'medium'   -- hard, medium, soft
+      vim.g.gruvbox_material_background = 'medium' -- hard, medium, soft
     end,
   },
   'navarasu/onedark.nvim',
