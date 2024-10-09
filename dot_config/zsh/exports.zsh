@@ -1,8 +1,8 @@
 # export FPATH="$FPATH:/home/linuxbrew/.linuxbrew/share/zsh/site-functions"
 export FPATH="$FPATH:/usr/share/zsh/vendor-completions"
-export PATH="$PATH:/home/bruno/.local/bin"
-export PATH="$PATH:/home/bruno/.cargo/bin"
-export PATH="$PATH:/home/bruno/.dotnet/tools"
+export PATH="$PATH:/home/$USER/.local/bin"
+export PATH="$PATH:/home/$USER/.cargo/bin"
+export PATH="$PATH:/home/$USER/.dotnet/tools"
 export DOTNET_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet/libexec"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/home/linuxbrew/.linuxbrew/opt/binutils/bin:$PATH"
