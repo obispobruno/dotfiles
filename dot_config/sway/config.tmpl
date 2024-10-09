@@ -7,13 +7,13 @@ set $down e
 set $up i
 set $right o
 set $term kitty
+set $terminal $term tmux new-session -As main
 set $menu rofi -terminal $term -show combi -combi-modes drun#run -modes combi
 set $screenshot ~/.local/bin/screenshot.sh
 set $clipboard_screenshot "grim - | wl-copy"
 set $screenclip ~/.local/bin/screenclip.sh
 set $savescreenclip ~/.local/bin/save_screenclip.sh
 set $leave ~/.local/bin/leave.sh
-set $terminal $term tmux new-session -As main
 set $notes "flatpak run net.cozic.joplin_desktop"
 set $nextcloud "flatpak run com.nextcloud.desktopclient.nextcloud"
 set $opentabletdriver "flatpak run net.opentabletdriver.OpenTabletDriver"
@@ -64,6 +64,7 @@ input 1386:890:Wacom_One_by_Wacom_S_Pen map_to_output $main-monitor
 # Keybindings
 bindsym $mod+q kill
 bindsym $mod+Return exec $terminal
+bindsym $mod+Shift+Return exec $term ssh vps
 bindsym $mod+space exec $menu
 bindsym $mod+z exec "bemenu-run"
 bindsym $mod+Shift+W exec $whatsapp
