@@ -23,3 +23,6 @@ application/yaml=org.libreoffice.LibreOffice.writer.desktop;
 image/png=com.jgraph.drawio.desktop.desktop;
 application/x-xopp=com.github.xournalpp.xournalpp.desktop;
 text/html=io.github.ungoogled_software.ungoogled_chromium.desktop;
+application/pdf=io.gitlab.librewolf-community.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.onlyoffice.desktopeditors.desktop;
+application/vnd.oasis.opendocument.text=org.libreoffice.LibreOffice.writer.desktop;
