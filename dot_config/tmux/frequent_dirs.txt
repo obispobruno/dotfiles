@@ -3,6 +3,9 @@
 ~/Nextcloud/
 ~/Nextcloud/Notes/
 ~/Nextcloud/Documents/
+~/Nextcloud/Documents/ORT/
+~/Nextcloud/Documents/ORT/Semestre\ 6/
+~/Nextcloud/Documents/ORT/Semestre\ 6/Machine\ Learning/
 ~/.var/app/
 ~/Personal/
 ~/Syncthing/
