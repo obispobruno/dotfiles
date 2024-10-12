@@ -26,9 +26,6 @@ local sources = {
   -- Lua
   b.formatting.stylua,
 
-  -- Latex
-  b.formatting.latexindent,
-
   -- C/C++
   b.formatting.clang_format.with({
     filetypes = {
