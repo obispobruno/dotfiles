@@ -40,3 +40,5 @@ alias yz='yazi'
 alias fwine="flatpak run org.winehq.Wine"
 alias gpudriver="glxinfo | grep -iE 'vendor:|device:|version:'"
 alias updategrub="sudo grub2-mkconfig -o /boot/grub2/grub.cfg"
+alias wgu="sudo wg-quick up wg0"
+alias wgd="sudo wg-quick down wg0"
