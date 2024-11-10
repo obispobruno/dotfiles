@@ -14,6 +14,11 @@ run = 'cd ~/Pictures/'
 desc = "Go to pictures"
 
 [[manager.prepend_keymap]]
+on   = [ "g", "v" ]
+run = 'cd ~/Videos/'
+desc = "Go to videos"
+
+[[manager.prepend_keymap]]
 on   = [ "g", "D" ]
 run = 'cd ~/Documents/'
 desc = "Go to documents"
