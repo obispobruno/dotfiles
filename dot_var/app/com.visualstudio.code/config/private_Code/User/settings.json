@@ -1,0 +1,24 @@
+{
+    "haskell.manageHLS": "PATH",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+        "path": "/usr/bin/flatpak-spawn",
+        "args": ["--host", "--env=TERM=xterm-256color", "zsh"],
+        "icon": "terminal-bash",
+        "overrideName": true
+        }
+    },
+    "files.exclude": {
+        "**/.idea": true,
+        "**/.vscode": true,
+        "**/bin": true,
+        "**/obj": true
+    },
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "editor.lineNumbers": "relative",
+    "telemetry.telemetryLevel": "off",
+    "docker.dockerPath": "/run/host/usr/bin/docker",
+    "dev.containers.dockerComposePath": "/run/host/usr/bin/docker-compose",
+    "dev.containers.dockerPath": "/run/host/usr/bin/docker"
+}
