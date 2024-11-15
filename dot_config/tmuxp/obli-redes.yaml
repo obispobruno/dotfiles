@@ -1,0 +1,22 @@
+session_name: obli-redes
+windows:
+- focus: 'true'
+  layout: 824e,192x45,0,0{96x45,0,0,14,95x45,97,0,15}
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: nvim
+  - zsh
+  start_directory: /var/home/bruno/Repos/obl-m6a-ingenieria-266821-277671-284999/src
+  window_name: nvim
+- layout: 8253,192x45,0,0{96x45,0,0,16,95x45,97,0,17}
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command:
+    - cd /var/home/bruno/Repos/obl-m6a-ingenieria-266821-277671-284999/src/Client
+    - dotnet run
+  - shell_command:
+    - cd /var/home/bruno/Repos/obl-m6a-ingenieria-266821-277671-284999/src/Server
+    - dotnet run
+  window_name: dotnet
