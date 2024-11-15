@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+CONFIG_DIR="$HOME/.config/tmuxp"
+files=""
+
+for file in "$CONFIG_DIR"/*.yaml; do
+	if [[ -f "$file" ]]; then
+		files+=$(basename "${file%.yaml}")"\n"
+	fi
+done
+
+selected=$(printf "$files" | /home/linuxbrew/.linuxbrew/bin/sk)
+
+/home/linuxbrew/.linuxbrew/bin/tmuxp load --yes $selected
