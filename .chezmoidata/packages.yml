@@ -25,6 +25,7 @@ packages:
       - fastfetch
       - gh
       - tmux
+      - tmuxp
       - vim
       - ncdu
       - rust
