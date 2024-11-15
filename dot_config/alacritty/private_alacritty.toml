@@ -1,4 +1,4 @@
-[shell]
+[terminal.shell]
 program = "/var/home/linuxbrew/.linuxbrew/bin/zsh"
 
 [env]
@@ -47,3 +47,5 @@ blue = "0x3b8eea"
 magenta = "0xd670d6"
 cyan = "0x29b7da"
 white = "0xd1d5da"
+
+[terminal]
