@@ -54,3 +54,4 @@ packages:
       - sqlcmd
       - texlive
       - pandoc
+      - angular-cli
