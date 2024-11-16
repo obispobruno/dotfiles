@@ -35,6 +35,7 @@ packages:
       - gcc
       - neovim
       - npm
+      - node@22
       - binutils
       - p7zip
       - gcc@11
