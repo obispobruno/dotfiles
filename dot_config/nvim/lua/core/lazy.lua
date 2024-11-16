@@ -17,6 +17,14 @@ local plugins = {
   'folke/zen-mode.nvim',
   'ThePrimeagen/harpoon',
   'ThePrimeagen/vim-be-good',
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    lazy = false,
+  },
   'github/copilot.vim',
   'akinsho/org-bullets.nvim',
   'nvim-orgmode/orgmode',
@@ -98,7 +106,7 @@ local plugins = {
     'sainnhe/gruvbox-material',
     config = function()
       vim.g.gruvbox_material_foreground = 'original' -- material, mix, original
-      vim.g.gruvbox_material_background = 'medium' -- hard, medium, soft
+      vim.g.gruvbox_material_background = 'medium'   -- hard, medium, soft
     end,
   },
   'navarasu/onedark.nvim',
