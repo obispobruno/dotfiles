@@ -4,6 +4,7 @@ export PATH="$PATH:/home/$USER/.local/bin"
 export PATH="$PATH:/home/$USER/.cargo/bin"
 export PATH="$PATH:/home/$USER/.dotnet/tools"
 export DOTNET_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet/libexec"
+export PATH="/home/linuxbrew/.linuxbrew/opt/dotnet@8/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/opt/node@22/bin:$PATH"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/home/linuxbrew/.linuxbrew/opt/binutils/bin:$PATH"
