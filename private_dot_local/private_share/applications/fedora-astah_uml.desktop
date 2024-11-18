@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=astah* UML (on fedora)
+Comment=UML modeling tool
+Comment[ja]=UMLモデリングツール
+Exec=/usr/bin/distrobox-enter  -n fedora  --additional-flags "--env _JAVA_AWT_WM_NONREPARENTING=1" --   astah-uml 
+Icon=astah_uml.png
+NoDisplay=false
+Terminal=false
+Type=Application
+Categories=Application;Utility;
+MimeType=application/x-astah
+StartupWMClass=astah-uml
