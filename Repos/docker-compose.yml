@@ -1,0 +1,27 @@
+services:
+  ollama:
+    image: ollama/ollama:rocm
+    container_name: ollama
+    volumes:
+      - ./ollama:/root/.ollama
+    ports:
+      - 11434:11434
+    environment:
+      - HSA_OVERRIDE_GFX_VERSION=10.3.0
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    restart: unless-stopped
+---
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: openwebui
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - ./open-webui:/app/backend/data
+    restart: unless-stopped
