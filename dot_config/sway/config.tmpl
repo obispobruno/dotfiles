@@ -25,13 +25,17 @@ set $freetube "flatpak run io.freetubeapp.FreeTube"
 set $jellyfin "flatpak run com.github.iwalton3.jellyfin-media-player"
 set $email "flatpak run com.tutanota.Tutanota"
 set $whatsapp "flatpak run com.rtosta.zapzap"
+set $secondary-monitor "HDMI-A-1"
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
 set $main-monitor "DP-1"
 {{- end }}
 {{- if eq .chezmoi.hostname "laptop-sericea" }}
 set $main-monitor "eDP-1"
 {{- end }}
-set $secondary-monitor "HDMI-A-1"
+{{- if eq .chezmoi.hostname "work-laptop" }}
+set $main-monitor "HDMI-A-1"
+set $secondary-monitor "eDP-1"
+{{- end }}
 
 # Autostart
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -49,7 +53,7 @@ exec $whatsapp
 exec corectrl
 {{- end }}
 
-{{- if eq .chezmoi.hostname "laptop-sericea" }}
+{{ if (and (.chezmoi.hostname "laptop-sericea") (.chezmoi.hostname "work-laptop")) }}
 # Sleep and lock
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
@@ -288,6 +292,26 @@ input "type:touchpad" {
 
 input "type:keyboard" {
   xkb_model     pc105angle
+  xkb_layout    us
+  xkb_variant   cmk_ed_dh
+  xkb_options   lv5:caps_switch_lock,misc:extend,compose:menu
+}
+{{- end }}
+
+{{- if eq .chezmoi.hostname "work-laptop" }}
+font pango:JetBrains Mono Nerd Font 7
+
+input "type:touchpad" {
+  accel_profile adaptive
+  left_handed disabled
+  tap enabled
+  natural_scroll enabled
+  dwt enabled
+  pointer_accel 0.74 # set mouse sensitivity (between -1 and 1)
+}
+
+input "type:keyboard" {
+  xkb_model     pc104angle
   xkb_layout    us
   xkb_variant   cmk_ed_dh
   xkb_options   lv5:caps_switch_lock,misc:extend,compose:menu
