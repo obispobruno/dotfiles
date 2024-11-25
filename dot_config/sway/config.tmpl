@@ -53,7 +53,7 @@ exec $whatsapp
 exec corectrl
 {{- end }}
 
-{{ if (and (.chezmoi.hostname "laptop-sericea") (.chezmoi.hostname "work-laptop")) }}
+{{ if (and (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
 # Sleep and lock
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
