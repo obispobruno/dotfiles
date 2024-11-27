@@ -35,7 +35,7 @@ packages:
       - gcc
       - neovim
       - npm
-      - node@22
+      - nvm
       - binutils
       - p7zip
       - gcc@11
@@ -43,7 +43,7 @@ packages:
       - unar
       - ghc
       - haskell-language-server
-      - dotnet
+      - dotnet@8
       - glow
       - openjdk
       - mpv
