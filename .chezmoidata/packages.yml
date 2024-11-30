@@ -35,6 +35,7 @@ packages:
       - gcc
       - neovim
       - npm
+      - pnpm
       - nvm
       - binutils
       - p7zip
