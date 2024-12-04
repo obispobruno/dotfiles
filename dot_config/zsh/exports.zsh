@@ -12,7 +12,11 @@ export HOMEBREW_AUTO_UPDATE_SECS=1800
 export TZ="America/Montevideo"
 export EDITOR=nvim
 export NVM_DIR="$HOME/.nvm"
-
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 # export HOMEBREW_TEMP=/var/tmp
 
 function yy() {
