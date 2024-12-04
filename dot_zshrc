@@ -12,3 +12,11 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
+
+# pnpm
+export PNPM_HOME="/home/bruno/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
