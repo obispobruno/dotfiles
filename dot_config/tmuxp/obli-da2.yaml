@@ -6,26 +6,26 @@ windows:
   panes:
   - focus: 'true'
     shell_command:
-    - cd /var/home/bruno/Repos/284999-277671-266821/frontend
+    - cd /var/home/bruno/Repos/284999-277671-266821/src/frontend
     - nvim
   - shell_command:
-    - cd /var/home/bruno/Repos/284999-277671-266821/frontend
+    - cd /var/home/bruno/Repos/284999-277671-266821/src/frontend
     - clear
-  start_directory: /var/home/bruno/Repos/284999-277671-266821/frontend
+  start_directory: /var/home/bruno/Repos/284999-277671-266821/src/frontend
   window_name: frontend
 - layout: fb95,192x45,0,0{96x45,0,0,7,95x45,97,0[95x22,97,0,8,95x22,97,23,9]}
   options: {}
   panes:
   - focus: 'true'
     shell_command:
-    - cd /var/home/bruno/Repos/284999-277671-266821/src
+    - cd /var/home/bruno/Repos/284999-277671-266821/src/backend
     - nvim
   - shell_command:
     - cd /var/home/bruno/Repos/284999-277671-266821
     - docker exec -it devcontainer bash
     - clear
   - shell_command:
-    - cd /var/home/bruno/Repos/284999-277671-266821/src
+    - cd /var/home/bruno/Repos/284999-277671-266821/src/backend
     - zsh
     - clear
   window_name: backend
