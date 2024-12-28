@@ -18,6 +18,11 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 # export HOMEBREW_TEMP=/var/tmp
+export PNPM_HOME="/home/bruno/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
