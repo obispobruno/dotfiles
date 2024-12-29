@@ -1,6 +1,7 @@
 local nmap = require('core.keymap').nmap
 
 nmap('<leader>ns', '<cmd>Git status<CR>', 'git status')
+nmap('<leader>nS', '<cmd>Git show<CR>', 'git show')
 nmap('<leader>nc', '<cmd>Git commit --all<CR>', 'git commit --all')
 nmap('<leader>nA', '<cmd>Git add %<CR>', 'git add current file')
 nmap('<leader>na', '<cmd>Git add .<CR>', 'git add .')
