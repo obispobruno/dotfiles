@@ -14,6 +14,8 @@ local sources = {
       'tsx',
       'json',
       'typescript',
+      'typescriptreact',
+      'javascriptreact',
       'yaml',
       'org',
     },
