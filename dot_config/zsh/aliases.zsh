@@ -21,6 +21,7 @@ alias dnfar="sudo dnf autoremove"
 
 # General
 alias v="nvim"
+alias cd="z"
 alias code="flatpak run com.visualstudio.code"
 alias qw="setxkbmap us && setxkbmap -model 'asus_laptop'"
 alias yz="yazi"
