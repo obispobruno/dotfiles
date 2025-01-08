@@ -19,6 +19,16 @@ alias dnfcu="dnf check-update"
 alias dnfcur="dnf check-update --refresh"
 alias dnfar="sudo dnf autoremove"
 
+# git
+alias g="git"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gco="git checkout"
+alias gst="git stash"
+alias gsh="git show"
+alias gd="git diff"
+
 # General
 alias v="nvim"
 alias cd="z"
