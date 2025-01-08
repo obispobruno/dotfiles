@@ -42,15 +42,19 @@ end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
+  automatic_installation = true,
   ensure_installed = {
     'lua_ls',
+    'ts_ls',
+    'eslint',
+    'prismals',
     'bashls',
     'dockerls',
     'docker_compose_language_service',
-    'ts_ls',
     'vimls',
     'html',
     'cssls',
+    'angularls',
   },
   handlers = {
     default_setup,
