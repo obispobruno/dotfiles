@@ -24,7 +24,7 @@ local plugins = {
     },
     lazy = false,
   },
-  'github/copilot.vim',
+  -- 'github/copilot.vim',
   'akinsho/org-bullets.nvim',
   'nvim-orgmode/orgmode',
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
@@ -142,6 +142,14 @@ local plugins = {
       { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
+  },
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function()
+      require('copilot').setup()
+    end,
   },
   {
     'yetone/avante.nvim',
