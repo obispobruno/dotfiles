@@ -10,6 +10,7 @@ packages:
       - zsh-completions
       - zsh-autosuggestions
       - zsh-syntax-highlighting
+      - ansible
       - eza
       - bat
       - sk
