@@ -13,6 +13,7 @@ local plugins = {
   'L3MON4D3/LuaSnip',
   'simrat39/rust-tools.nvim',
   'numToStr/Comment.nvim',
+  'mfussenegger/nvim-ansible',
   'folke/zen-mode.nvim',
   'ThePrimeagen/harpoon',
   'ThePrimeagen/vim-be-good',
@@ -143,14 +144,11 @@ local plugins = {
       { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    config = function()
-      require('copilot').setup()
-    end,
-  },
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = 'Copilot',
+  --   event = 'InsertEnter',
+  -- },
   {
     'yetone/avante.nvim',
     event = 'VeryLazy',
@@ -167,7 +165,7 @@ local plugins = {
       --- The below dependencies are optional,
       'hrsh7th/nvim-cmp',
       'nvim-tree/nvim-web-devicons',
-      'zbirenbaum/copilot.lua',
+      -- 'zbirenbaum/copilot.lua',
       {
         'HakonHarnes/img-clip.nvim',
         event = 'VeryLazy',
