@@ -60,3 +60,5 @@ packages:
       - pandoc
       - go
       - tsc
+      - jq
+      - yq
