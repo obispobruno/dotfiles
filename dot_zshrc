@@ -14,3 +14,4 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
+eval "$(ssh-agent -s)" >/dev/null
