@@ -7,8 +7,12 @@ window-decoration = false
 confirm-close-surface = false
 cursor-invert-fg-bg = true
 
-{{- if (or (eq .chezmoi.hostname "desktop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
+{{- if eq .chezmoi.hostname "work-laptop" }}
 font-size = 13
+{{- end }}
+
+{{- if eq .chezmoi.hostname "desktop-sericea" }}
+font-size = 14
 {{- end }}
 
 {{- if eq .chezmoi.hostname "laptop-sericea" }}
