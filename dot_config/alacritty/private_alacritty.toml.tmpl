@@ -19,6 +19,9 @@ history = 0
 
 [font]
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
+size = 14.0
+{{- end }}
+{{- if eq .chezmoi.hostname "work-laptop" }}
 size = 13.0
 {{- end }}
 {{- if eq .chezmoi.hostname "laptop-sericea" }}
