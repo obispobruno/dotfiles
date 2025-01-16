@@ -63,3 +63,4 @@ packages:
       - tsc
       - jq
       - yq
+      - act
