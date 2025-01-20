@@ -25,7 +25,6 @@ local plugins = {
     },
     lazy = false,
   },
-  -- 'github/copilot.vim',
   'akinsho/org-bullets.nvim',
   'nvim-orgmode/orgmode',
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
@@ -144,11 +143,11 @@ local plugins = {
       { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
-  -- {
-  --   'zbirenbaum/copilot.lua',
-  --   cmd = 'Copilot',
-  --   event = 'InsertEnter',
-  -- },
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+  },
   {
     'yetone/avante.nvim',
     event = 'VeryLazy',
@@ -165,7 +164,7 @@ local plugins = {
       --- The below dependencies are optional,
       'hrsh7th/nvim-cmp',
       'nvim-tree/nvim-web-devicons',
-      -- 'zbirenbaum/copilot.lua',
+      'zbirenbaum/copilot.lua',
       {
         'HakonHarnes/img-clip.nvim',
         event = 'VeryLazy',
