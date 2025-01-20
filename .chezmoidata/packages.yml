@@ -52,8 +52,6 @@ packages:
       - mpv
       - inetutils
       - yewtube
-      - wireshark
-      - termshark
       - sshs
       - httpie
       - sqlcmd
