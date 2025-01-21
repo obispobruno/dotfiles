@@ -65,14 +65,15 @@ exec swayidle -w \
 
 output * bg /usr/share/backgrounds/ublue/aurora.jpg fill
 output Virtual-1 mode 1920x1080@60hz adaptive_sync off position 0,0
-{{- if eq .chezmoi.hostname "desktop-sericea" }}
-output $main-monitor mode 2560x1440@165hz adaptive_sync off position 1920,0 transform 0
-{{- end }}
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
 output $main-monitor mode 1920x1080@75hz adaptive_sync off position 1920,0
 {{- end }}
 output $secondary-monitor mode 1920x1080@60hz position 0,0
 input 1386:890:Wacom_One_by_Wacom_S_Pen map_to_output $main-monitor
+{{- if eq .chezmoi.hostname "desktop-sericea" }}
+output $main-monitor mode 2560x1440@165hz adaptive_sync off position 1920,0 transform 0
+output $secondary-monitor mode 1920x1080@60hz position 0,0 transform 270
+{{- end }}
 
 # Keybindings
 bindsym $mod+q kill
