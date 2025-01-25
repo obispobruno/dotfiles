@@ -66,3 +66,4 @@ packages:
       - yarn
       - hashicorp/tap/vagrant
       - sdkman/tap/sdkman-cli
+      - hashicorp/tap/terraform
