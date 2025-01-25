@@ -65,3 +65,4 @@ packages:
       - act
       - yarn
       - hashicorp/tap/vagrant
+      - sdkman/tap/sdkman-cli
