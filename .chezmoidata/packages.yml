@@ -64,3 +64,4 @@ packages:
       - yq
       - act
       - yarn
+      - hashicorp/tap/vagrant
