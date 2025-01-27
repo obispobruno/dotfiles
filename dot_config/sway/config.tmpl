@@ -78,7 +78,7 @@ output $secondary-monitor mode 1920x1080@60hz position 0,0 transform 270
 # Keybindings
 bindsym $mod+q kill
 bindsym $mod+Return exec $terminal
-bindsym $mod+Shift+Return exec $term ssh vps
+bindsym $mod+Shift+Return exec alacritty -e tmux new-session -As main
 bindsym $mod+space exec $menu
 bindsym $mod+z exec "bemenu-run"
 bindsym $mod+Shift+W exec $whatsapp
