@@ -1,3 +1,7 @@
+local nmap = require('core.keymap').nmap
+
+nmap('<leader>al', '<cmd>AvanteClear<cr>', 'Avante clear')
+
 require('avante').setup({
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
   provider = 'claude',
@@ -12,7 +16,7 @@ require('avante').setup({
     auto_suggestions = false,
     auto_set_highlight_group = true,
     auto_set_keymaps = true,
-    auto_apply_diff_after_generation = false,
+    auto_apply_diff_after_generation = true,
     support_paste_from_clipboard = false,
     minimize_diff = true,
   },
@@ -69,7 +73,7 @@ require('avante').setup({
     },
     ask = {
       floating = false, -- Open the 'AvanteAsk' prompt in a floating window
-      start_insert = true, -- Start insert mode when opening the ask window
+      start_insert = false, -- Start insert mode when opening the ask window
       border = 'rounded',
       ---@type "ours" | "theirs"
       focus_on_apply = 'ours', -- which diff to focus after applying
@@ -91,5 +95,12 @@ require('avante').setup({
     --- Helps to avoid entering operator-pending mode with diff mappings starting with `c`.
     --- Disable by setting to -1.
     override_timeoutlen = 500,
+  },
+  --- @class AvanteFileSelectorConfig
+  file_selector = {
+    --- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string
+    provider = 'fzf',
+    -- Options override for custom providers
+    provider_opts = {},
   },
 })
