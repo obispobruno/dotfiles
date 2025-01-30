@@ -59,3 +59,6 @@ vim.opt.conceallevel = 0
 -- vim.cmd('highlight Folded guibg=NONE ctermbg=NONE')
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldtext = 'v:lua.vim.treesitter.foldtext()'
+
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3

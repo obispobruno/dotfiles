@@ -38,12 +38,6 @@ nmap('<esc>', '<cmd>noh<cr>', 'Clear search highlights')
 
 nmap('<leader>,', '<C-^>', 'Go to last buffer')
 
--- Switch between split windows using Ctrl + hjkl
-nmap('<C-h>', '<C-w>h', 'Move to left split')
-nmap('<C-j>', '<C-w>j', 'Move to bottom split')
-nmap('<C-k>', '<C-w>k', 'Move to top split')
-nmap('<C-l>', '<C-w>l', 'Move to right split')
-
 tmap('<C-n>', '<C-\\><C-n>', 'Exit terminal mode')
 
 nmap('<leader>T', '<cmd>term<cr>', 'Enter terminal mode')
