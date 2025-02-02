@@ -56,6 +56,7 @@ require('mason-lspconfig').setup({
     'cssls',
     'angularls',
     'ansiblels',
+    'jsonls',
   },
   handlers = {
     default_setup,
