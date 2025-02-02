@@ -1,6 +1,14 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+[user]
+	email = obispobruno@tuta.com
+	name = obispobruno
 [init]
-  defaultBranch = main
-
+	defaultBranch = main
 [push]
-  autoSetupRemote = true
-  default = current
+	autoSetupRemote = true
+	default = current
