@@ -9,8 +9,9 @@ require('avante').setup({
   claude = {
     endpoint = 'https://api.anthropic.com',
     model = 'claude-3-5-sonnet-20241022',
+    timeout = 30000, -- Timeout in milliseconds
     temperature = 0,
-    max_tokens = 4096,
+    max_tokens = 8000,
   },
   behaviour = {
     auto_suggestions = false,
