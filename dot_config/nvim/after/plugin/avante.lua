@@ -13,6 +13,14 @@ require('avante').setup({
     temperature = 0,
     max_tokens = 8000,
   },
+  vendors = {
+    ollama = {
+      __inherited_from = 'openai',
+      api_key_name = '',
+      endpoint = 'http://localhost:11434/v1',
+      model = 'deepseek-r1:8b',
+    },
+  },
   behaviour = {
     auto_suggestions = false,
     auto_set_highlight_group = true,
