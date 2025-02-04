@@ -57,6 +57,7 @@ require('mason-lspconfig').setup({
     'angularls',
     'ansiblels',
     'jsonls',
+    'astro',
   },
   handlers = {
     default_setup,
