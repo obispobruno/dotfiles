@@ -67,3 +67,4 @@ packages:
       - hashicorp/tap/vagrant
       - sdkman/tap/sdkman-cli
       - hashicorp/tap/terraform
+      - shopify/shopify/shopify-cli
