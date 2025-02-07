@@ -4,3 +4,4 @@ taps:
       - hashicorp/tap
       - sdkman/tap
       - hashicorp/tap
+      - shopify/shopify
