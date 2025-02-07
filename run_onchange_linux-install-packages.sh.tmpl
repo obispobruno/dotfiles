@@ -6,7 +6,6 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
 tap {{ . | quote }}
 {{ end -}}
 EOF
-{{ end -}}
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range .packages.linux.brew -}}
