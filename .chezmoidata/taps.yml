@@ -1,0 +1,7 @@
+taps:
+  linux:
+    brew:
+      - hashicorp/tap
+      - sdkman/tap
+      - hashicorp/tap
+      - shopify/shopify

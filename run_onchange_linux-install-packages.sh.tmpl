@@ -2,6 +2,13 @@
 #!/usr/bin/env bash
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .taps.linux.brew -}}
+tap {{ . | quote }}
+{{ end -}}
+EOF
+{{ end -}}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range .packages.linux.brew -}}
 brew {{ . | quote }}
 {{ end -}}
