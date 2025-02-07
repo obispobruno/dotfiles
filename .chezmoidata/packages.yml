@@ -68,3 +68,4 @@ packages:
       - sdkman-cli
       - terraform
       - shopify-cli
+      - gnu-units
