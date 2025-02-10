@@ -69,3 +69,4 @@ packages:
       - terraform
       - shopify-cli
       - gnu-units
+      - ngrok

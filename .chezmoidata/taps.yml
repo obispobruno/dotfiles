@@ -5,3 +5,4 @@ taps:
       - sdkman/tap
       - hashicorp/tap
       - shopify/shopify
+      - ngrok/ngrok
