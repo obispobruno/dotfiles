@@ -58,6 +58,10 @@ require('mason-lspconfig').setup({
     'ansiblels',
     'jsonls',
     'astro',
+    'graphql',
+    'shopify_theme_ls',
+    'tailwindcss',
+    'terraformls',
   },
   handlers = {
     default_setup,
