@@ -16,6 +16,8 @@ video/mkv=io.mpv.Mpv.desktop
 application/gzip=com.github.xournalpp.xournalpp.desktop
 application/vnd.jgraph.mxfile=com.jgraph.drawio.desktop
 application/yaml=org.libreoffice.LibreOffice.writer.desktop
+x-scheme-handler/http=app.zen_browser.zen.desktop
+x-scheme-handler/https=app.zen_browser.zen.desktop
 
 [Added Associations]
 application/vnd.jgraph.mxfile=com.jgraph.drawio.desktop;
