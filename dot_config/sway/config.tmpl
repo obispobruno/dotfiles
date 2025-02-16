@@ -10,7 +10,7 @@ set $right o
 # set $terminal $term tmux new-session -As main
 set $term ghostty
 set $terminal $term -e tmux new-session -As main
-set $menu rofi -terminal $term -show combi -combi-modes drun#run -modes combi
+set $menu rofi -terminal $term -show combi -icon-theme "Papirus" -show-icons -combi-modes drun#run -modes combi
 set $screenshot ~/.local/bin/screenshot.sh
 set $clipboard_screenshot "grim - | wl-copy"
 set $screenclip ~/.local/bin/screenclip.sh
