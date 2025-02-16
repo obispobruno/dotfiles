@@ -18,6 +18,14 @@ application/vnd.jgraph.mxfile=com.jgraph.drawio.desktop
 application/yaml=org.libreoffice.LibreOffice.writer.desktop
 x-scheme-handler/http=app.zen_browser.zen.desktop
 x-scheme-handler/https=app.zen_browser.zen.desktop
+x-scheme-handler/chrome=app.zen_browser.zen.desktop
+text/html=app.zen_browser.zen.desktop
+application/x-extension-htm=app.zen_browser.zen.desktop
+application/x-extension-html=app.zen_browser.zen.desktop
+application/x-extension-shtml=app.zen_browser.zen.desktop
+application/xhtml+xml=app.zen_browser.zen.desktop
+application/x-extension-xhtml=app.zen_browser.zen.desktop
+application/x-extension-xht=app.zen_browser.zen.desktop
 
 [Added Associations]
 application/vnd.jgraph.mxfile=com.jgraph.drawio.desktop;
