@@ -3,19 +3,19 @@
 choice=$(printf '󰤄   Suspend\n   Reboot\n   Shutdown\n   Lock\n   Log out' | rofi -dmenu)
 
 case $choice in
-  '󰤄 Suspend')
+  '󰤄   Suspend')
     systemctl suspend
     ;;
-  ' Reboot')
+  '   Reboot')
     systemctl reboot
     ;;
-  ' Shutdown')
+  '   Shutdown')
     systemctl poweroff
     ;;
-  ' Lock')
+  '   Lock')
     swaylock
     ;;
-  ' Log out')
+  '   Log out')
     sway exit
     ;;
 esac
