@@ -25,7 +25,7 @@ set $discord "flatpak run dev.vencord.Vesktop"
 set $steam "flatpak run com.valvesoftware.Steam"
 set $freetube "flatpak run io.freetubeapp.FreeTube"
 set $jellyfin "flatpak run com.github.iwalton3.jellyfin-media-player"
-set $email "flatpak run com.tutanota.Tutanota"
+set $email "flatpak run com.tutanota.Tutanota --password-store="gnome-libsecret""
 set $whatsapp "flatpak run com.rtosta.zapzap"
 set $secondary-monitor "HDMI-A-1"
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
