@@ -28,6 +28,8 @@ alias gco="git checkout"
 alias gst="git stash"
 alias gsh="git show"
 alias gd="git diff"
+alias gp="git push"
+alias gpf="git push --force-with-lease"
 
 # General
 alias v="nvim"
