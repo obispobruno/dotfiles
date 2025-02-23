@@ -25,8 +25,8 @@ require('avante').setup({
       __inherited_from = 'openai',
       api_key_name = 'GROQ_API_KEY',
       endpoint = 'https://api.groq.com/openai/v1/',
-      model = 'qwen-2.5-coder-32b',
-      max_tokens = 8192,
+      model = 'llama-3.3-70b-versatile',
+      max_tokens = 32768,
     },
   },
   behaviour = {
