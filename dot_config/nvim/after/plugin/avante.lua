@@ -9,7 +9,7 @@ require('avante').setup({
   cursor_applying_provider = 'groq',
   claude = {
     endpoint = 'https://api.anthropic.com',
-    model = 'claude-3-5-sonnet-20241022',
+    model = 'claude-3-7-sonnet-20250219',
     timeout = 30000,
     temperature = 0,
     max_tokens = 8000,
