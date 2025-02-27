@@ -30,7 +30,7 @@ alias gsh="git show"
 alias gd="git diff"
 alias gp="git push"
 alias gpf="git push --force-with-lease"
-alias gca="git commit --amend --no-edit"
+alias gca="git commit --all --amend --no-edit"
 
 # General
 alias v="nvim"
