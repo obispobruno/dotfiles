@@ -1,0 +1,37 @@
+{
+  "window.titleBarStyle": "custom",
+  "editor.fontFamily": "'JetBrains Mono'",
+  "editor.fontSize": 16,
+  "editor.lineNumbers": "relative",
+  "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "f", "w"],
+      "commands": ["livegrep.search"]
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", ","],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"],
+      "modes": ["normal", "visual"]
+    }
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.neovimExecutablePaths.linux": "/var/home/linuxbrew/.linuxbrew/bin/nvim",
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}
