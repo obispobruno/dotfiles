@@ -33,5 +33,6 @@
     "asvetliakov.vscode-neovim": 1
   },
   "vscode-neovim.neovimExecutablePaths.linux": "/var/home/linuxbrew/.linuxbrew/bin/nvim",
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "crashReporting.enabled": "off"
 }
