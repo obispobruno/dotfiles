@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cursor
+Comment=AI Code Editor
+Exec=/var/home/bruno/.local/bin/Cursor.AppImage
+Icon=/var/home/bruno/.local/share/icons/cursor.png
+Terminal=false
+Type=Application
+Categories=Development;
