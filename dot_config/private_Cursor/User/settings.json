@@ -108,7 +108,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "crashReporting.enabled": "off",
   "terminal.external.linuxExec": "ghostty",
-  "terminal.integrated.defaultProfile.linux": "tmux",
+  "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.profiles.linux": {
     "bash": {
       "path": "bash",
