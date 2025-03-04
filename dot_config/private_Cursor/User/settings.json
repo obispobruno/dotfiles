@@ -17,12 +17,84 @@
     },
     {
       "before": ["<leader>", ","],
-      "commands": ["workbench.action.previousEditor"]
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["<leader>", "."],
+      "commands": ["workbench.action.navigateForward"]
     },
     {
       "before": ["<leader>", "/"],
       "commands": ["editor.action.commentLine"],
       "modes": ["normal", "visual"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["<C-d>"],
+      "after": ["<C-d>", "z", "z"]
+    },
+    {
+      "before": ["<C-u>"],
+      "after": ["<C-u>", "z", "z"]
+    },
+    {
+      "before": ["n"],
+      "after": ["n", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["N"],
+      "after": ["N", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["G"],
+      "after": ["G", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["|"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["\\"],
+      "commands": ["workbench.action.splitEditorDown"]
+    },
+    {
+      "before": ["<leader>", "s"],
+      "after": [
+        ":",
+        "%",
+        "s",
+        "/",
+        "\\",
+        "<",
+        "<C-r>",
+        "<C-w>",
+        "\\",
+        ">",
+        "/",
+        "<C-r>",
+        "<C-w>",
+        "/",
+        "g",
+        "I"
+      ],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<leader>", "y"],
+      "after": ["\"", "+", "y"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "after": ["\"", "_", "d", "P"]
     }
   ],
   "[jsonc]": {
@@ -34,5 +106,34 @@
   },
   "vscode-neovim.neovimExecutablePaths.linux": "/var/home/linuxbrew/.linuxbrew/bin/nvim",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "crashReporting.enabled": "off"
+  "crashReporting.enabled": "off",
+  "terminal.external.linuxExec": "ghostty",
+  "terminal.integrated.defaultProfile.linux": "tmux",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash",
+      "icon": "terminal-bash"
+    },
+    "zsh": {
+      "path": "zsh"
+    },
+    "fish": {
+      "path": "fish"
+    },
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux"
+    },
+    "pwsh": {
+      "path": "pwsh",
+      "icon": "terminal-powershell"
+    }
+  },
+  "editor.formatOnType": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
