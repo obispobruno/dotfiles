@@ -28,7 +28,7 @@ alias gco="git checkout"
 alias gst="git stash"
 alias gsh="git show"
 alias gd="git diff"
-alias gp="git push"
+alias gp="git pull"
 alias gpf="git push --force-with-lease"
 alias gca="git commit --all --amend --no-edit"
 
