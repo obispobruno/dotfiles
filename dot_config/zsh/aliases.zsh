@@ -29,6 +29,8 @@ alias gst="git stash"
 alias gsh="git show"
 alias gd="git diff"
 alias gp="git pull"
+alias gm="git merge"
+alias gr="git rebase"
 alias gpf="git push --force-with-lease"
 alias gca="git commit --all --amend --no-edit"
 
