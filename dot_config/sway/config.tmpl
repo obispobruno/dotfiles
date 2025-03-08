@@ -49,6 +49,7 @@ exec waybar
 exec $nextcloud
 exec swaync
 exec swayidle -w before-sleep 'swaylock -f -c 000000'
+exec speech-dispatcher -d -t 0
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
 exec $discord
 exec $whatsapp
