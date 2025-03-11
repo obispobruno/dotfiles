@@ -22,7 +22,6 @@ require('nvim-treesitter.configs').setup({
     'rust',
     'dockerfile',
     'toml',
-    'org',
   },
   ignore_install = {},
   modules = {},
