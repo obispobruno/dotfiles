@@ -1,13 +1,13 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env bash
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 {{ range .taps.linux.brew -}}
 tap {{ . | quote }}
 {{ end -}}
 EOF
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.linux.brew -}}
 brew {{ . | quote }}
 {{ end -}}
