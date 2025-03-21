@@ -29,6 +29,10 @@
       "modes": ["normal", "visual"]
     },
     {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeOtherEditors"]
+    },
+    {
       "before": ["K"],
       "commands": ["editor.action.showHover"]
     },
