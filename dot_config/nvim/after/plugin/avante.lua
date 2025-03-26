@@ -4,7 +4,7 @@ nmap('<leader>al', '<cmd>AvanteClear<cr>', 'Avante clear')
 
 require('avante').setup({
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-  provider = 'deepseek-r1',
+  provider = 'deepseek_r1',
   auto_suggestions_provider = 'claude',
   cursor_applying_provider = 'groq',
   claude = {
