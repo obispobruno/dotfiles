@@ -4,7 +4,7 @@ nmap('<leader>al', '<cmd>AvanteClear<cr>', 'Avante clear')
 
 require('avante').setup({
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-  provider = 'claude',
+  provider = 'deepseek-r1',
   auto_suggestions_provider = 'claude',
   cursor_applying_provider = 'groq',
   claude = {
@@ -27,6 +27,25 @@ require('avante').setup({
       endpoint = 'https://api.groq.com/openai/v1/',
       model = 'llama-3.3-70b-versatile',
       max_tokens = 32768,
+    },
+    deepseek_r1 = {
+      __inherited_from = 'openai',
+      endpoint = 'https://api.deepseek.com/',
+      model = 'deepseek-reasoner',
+      api_key_name = 'DEEPSEEK_API_KEY',
+      disable_tools = true,
+      max_tokens = 8192,
+      timeout = 30000,
+      temperature = 0,
+    },
+    deepseek_v3 = {
+      __inherited_from = 'openai',
+      endpoint = 'https://api.deepseek.com/',
+      model = 'deepseek-chat',
+      api_key_name = 'DEEPSEEK_API_KEY',
+      max_tokens = 8192,
+      timeout = 30000,
+      temperature = 0,
     },
   },
   behaviour = {
