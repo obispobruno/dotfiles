@@ -32,4 +32,5 @@ text-caps-lock-color=3B4252
 disable-caps-lock-text
 show-keyboard-layout
 ignore-empty-password
+no-unlock-indicator
 image=/usr/share/backgrounds/ublue/lockscreen.jpg
