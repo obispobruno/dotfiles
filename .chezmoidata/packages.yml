@@ -71,3 +71,4 @@ packages:
       - gnu-units
       - python
       - poetry
+      - uv
