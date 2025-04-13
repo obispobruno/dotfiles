@@ -12,6 +12,7 @@ packages:
       - zsh-syntax-highlighting
       - ansible
       - awscli
+      - azure-cli
       - eza
       - bat
       - sk
@@ -69,6 +70,3 @@ packages:
       - terraform
       - shopify-cli
       - gnu-units
-      - python
-      - poetry
-      - uv
