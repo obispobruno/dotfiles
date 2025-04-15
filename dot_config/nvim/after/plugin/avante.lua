@@ -4,7 +4,7 @@ nmap('<leader>al', '<cmd>AvanteClear<cr>', 'Avante clear')
 
 require('avante').setup({
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-  provider = 'deepseek_r1',
+  provider = 'deepseek_v3',
   auto_suggestions_provider = 'claude',
   cursor_applying_provider = 'groq',
   claude = {
@@ -13,6 +13,11 @@ require('avante').setup({
     timeout = 30000,
     temperature = 0,
     max_tokens = 8000,
+  },
+  copilot = {
+    model = 'claude-3.7-sonnet',
+    temperature = 0,
+    max_tokens = 8192,
   },
   vendors = {
     ollama = {
@@ -48,6 +53,10 @@ require('avante').setup({
       temperature = 0,
     },
   },
+  web_search_engine = {
+    provider = 'searxng', -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
+    proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
+  },
   behaviour = {
     auto_suggestions = false,
     auto_set_highlight_group = true,
@@ -55,7 +64,7 @@ require('avante').setup({
     auto_apply_diff_after_generation = true,
     support_paste_from_clipboard = false,
     minimize_diff = true,
-    enable_cursor_planning_mode = true,
+    enable_cursor_planning_mode = false,
   },
   mappings = {
     --- @class AvanteConflictMappings
@@ -141,3 +150,5 @@ require('avante').setup({
     provider_opts = {},
   },
 })
+
+vim.cmd('AvanteSwitchProvider copilot')
