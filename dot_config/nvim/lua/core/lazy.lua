@@ -143,11 +143,11 @@ local plugins = {
       { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-  },
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = 'Copilot',
+  --   event = 'InsertEnter',
+  -- },
   {
     'yetone/avante.nvim',
     event = 'VeryLazy',
