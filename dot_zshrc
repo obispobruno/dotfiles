@@ -8,7 +8,7 @@ source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/opts.zsh 
 source ~/.config/zsh/exports.zsh
 source ~/.config/zsh/.keys.zsh
-source <(ng completion script)
+# source <(ng completion script)
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(zoxide init zsh)"
