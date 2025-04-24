@@ -139,5 +139,16 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.latex.recipe.default": "latexmk (xelatex)",
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  },
+  "files.exclude": {
+    "**/__pycache__/": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
