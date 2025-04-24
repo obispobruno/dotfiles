@@ -1,7 +1,12 @@
 {
   "window.titleBarStyle": "custom",
   "editor.fontFamily": "'JetBrains Mono'",
+  {{- if eq .chezmoi.hostname "desktop-sericea" }}
   "editor.fontSize": 16,
+  {{- end }}
+  {{- if eq .chezmoi.hostname "work-laptop" }}
+  "editor.fontSize": 15,
+  {{- end }}
   "editor.lineNumbers": "relative",
   "editor.formatOnSave": true,
   "files.autoSave": "afterDelay",
