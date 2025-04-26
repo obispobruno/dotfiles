@@ -70,3 +70,4 @@ packages:
       - terraform
       - shopify-cli
       - gnu-units
+      - flyctl
