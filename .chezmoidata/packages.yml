@@ -71,3 +71,5 @@ packages:
       - shopify-cli
       - gnu-units
       - flyctl
+      - pyenv
+
