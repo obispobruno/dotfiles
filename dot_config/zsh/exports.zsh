@@ -24,6 +24,13 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/tcl-tk@8/lib"     
+export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/tcl-tk@8/include"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
@@ -32,3 +39,6 @@ function yy() {
 	fi
 	rm -f -- "$tmp"
 }
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /var/home/linuxbrew/.linuxbrew/Cellar/terraform/1.5.7/bin/terraform terraform
