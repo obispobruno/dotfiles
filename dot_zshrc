@@ -15,11 +15,3 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 eval "$(ssh-agent -s)" >/dev/null
-
-# pnpm
-export PNPM_HOME="/var/home/bruno/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
