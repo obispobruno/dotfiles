@@ -72,4 +72,4 @@ packages:
       - gnu-units
       - flyctl
       - pyenv
-
+      - media-info
