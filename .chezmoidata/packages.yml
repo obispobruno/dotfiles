@@ -11,6 +11,7 @@ packages:
       - zsh-autosuggestions
       - zsh-syntax-highlighting
       - ansible
+      - ansible-lint
       - awscli
       - azure-cli
       - eza
