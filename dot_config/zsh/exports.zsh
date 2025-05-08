@@ -28,8 +28,9 @@ export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/tcl-tk@8/lib"
 export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/tcl-tk@8/include"
 
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
