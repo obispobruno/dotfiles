@@ -55,7 +55,7 @@ require('avante').setup({
   },
   web_search_engine = {
     provider = 'searxng', -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
-    proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
+    proxy = nil,          -- proxy support, e.g., http://127.0.0.1:7890
   },
   behaviour = {
     auto_suggestions = false,
@@ -102,10 +102,10 @@ require('avante').setup({
   windows = {
     ---@type "right" | "left" | "top" | "bottom"
     position = 'right', -- the position of the sidebar
-    wrap = true, -- similar to vim.o.wrap
-    width = 30, -- default % based on available width
+    wrap = true,        -- similar to vim.o.wrap
+    width = 30,         -- default % based on available width
     sidebar_header = {
-      enabled = true, -- true, false to enable/disable the header
+      enabled = true,   -- true, false to enable/disable the header
       align = 'center', -- left, center, right for title
       rounded = true,
     },
@@ -118,7 +118,7 @@ require('avante').setup({
       start_insert = true, -- Start insert mode when opening the edit window
     },
     ask = {
-      floating = false, -- Open the 'AvanteAsk' prompt in a floating window
+      floating = false,     -- Open the 'AvanteAsk' prompt in a floating window
       start_insert = false, -- Start insert mode when opening the ask window
       border = 'rounded',
       ---@type "ours" | "theirs"
@@ -151,4 +151,4 @@ require('avante').setup({
   },
 })
 
-vim.cmd('AvanteSwitchProvider copilot')
+-- vim.cmd('AvanteSwitchProvider copilot')
