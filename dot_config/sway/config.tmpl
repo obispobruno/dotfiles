@@ -72,7 +72,7 @@ output $secondary-monitor mode 1920x1080@60hz position 0,0
 input 1386:890:Wacom_One_by_Wacom_S_Pen map_to_output $main-monitor
 {{- end }}
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
-output $main-monitor mode 2560x1440@165hz adaptive_sync off position 1080,0 transform 0
+output $main-monitor mode 2560x1440@165hz adaptive_sync off position 1920,0 transform 0
 output $secondary-monitor mode 1920x1080@60hz position 0,0 transform 0
 {{- end }}
 
