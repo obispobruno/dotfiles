@@ -15,3 +15,4 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 eval "$(ssh-agent -s)" >/dev/null
+ssh-add >/dev/null 2>&1
