@@ -4,15 +4,13 @@ nmap('<leader>al', '<cmd>AvanteClear<cr>', 'Avante clear')
 
 require('avante').setup({
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-  provider = 'deepseek_v3',
+  provider = 'claude',
   auto_suggestions_provider = 'claude',
   cursor_applying_provider = 'groq',
-  -- copilot = {
-  --   model = 'claude-3.7-sonnet',
-  --   temperature = 0,
-  --   max_tokens = 8192,
-  -- },
   providers = {
+    copilot = {
+      model = 'gpt-4.1',
+    },
     claude = {
       endpoint = 'https://api.anthropic.com',
       model = 'claude-3-7-sonnet-20250219',
@@ -29,7 +27,6 @@ require('avante').setup({
       api_key_name = 'GROQ_API_KEY',
       endpoint = 'https://api.groq.com/openai/v1/',
       model = 'llama-3.3-70b-versatile',
-      max_tokens = 32768,
     },
     deepseek_r1 = {
       __inherited_from = 'openai',
@@ -37,21 +34,17 @@ require('avante').setup({
       model = 'deepseek-reasoner',
       api_key_name = 'DEEPSEEK_API_KEY',
       disable_tools = true,
-      max_tokens = 8192,
-      timeout = 30000,
     },
     deepseek_v3 = {
       __inherited_from = 'openai',
       endpoint = 'https://api.deepseek.com/',
       model = 'deepseek-chat',
       api_key_name = 'DEEPSEEK_API_KEY',
-      max_tokens = 8192,
-      timeout = 30000,
     },
   },
   web_search_engine = {
     provider = 'searxng', -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
-    proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
+    proxy = nil,          -- proxy support, e.g., http://127.0.0.1:7890
   },
   behaviour = {
     auto_suggestions = false,
@@ -98,10 +91,10 @@ require('avante').setup({
   windows = {
     ---@type "right" | "left" | "top" | "bottom"
     position = 'right', -- the position of the sidebar
-    wrap = true, -- similar to vim.o.wrap
-    width = 30, -- default % based on available width
+    wrap = true,        -- similar to vim.o.wrap
+    width = 30,         -- default % based on available width
     sidebar_header = {
-      enabled = true, -- true, false to enable/disable the header
+      enabled = true,   -- true, false to enable/disable the header
       align = 'center', -- left, center, right for title
       rounded = true,
     },
@@ -114,7 +107,7 @@ require('avante').setup({
       start_insert = true, -- Start insert mode when opening the edit window
     },
     ask = {
-      floating = false, -- Open the 'AvanteAsk' prompt in a floating window
+      floating = false,     -- Open the 'AvanteAsk' prompt in a floating window
       start_insert = false, -- Start insert mode when opening the ask window
       border = 'rounded',
       ---@type "ours" | "theirs"
@@ -147,4 +140,4 @@ require('avante').setup({
   },
 })
 
--- vim.cmd('AvanteSwitchProvider copilot')
+vim.cmd('AvanteSwitchProvider copilot')
