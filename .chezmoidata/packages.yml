@@ -75,3 +75,4 @@ packages:
       - pyenv
       - media-info
       - git-lfs
+      - shfmt
