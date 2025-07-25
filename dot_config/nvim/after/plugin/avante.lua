@@ -4,9 +4,8 @@ nmap('<leader>al', '<cmd>AvanteClear<cr>', 'Avante clear')
 
 require('avante').setup({
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-  provider = 'claude',
-  auto_suggestions_provider = 'claude',
-  cursor_applying_provider = 'groq',
+  provider = 'copilot',
+  auto_suggestions_provider = 'copilot',
   system_prompt = function()
     local hub = require('mcphub').get_hub_instance()
     return hub and hub:get_active_servers_prompt() or ''
@@ -19,17 +18,13 @@ require('avante').setup({
   end,
   providers = {
     copilot = {
-      model = 'gpt-4.1',
+      model = 'claude-sonnet-4',
     },
-    claude = {
-      endpoint = 'https://api.anthropic.com',
-      model = 'claude-3-7-sonnet-20250219',
-      timeout = 30000,
+    morph = {
+      model = 'morph-v3-large',
     },
     ollama = {
-      __inherited_from = 'openai',
-      api_key_name = '',
-      endpoint = 'http://localhost:11434/v1',
+      endpoint = 'http://localhost:11434',
       model = 'deepseek-r1:8b',
     },
     groq = {
@@ -60,10 +55,10 @@ require('avante').setup({
     auto_suggestions = false,
     auto_set_highlight_group = true,
     auto_set_keymaps = true,
-    auto_apply_diff_after_generation = true,
+    -- auto_apply_diff_after_generation = true,
     support_paste_from_clipboard = false,
     minimize_diff = true,
-    enable_cursor_planning_mode = false,
+    enable_fastapply = true,
   },
   mappings = {
     --- @class AvanteConflictMappings
