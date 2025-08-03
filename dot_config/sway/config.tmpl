@@ -63,6 +63,12 @@ exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
          timeout 350 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 {{- end }}
+{{- if eq .chezmoi.hostname "desktop-sericea" }}
+# Sleep and lock
+exec swayidle -w \
+         timeout 900 'swaylock -f -c 000000' \
+         timeout 950 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+{{- end }}
 
 output * bg /usr/share/backgrounds/ublue/aurora.jpg fill
 output Virtual-1 mode 1920x1080@60hz adaptive_sync off position 0,0
