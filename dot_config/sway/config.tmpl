@@ -48,7 +48,6 @@ exec blueman-applet
 exec waybar
 exec $nextcloud
 exec swaync
-exec swayidle -w before-sleep 'swaylock -f -c 000000'
 exec $discord
 # exec speech-dispatcher -d -t 0
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
@@ -60,13 +59,20 @@ exec corectrl
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
 # Sleep and lock
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 350 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+         before-sleep 'swaylock -f' \
+         timeout 300 'swaylock -f' \
+         timeout 350 'swaymsg "output * dpms off"' \
+         timeout 400 'systemctl suspend' \
+         resume 'swaymsg "output * dpms on"'
 {{- end }}
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
 # Sleep and lock
 exec swayidle -w \
-         timeout 950 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+         before-sleep 'swaylock -f' \
+         timeout 800 'swaylock -f' \
+         timeout 900 'swaymsg "output * dpms off"' \
+         timeout 1000 'systemctl suspend' \
+         resume 'swaymsg "output * dpms on"'
 {{- end }}
 
 output * bg /usr/share/backgrounds/ublue/aurora.jpg fill
