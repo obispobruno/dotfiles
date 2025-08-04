@@ -144,5 +144,3 @@ require('avante').setup({
     provider_opts = {},
   },
 })
-
-vim.cmd('AvanteSwitchProvider copilot')
