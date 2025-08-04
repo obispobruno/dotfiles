@@ -62,15 +62,15 @@ exec swayidle -w \
          before-sleep 'swaylock -f' \
          timeout 300 'swaylock -f' \
          timeout 350 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
          timeout 400 'systemctl suspend' \
          resume 'swaymsg "output * dpms on"'
 {{- end }}
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
 # Sleep and lock
 exec swayidle -w \
-         before-sleep 'swaylock -f' \
-         timeout 800 'swaylock -f' \
          timeout 900 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
          timeout 1000 'systemctl suspend' \
          resume 'swaymsg "output * dpms on"'
 {{- end }}
