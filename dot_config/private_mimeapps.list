@@ -36,3 +36,6 @@ text/html=io.github.ungoogled_software.ungoogled_chromium.desktop;
 application/pdf=io.gitlab.librewolf-community.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.onlyoffice.desktopeditors.desktop;
 application/vnd.oasis.opendocument.text=org.libreoffice.LibreOffice.writer.desktop;
+application/vnd.openxmlformats-officedocument.presentationml.presentation=org.onlyoffice.desktopeditors.desktop;
+application/msword=org.onlyoffice.desktopeditors.desktop;
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=org.onlyoffice.desktopeditors.desktop;
