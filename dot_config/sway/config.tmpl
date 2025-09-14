@@ -53,7 +53,7 @@ exec $discord
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
 exec $whatsapp
 exec $email
-exec corectrl
+# exec corectrl
 {{- end }}
 
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
