@@ -10,6 +10,7 @@ packages:
       - zsh-completions
       - zsh-autosuggestions
       - zsh-syntax-highlighting
+      - carapace
       - ansible
       - ansible-lint
       - awscli
