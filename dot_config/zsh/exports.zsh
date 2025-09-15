@@ -6,6 +6,7 @@ export PATH="$PATH:/home/$USER/.dotnet/tools"
 export DOTNET_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet/libexec"
 export PATH="/home/linuxbrew/.linuxbrew/opt/dotnet@8/bin:$PATH"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 export PATH="/home/linuxbrew/.linuxbrew/opt/binutils/bin:$PATH"
 export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
 export HOMEBREW_AUTO_UPDATE_SECS=1800
