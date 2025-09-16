@@ -66,14 +66,6 @@ exec swayidle -w \
          timeout 400 'systemctl suspend' \
          resume 'swaymsg "output * dpms on"'
 {{- end }}
-{{- if eq .chezmoi.hostname "desktop-sericea" }}
-# Sleep and lock
-exec swayidle -w \
-         timeout 900 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"' \
-         timeout 1000 'systemctl suspend' \
-         resume 'swaymsg "output * dpms on"'
-{{- end }}
 
 output * bg /usr/share/backgrounds/ublue/aurora.jpg fill
 output Virtual-1 mode 1920x1080@60hz adaptive_sync off position 0,0
