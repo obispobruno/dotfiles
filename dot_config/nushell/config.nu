@@ -17,6 +17,8 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
+cd $env.HOME
+
 def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
 	yazi ...$args --cwd-file $tmp
