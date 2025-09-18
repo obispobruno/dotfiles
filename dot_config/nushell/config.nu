@@ -17,7 +17,8 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
-cd $env.HOME
+cd ("/" | append (pwd | path split | skip 2) | path join)
+$env.config.show_banner = false
 
 def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
