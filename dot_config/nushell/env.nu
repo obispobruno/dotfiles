@@ -17,6 +17,7 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 $env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/bin/')
+$env.EDITOR = 'nvim'
 zoxide init nushell | save -f ~/.zoxide.nu
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir ~/.cache/carapace
