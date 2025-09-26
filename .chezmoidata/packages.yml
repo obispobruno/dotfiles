@@ -77,3 +77,4 @@ packages:
       - media-info
       - git-lfs
       - shfmt
+      - virtualenv
