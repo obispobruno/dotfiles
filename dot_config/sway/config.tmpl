@@ -271,7 +271,9 @@ for_window [class="kitty"] opacity 0.85
 for_window [app_id="foot"] opacity 0.85
 for_window [class="foot"] opacity 0.85
 for_window [app_id="com.mitchellh.ghostty"] opacity 0.85
+{{- if eq .chezmoi.hostname "work-laptop" }}
 for_window [class="Cursor"] opacity 0.85
+{{- end }}
 for_window [class="foot"] opacity 0.85
 # Window borders
 default_border pixel 2
