@@ -69,7 +69,7 @@ packages:
       - yarn
       - vagrant
       - sdkman-cli
-      - terraform
+      - hashicorp/tap/terraform
       - shopify-cli
       - gnu-units
       - flyctl
