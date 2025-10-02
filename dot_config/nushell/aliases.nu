@@ -3,7 +3,7 @@ alias gs = git status
 alias gd = git diff
 alias gco = git checkout
 alias gst = git stash
-alias gca = git commit --amend --no-edit
+alias gca = git commit --all --amend --no-edit
 alias gpf = git push --force-with-lease
 
 # general
