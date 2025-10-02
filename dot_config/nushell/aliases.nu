@@ -1,10 +1,16 @@
+# git
+alias gs = git status
+alias gd = git diff
+alias gco = git checkout
+alias gst = git stash
+alias gca = git commit --amend --no-edit
+alias gpf = git push --force-with-lease
+
+# general
+alias cea = chezmoi edit --apply
 alias v = nvim
 alias yy = y
 alias tf = terraform
 alias ap = ansible-playbook
 alias dc = docker compose
-alias gs = git status
-alias gd = git diff
-alias gco = git checkout
-alias gst = git stash
 alias cat = bat
