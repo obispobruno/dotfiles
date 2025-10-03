@@ -15,4 +15,4 @@ alias ap = ansible-playbook
 alias dc = docker compose
 alias cat = bat
 alias wgu = sudo wg-quick up wg0
-alias hollywood = docker run -it --rm jess/hollywood
+alias hollywood = docker run -it --rm bcbcarl/hollywood
