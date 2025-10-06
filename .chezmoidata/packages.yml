@@ -43,6 +43,7 @@ packages:
       - npm
       - pnpm
       - nvm
+      - fnm
       - binutils
       - p7zip
       - gcc@11
