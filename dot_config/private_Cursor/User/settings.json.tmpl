@@ -1,3 +1,4 @@
+// vim: set ft=json:
 {
   "window.titleBarStyle": "custom",
   "editor.fontFamily": "'JetBrains Mono'",
@@ -14,7 +15,7 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<leader>", "f", "w"],
-      "commands": ["livegrep.search"]
+      "commands": ["workbench.action.findInFiles"]
     },
     {
       "before": ["<leader>", "f", "f"],
@@ -30,8 +31,7 @@
     },
     {
       "before": ["<leader>", "/"],
-      "commands": ["editor.action.commentLine"],
-      "modes": ["normal", "visual"]
+      "commands": ["editor.action.commentLine"]
     },
     {
       "before": ["<leader>", "q"],
@@ -60,6 +60,10 @@
     {
       "before": ["G"],
       "after": ["G", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["s"],
+      "commands": ["jmp.jump"]
     },
     {
       "before": ["|"],
@@ -104,16 +108,21 @@
     {
       "before": ["<leader>", "p"],
       "after": ["\"", "_", "d", "P"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
     }
   ],
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "workbench.colorTheme": "GitHub Light Default",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
-  "vscode-neovim.neovimExecutablePaths.linux": "/var/home/linuxbrew/.linuxbrew/bin/nvim",
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/var/home/linuxbrew/.linuxbrew/bin/nvim",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "crashReporting.enabled": "off",
   "terminal.external.linuxExec": "ghostty",
@@ -140,7 +149,7 @@
   },
   "editor.formatOnType": true,
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -161,5 +170,17 @@
   "ansible.validation.lint.path": "/home/linuxbrew/.linuxbrew/bin/ansible-lint",
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "python.languageServer": "None",
+  "docker.extension.enableComposeLanguageServer": false,
+  "cursor.composer.shouldAllowCustomModes": true,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   }
 }
