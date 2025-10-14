@@ -1,4 +1,3 @@
-local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -35,9 +34,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 local default_setup = function(server)
-  lspconfig[server].setup({
+  vim.lsp.config(server, {
     capabilities = lsp_capabilities,
   })
+  vim.lsp.enable(server)
 end
 
 require('mason').setup({})
@@ -68,7 +68,9 @@ require('mason-lspconfig').setup({
   },
 })
 
-lspconfig.lua_ls.setup({
+-- Configure lua_ls with custom settings
+vim.lsp.config('lua_ls', {
+  capabilities = lsp_capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -94,3 +96,4 @@ lspconfig.lua_ls.setup({
     },
   },
 })
+vim.lsp.enable('lua_ls')
