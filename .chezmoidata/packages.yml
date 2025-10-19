@@ -68,10 +68,9 @@ packages:
       - yq
       - act
       - yarn
-      - vagrant
-      - sdkman-cli
+      - sdkman/tap/sdkman-cli
       - hashicorp/tap/terraform
-      - shopify-cli
+      - shopify/shopify/shopify-cli
       - gnu-units
       - flyctl
       - pyenv

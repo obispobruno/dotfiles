@@ -3,5 +3,4 @@ taps:
     brew:
       - hashicorp/tap
       - sdkman/tap
-      - hashicorp/tap
       - shopify/shopify
