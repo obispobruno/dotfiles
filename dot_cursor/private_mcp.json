@@ -1,16 +1,7 @@
 {
   "mcpServers": {
-    "browsermcp": {
-      "command": "npx",
-      "args": ["@browsermcp/mcp@latest"]
-    },
     "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
-    },
-    "excel": {
-      "command": "uvx",
-      "args": ["excel-mcp-server", "stdio"]
+      "url": "https://mcp.context7.com/mcp"
     }
   }
 }
