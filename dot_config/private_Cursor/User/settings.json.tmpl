@@ -4,9 +4,11 @@
   "editor.fontFamily": "'JetBrains Mono'",
   {{- if eq .chezmoi.hostname "desktop-sericea" }}
   "editor.fontSize": 16,
+  "workbench.colorTheme": "GitHub Light Default",
   {{- end }}
   {{- if eq .chezmoi.hostname "work-laptop" }}
   "editor.fontSize": 14,
+  "workbench.colorTheme": "Gruvbox Light Soft",
   {{- end }}
   "editor.lineNumbers": "relative",
   "editor.formatOnSave": true,
@@ -117,7 +119,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "GitHub Light Default",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
