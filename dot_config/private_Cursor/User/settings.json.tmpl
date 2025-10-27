@@ -24,6 +24,14 @@
       "commands": ["workbench.action.quickOpen"]
     },
     {
+      "before": ["u"],
+      "commands": ["undo"]
+    },
+    {
+      "before": ["<C-r>"],
+      "commands": ["redo"]
+    },
+    {
       "before": ["<leader>", ","],
       "commands": ["workbench.action.navigateBack"]
     },
@@ -126,7 +134,7 @@
   "vim.neovimPath": "/var/home/linuxbrew/.linuxbrew/bin/nvim",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "crashReporting.enabled": "off",
-  "terminal.external.linuxExec": "ghostty",
+  "terminal.external.linuxExec": "kitty",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.profiles.linux": {
     "bash": {
