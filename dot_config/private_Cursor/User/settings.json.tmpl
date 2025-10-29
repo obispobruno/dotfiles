@@ -2,89 +2,196 @@
 {
   "window.titleBarStyle": "custom",
   "editor.fontFamily": "'JetBrains Mono'",
-  {{- if eq .chezmoi.hostname "desktop-sericea" }}
+  {
+    {- if eq .chezmoi.hostname "desktop-sericea"
+    }
+  }
   "editor.fontSize": 16,
   "workbench.colorTheme": "GitHub Light Default",
-  {{- end }}
-  {{- if eq .chezmoi.hostname "work-laptop" }}
+  {
+    {- end
+    }
+  }
+  {
+    {- if eq .chezmoi.hostname "work-laptop"
+    }
+  }
   "editor.fontSize": 14,
   "workbench.colorTheme": "Gruvbox Light Soft",
-  {{- end }}
+  {
+    {- end
+    }
+  }
   "editor.lineNumbers": "relative",
   "editor.formatOnSave": true,
   "files.autoSave": "afterDelay",
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "f", "w"],
-      "commands": ["workbench.action.findInFiles"]
+      "before": [
+        "<leader>",
+        "f",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
     },
     {
-      "before": ["<leader>", "f", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "<leader>",
+        "f",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
     {
-      "before": ["u"],
-      "commands": ["undo"]
+      "before": [
+        "u"
+      ],
+      "commands": [
+        "undo"
+      ]
     },
     {
-      "before": ["<C-r>"],
-      "commands": ["redo"]
+      "before": [
+        "<C-r>"
+      ],
+      "commands": [
+        "redo"
+      ]
     },
     {
-      "before": ["<leader>", ","],
-      "commands": ["workbench.action.navigateBack"]
+      "before": [
+        "<leader>",
+        ","
+      ],
+      "commands": [
+        "workbench.action.navigateBack"
+      ]
     },
     {
-      "before": ["<leader>", "."],
-      "commands": ["workbench.action.navigateForward"]
+      "before": [
+        "<leader>",
+        "."
+      ],
+      "commands": [
+        "workbench.action.navigateForward"
+      ]
     },
     {
-      "before": ["<leader>", "/"],
-      "commands": ["editor.action.commentLine"]
+      "before": [
+        "<leader>",
+        "/"
+      ],
+      "commands": [
+        "editor.action.commentLine"
+      ]
     },
     {
-      "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeOtherEditors"]
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
     },
     {
-      "before": ["K"],
-      "commands": ["editor.action.showHover"]
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.showHover"
+      ]
     },
     {
-      "before": ["<C-d>"],
-      "after": ["<C-d>", "z", "z"]
+      "before": [
+        "<C-d>"
+      ],
+      "after": [
+        "<C-d>",
+        "z",
+        "z"
+      ]
     },
     {
-      "before": ["<C-u>"],
-      "after": ["<C-u>", "z", "z"]
+      "before": [
+        "<C-u>"
+      ],
+      "after": [
+        "<C-u>",
+        "z",
+        "z"
+      ]
     },
     {
-      "before": ["n"],
-      "after": ["n", "z", "z", "z", "v"]
+      "before": [
+        "n"
+      ],
+      "after": [
+        "n",
+        "z",
+        "z",
+        "z",
+        "v"
+      ]
     },
     {
-      "before": ["N"],
-      "after": ["N", "z", "z", "z", "v"]
+      "before": [
+        "N"
+      ],
+      "after": [
+        "N",
+        "z",
+        "z",
+        "z",
+        "v"
+      ]
     },
     {
-      "before": ["G"],
-      "after": ["G", "z", "z", "z", "v"]
+      "before": [
+        "G"
+      ],
+      "after": [
+        "G",
+        "z",
+        "z",
+        "z",
+        "v"
+      ]
     },
     {
-      "before": ["s"],
-      "commands": ["jmp.jump"]
+      "before": [
+        "s"
+      ],
+      "commands": [
+        "jmp.jump"
+      ]
     },
     {
-      "before": ["|"],
-      "commands": ["workbench.action.splitEditorRight"]
+      "before": [
+        "|"
+      ],
+      "commands": [
+        "workbench.action.splitEditorRight"
+      ]
     },
     {
-      "before": ["\\"],
-      "commands": ["workbench.action.splitEditorDown"]
+      "before": [
+        "\\"
+      ],
+      "commands": [
+        "workbench.action.splitEditorDown"
+      ]
     },
     {
-      "before": ["<leader>", "s"],
+      "before": [
+        "<leader>",
+        "s"
+      ],
       "after": [
         ":",
         "%",
@@ -106,22 +213,47 @@
       "silent": true
     },
     {
-      "before": ["<leader>", "e"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
+      "before": [
+        "<leader>",
+        "e"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+      ]
     }
   ],
   "vim.visualModeKeyBindings": [
     {
-      "before": ["<leader>", "y"],
-      "after": ["\"", "+", "y"]
+      "before": [
+        "<leader>",
+        "y"
+      ],
+      "after": [
+        "\"",
+        "+",
+        "y"
+      ]
     },
     {
-      "before": ["<leader>", "p"],
-      "after": ["\"", "_", "d", "P"]
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d",
+        "P"
+      ]
     },
     {
-      "before": ["<leader>", "/"],
-      "commands": ["editor.action.commentLine"]
+      "before": [
+        "<leader>",
+        "/"
+      ],
+      "commands": [
+        "editor.action.commentLine"
+      ]
     }
   ],
   "[jsonc]": {
@@ -191,5 +323,11 @@
   },
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
   }
 }
