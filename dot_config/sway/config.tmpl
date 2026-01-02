@@ -54,6 +54,9 @@ exec $discord
 exec $whatsapp
 exec steam
 exec sunshine
+exec swayidle -w \
+         timeout 300 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"'
 {{- end }}
 
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
