@@ -5,6 +5,7 @@ packages:
       - syncthing
       - atuin
       - ugrep
+      - nushell
       - zsh
       - zsh-autocomplete
       - zsh-completions
