@@ -54,9 +54,6 @@ exec $discord
 exec $whatsapp
 exec steam
 exec sunshine
-exec swayidle -w \
-         timeout 300 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"'
 {{- end }}
 
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
@@ -116,6 +113,7 @@ bindsym $mod+Shift+minus floating enable, resize set width 1900 height 1060, mov
 bindsym $mod+minus scratchpad show
 bindsym $mod+F1 input "type:keyboard" xkb_switch_layout 0
 bindsym $mod+F2 input "type:keyboard" xkb_switch_layout 1
+bindsym $mod+Shift+h exec 'swaymsg "output HDMI-A-1 dpms toggle; output DP-1 dpms toggle"'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
