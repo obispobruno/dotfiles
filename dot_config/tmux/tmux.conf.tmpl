@@ -1,5 +1,10 @@
 # Set default shell
+{{ if eq .chezmoi.os "linux" -}}
 set -g default-shell /home/linuxbrew/.linuxbrew/bin/nu
+{{ end -}}
+{{ if eq .chezmoi.os "darwin" -}}
+set -g default-shell /opt/homebrew/bin/nu
+{{ end -}}
 
 # Set quick escape time
 set -s escape-time 0
