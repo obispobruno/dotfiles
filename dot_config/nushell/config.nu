@@ -36,7 +36,7 @@ $env.cursor_shape.vi_insert = 'line'
 
 source ./aliases.nu
 source ~/.zoxide.nu
-source ~/.cache/carapace/init.nu
+source $"($nu.cache-dir)/carapace.nu"
 source ~/.local/share/atuin/init.nu
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
