@@ -5,7 +5,7 @@ frequent_dirs=$(tr '\n' ' ' <~/.config/tmux/frequent_dirs.txt)
 if [[ $# -ge 1 ]]; then
 	selected=$1
 else
-	selected=$(eval "find $frequent_dirs -mindepth 1 -maxdepth 1 -type d" | /home/linuxbrew/.linuxbrew/bin/sk)
+	selected=$(eval "find $frequent_dirs -mindepth 1 -maxdepth 1 -type d" | fzf)
 fi
 
 if [[ -z $selected ]]; then
