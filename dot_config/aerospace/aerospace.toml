@@ -17,12 +17,13 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 [mode.main.binding]
     # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
     alt-enter = 'exec-and-forget kitty -e tmux new -As main'
+    alt-shift-enter = 'exec-and-forget Cursor'
 
     # i3 wraps focus by default
     alt-n =         'focus --boundaries-action wrap-around-the-workspace left'
     alt-e =         'focus --boundaries-action wrap-around-the-workspace down'
     alt-i =         'focus --boundaries-action wrap-around-the-workspace up'
-    alt-o = 'focus --boundaries-action wrap-around-the-workspace right'
+    alt-o =         'focus --boundaries-action wrap-around-the-workspace right'
 
     alt-shift-n = 'move left'
     alt-shift-e = 'move down'
