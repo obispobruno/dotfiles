@@ -25,9 +25,11 @@ set -g default-terminal "tmux-256color"
 set-option -ag terminal-overrides ",xterm-256color:RGB"
 
 # Set prefix
+{{ if eq .chezmoi.os "linux" -}}
 unbind C-b
 set -g prefix M-n
 bind M-n send-prefix
+{{ end -}}
 set -g status-style 'bg=#282828 fg=#ebdbb2'
 
 # Hide status bar
