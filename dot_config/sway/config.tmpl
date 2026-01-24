@@ -114,7 +114,12 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+F1 input "type:keyboard" xkb_switch_layout 0
 bindsym $mod+F2 input "type:keyboard" xkb_switch_layout 1
 bindsym $mod+Shift+h exec 'swaymsg "output HDMI-A-1 dpms toggle; output DP-1 dpms toggle"'
+{{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
 bindsym $mod+Shift+k exec 'swaymsg "output eDP-1 dpms toggle"'
+{{- end }}
+{{- if eq .chezmoi.hostname "desktop-sericea" }}
+bindsym $mod+Shift+k exec 'swaymsg "output HDMI-A-1 dpms toggle"'
+{{- end }}
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
