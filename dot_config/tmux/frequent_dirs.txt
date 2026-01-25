@@ -7,7 +7,6 @@
 ~/Nextcloud/Documents/ORT/Semestre\ 6/
 ~/Nextcloud/Documents/ORT/Semestre\ 7/
 ~/.var/app/
-~/Personal/
 ~/Syncthing/
 ~/Syncthing/ORT/
 ~/.local/share/
