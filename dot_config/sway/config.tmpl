@@ -54,6 +54,7 @@ exec $discord
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
 exec $whatsapp
 exec steam
+exec flatpak run io.github.berarma.Oversteer --profile 360
 {{- end }}
 
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
