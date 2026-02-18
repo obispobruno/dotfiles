@@ -62,3 +62,6 @@ vim.opt.foldtext = 'v:lua.vim.treesitter.foldtext()'
 
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
+
+-- Python provider
+vim.g.python3_host_prog = '/var/home/bruno/.pyenv/shims/python3'
