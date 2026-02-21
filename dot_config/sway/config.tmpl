@@ -111,6 +111,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+c+n exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $mod+c+o exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+c exec wpctl set-mute @DEFAULT_SOURCE@ toggle
 bindsym $mod+x exec playerctl play-pause
 bindsym $mod+m exec $music
 bindsym $mod+Shift+minus floating enable, resize set width 1900 height 1060, move scratchpad
