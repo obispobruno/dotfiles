@@ -1,6 +1,6 @@
 [[mgr.append_keymap]]
 on   = [ "g", "o" ]
-run = 'cd ~/Nextcloud/Documents/ORT/Semestre\ 7/'
+run = 'cd ~/Nextcloud/Documents/ORT/Semestre\ 8/'
 desc = "Go to school dir"
 
 [[mgr.prepend_keymap]]
