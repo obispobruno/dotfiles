@@ -80,3 +80,4 @@ packages:
       - shfmt
       - virtualenv
       - biome
+      - pre-commit
