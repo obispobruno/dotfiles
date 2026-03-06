@@ -1,0 +1,1 @@
+- Always give commands to the user in one line, without any line breaks, in nushell.
