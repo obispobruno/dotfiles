@@ -41,6 +41,7 @@ packages:
       - curl
       - gcc
       - neovim
+      - opencode
       - npm
       - pnpm
       - nvm
@@ -72,7 +73,6 @@ packages:
       - sdkman/tap/sdkman-cli
       - hashicorp/tap/terraform
       - shopify/shopify/shopify-cli
-      - anomalyco/tap/opencode
       - gnu-units
       - flyctl
       - pyenv
