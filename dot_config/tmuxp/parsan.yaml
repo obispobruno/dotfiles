@@ -1,0 +1,26 @@
+session_name: parsan
+windows:
+- layout: 4a4d,192x45,0,0{111x45,0,0,2,80x45,112,0,3}
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command:
+      - cd /var/home/bruno/Repos/parsan/parsanai-backend
+      - overlay use .venv/bin/activate.nu; cd ..; nvim
+  - shell_command:
+      - cd /var/home/bruno/Repos/parsan/parsanai-backend
+      - overlay use .venv/bin/activate.nu; opencode
+  start_directory: /var/home/bruno/Repos/parsan
+  window_name: nvim
+- focus: 'true'
+  layout: 5910,192x45,0,0{96x45,0,0,6,95x45,97,0,7}
+  options: {}
+  panes:
+  - shell_command:
+    - cd /var/home/bruno/Repos/parsan/parsanai-backend
+    - docker compose up -d; uv run uvicorn src.parsan.api.main:app --reload
+  - focus: 'true'
+    shell_command: 
+      - cd /var/home/bruno/Repos/parsan/parsanai-frontend
+      - pnpm dev
+  window_name: node
