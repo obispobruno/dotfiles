@@ -9,7 +9,7 @@ windows:
       - overlay use .venv/bin/activate.nu; cd ..; nvim
   - shell_command:
       - cd /var/home/bruno/Repos/parsan/parsanai-backend
-      - overlay use .venv/bin/activate.nu; opencode
+      - overlay use .venv/bin/activate.nu; cd ..; opencode
   start_directory: /var/home/bruno/Repos/parsan
   window_name: nvim
 - focus: 'true'
