@@ -42,6 +42,7 @@ packages:
       - gcc
       - neovim
       - opencode
+      - worktrunk
       - npm
       - pnpm
       - nvm
