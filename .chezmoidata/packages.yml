@@ -42,6 +42,7 @@ packages:
       - gcc
       - neovim
       - opencode
+      - skills
       - worktrunk
       - npm
       - pnpm
