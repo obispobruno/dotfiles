@@ -17,10 +17,7 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
-{{ if eq .chezmoi.os "linux" -}}
 cd ("/" | append (pwd | path split | skip 2) | path join)
-{{ end -}}
-
 $env.config.show_banner = false
 
 def --env y [...args] {
@@ -41,6 +38,7 @@ source ./aliases.nu
 source ~/.zoxide.nu
 source $"($nu.cache-dir)/carapace.nu"
 source ~/.local/share/atuin/init.nu
+source ./vendor/autoload/wt.nu
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
