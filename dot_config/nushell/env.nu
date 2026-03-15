@@ -25,6 +25,6 @@ $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir $"($nu.cache-dir)"
 carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
 
-atuin init nu | save -f ~/.local/share/atuin/init.nu
+# atuin init nu | save -f ~/.local/share/atuin/init.nu
 $env.PYTHON_FOR_REGEN = '/usr/bin/python'
 source-env ~/.config/nushell/.env.nu
