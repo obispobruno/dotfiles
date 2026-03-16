@@ -10,6 +10,7 @@
 ~/Syncthing/ORT/
 ~/.local/share/
 ~/Repos/
+~/Repos/parsan/
 ~/.config/
 ~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/common/
 ~/.var/app/com.valvesoftware.Steam/.local/share/Steam/
