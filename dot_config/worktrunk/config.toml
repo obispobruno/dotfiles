@@ -1,3 +1,2 @@
 [commit.generation]
 command = "opencode run -m github-copilot/grok-code-fast-1"
-# command = "agent --model grok --print"
