@@ -5,11 +5,21 @@
     "morph": {
       "type": "local",
       "command": ["npx", "-y", "@morphllm/morphmcp"],
-      "enabled": true
+      "enabled": false
     },
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    },
+    "excalidraw": {
+      "type": "remote",
+      "url": "https://mcp.excalidraw.com",
+      "enabled": false
+    },
+    "drawio": {
+      "type": "remote",
+      "url": "https://mcp.draw.io/mcp",
       "enabled": true
     }
   }
