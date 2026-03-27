@@ -1,2 +1,9 @@
 [commit.generation]
-command = "opencode run -m github-copilot/grok-code-fast-1"
+command = "opencode run -m github-copilot/gpt-5.4-mini"
+template = """
+Write a commit message for this diff. One line, under 50 chars. Use conventional commit format. Only output the commit message.
+
+Branch: {{ branch }}
+Diff:
+{{ git_diff }}
+"""
