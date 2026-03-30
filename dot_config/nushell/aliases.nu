@@ -6,6 +6,10 @@ alias gst = git stash
 alias gca = git commit --all --amend --no-edit
 alias gpf = git push --force-with-lease
 
+# worktrunk
+alias wco = wt switch
+alias wsc = wt step commit
+
 # general
 alias cea = chezmoi edit --apply
 alias v = nvim
