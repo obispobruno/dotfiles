@@ -1,3 +1,4 @@
 - Always give commands to the user in one line, without any line breaks, in nushell.
 - Always use Context7 MCP when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
 - Never push to remote repository unless I explicitly ask you to do so.
+- drawio available with `flatpak run com.jgraph.drawio.desktop`.
