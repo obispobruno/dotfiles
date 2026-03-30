@@ -34,11 +34,11 @@ $env.config.buffer_editor = 'nvim'
 $env.config.edit_mode = 'vi'
 $env.cursor_shape.vi_insert = 'line'
 
-source ./aliases.nu
 source ~/.zoxide.nu
 source $"($nu.cache-dir)/carapace.nu"
 source ~/.local/share/atuin/init.nu
 source ./vendor/autoload/wt.nu
+source ./aliases.nu
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
