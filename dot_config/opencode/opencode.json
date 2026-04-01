@@ -7,5 +7,13 @@
       "url": "https://mcp.context7.com/mcp",
       "enabled": true
     }
+  },
+  "agent": {
+    "explore": {
+      "model": "github-copilot/claude-sonnet-4.6"
+    },
+    "general": {
+      "model": "github-copilot/claude-sonnet-4.6"
+    }
   }
 }
