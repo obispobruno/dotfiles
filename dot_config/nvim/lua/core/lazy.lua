@@ -105,7 +105,7 @@ local plugins = {
     'sainnhe/gruvbox-material',
     config = function()
       vim.g.gruvbox_material_foreground = 'original' -- material, mix, original
-      vim.g.gruvbox_material_background = 'medium' -- hard, medium, soft
+      vim.g.gruvbox_material_background = 'medium'   -- hard, medium, soft
     end,
   },
   'navarasu/onedark.nvim',
@@ -148,10 +148,38 @@ local plugins = {
     event = 'InsertEnter',
   },
   {
+    "nickjvandyke/opencode.nvim",
+    version = "*", -- Latest stable release
+    dependencies = {
+      {
+        -- `snacks.nvim` integration is recommended, but optional
+        ---@module "snacks" <- Loads `snacks.nvim` types for configuration intellisense
+        "folke/snacks.nvim",
+        optional = true,
+        opts = {
+          input = {}, -- Enhances `ask()`
+          picker = { -- Enhances `select()`
+            actions = {
+              opencode_send = function(...) return require("opencode").snacks_picker_send(...) end,
+            },
+            win = {
+              input = {
+                keys = {
+                  ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     'yetone/avante.nvim',
     event = 'VeryLazy',
     lazy = false,
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    enabled = false,
     opts = {
       -- add any opts here
     },
@@ -164,9 +192,9 @@ local plugins = {
       'MunifTanjim/nui.nvim',
       --- The below dependencies are optional,
       'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
-      'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
-      'ibhagwan/fzf-lua', -- for file_selector provider fzf
-      'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
+      'hrsh7th/nvim-cmp',              -- autocompletion for avante commands and mentions
+      'ibhagwan/fzf-lua',              -- for file_selector provider fzf
+      'nvim-tree/nvim-web-devicons',   -- or echasnovski/mini.icons
       -- 'zbirenbaum/copilot.lua', -- for providers='copilot'
       {
         -- support for image pasting
