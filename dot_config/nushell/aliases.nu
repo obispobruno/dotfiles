@@ -15,6 +15,7 @@ alias cea = chezmoi edit --apply
 alias v = nvim
 alias yy = y
 alias tf = terraform
+alias tg = terragrunt
 alias ap = ansible-playbook
 alias dc = docker compose
 alias cat = bat
