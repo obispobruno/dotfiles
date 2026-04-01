@@ -75,6 +75,7 @@ packages:
       - sdkman/tap/sdkman-cli
       - hashicorp/tap/terraform
       - shopify/shopify/shopify-cli
+      - terragrunt
       - gnu-units
       - flyctl
       - pyenv
