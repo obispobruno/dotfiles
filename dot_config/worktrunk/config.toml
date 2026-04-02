@@ -1,5 +1,5 @@
 [commit.generation]
-command = "opencode run -m github-copilot/claude-haiku-4.5"
+command = "opencode run -m github-copilot/gemini-3-flash-preview"
 template = """
 Write a commit message for this diff. One line, under 50 chars. Use conventional commit format. Only output the commit message.
 
