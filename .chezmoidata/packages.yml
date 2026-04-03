@@ -44,9 +44,6 @@ packages:
       - opencode
       - skills
       - worktrunk
-      - npm
-      - pnpm
-      - nvm
       - fnm
       - binutils
       - p7zip
