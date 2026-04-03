@@ -3,7 +3,7 @@
   "plugin": ["@mohak34/opencode-notifier@latest"],
   "agent": {
     "explore": {
-      "model": "github-copilot/claude-sonnet-4.6"
+      "model": "github-copilot/gpt-4.1"
     },
     "general": {
       "model": "github-copilot/claude-sonnet-4.6"
