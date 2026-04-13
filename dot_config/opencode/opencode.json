@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["@mohak34/opencode-notifier@latest"],
+  "plugin": ["@mohak34/opencode-notifier@latest", "superpowers@git+https://github.com/obra/superpowers.git"],
   "agent": {
     "explore": {
       "model": "github-copilot/claude-haiku-4.5"
