@@ -1,0 +1,19 @@
+{
+  "enabledPlugins": {
+    "worktrunk@worktrunk": true,
+    "superpowers@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "worktrunk": {
+      "source": {
+        "source": "github",
+        "repo": "max-sixty/worktrunk"
+      }
+    }
+  },
+  "advisorModel": "opus",
+  "skipDangerousModePermissionPrompt": false,
+  "env": {
+    "CLAUDE_DISABLE_ADAPTATIVE_THINKING": "1"
+  }
+}
