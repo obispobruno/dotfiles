@@ -1,4 +1,7 @@
 {
+  "env": {
+    "CLAUDE_DISABLE_ADAPTATIVE_THINKING": "1"
+  },
   "enabledPlugins": {
     "worktrunk@worktrunk": true,
     "superpowers@claude-plugins-official": true
@@ -12,8 +15,5 @@
     }
   },
   "advisorModel": "opus",
-  "skipDangerousModePermissionPrompt": false,
-  "env": {
-    "CLAUDE_DISABLE_ADAPTATIVE_THINKING": "1"
-  }
+  "skipDangerousModePermissionPrompt": true
 }
