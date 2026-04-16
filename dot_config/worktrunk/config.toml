@@ -7,3 +7,6 @@ Branch: {{ branch }}
 Diff:
 {{ git_diff }}
 """
+
+[post-switch]
+tmux = "[ -n \"$TMUX\" ] && tmux rename-window {{ branch | sanitize }}"
