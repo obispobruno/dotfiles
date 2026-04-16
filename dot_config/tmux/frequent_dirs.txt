@@ -11,6 +11,7 @@
 ~/.local/share/
 ~/Repos/
 ~/Repos/parsan/
+~/Repos/sprygg/
 ~/.config/
 ~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/common/
 ~/.var/app/com.valvesoftware.Steam/.local/share/Steam/
