@@ -2,6 +2,10 @@
   "env": {
     "CLAUDE_DISABLE_ADAPTATIVE_THINKING": "1"
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /var/home/bruno/.claude/statusline-command.sh"
+  },
   "enabledPlugins": {
     "worktrunk@worktrunk": true,
     "superpowers@claude-plugins-official": true
@@ -14,6 +18,7 @@
       }
     }
   },
+  "effortLevel": "high",
   "advisorModel": "opus",
   "skipDangerousModePermissionPrompt": true
 }
