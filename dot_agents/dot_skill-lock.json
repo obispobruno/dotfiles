@@ -1,0 +1,125 @@
+{
+  "version": 3,
+  "skills": {
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "skillFolderHash": "18a9a6d17d5958d4ab10405883b80960644dbd5b",
+      "installedAt": "2026-02-24T14:55:01.720Z",
+      "updatedAt": "2026-03-14T18:14:43.634Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "installedAt": "2026-02-24T14:55:07.071Z",
+      "updatedAt": "2026-03-14T03:47:31.428Z"
+    },
+    "shadcn": {
+      "source": "shadcn/ui",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/shadcn/ui.git",
+      "skillPath": "skills/shadcn/SKILL.md",
+      "skillFolderHash": "f0f39ab1bf720d40fee4b012e807ce25aff8746b",
+      "installedAt": "2026-03-14T01:57:57.647Z",
+      "updatedAt": "2026-03-14T18:15:50.812Z"
+    },
+    "before-and-after": {
+      "source": "vercel-labs/before-and-after",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/before-and-after.git",
+      "skillPath": "skill/SKILL.md",
+      "skillFolderHash": "494b495538546c3a5594285e726970ff8f27a1ee",
+      "installedAt": "2026-03-14T03:51:11.421Z",
+      "updatedAt": "2026-03-14T03:51:11.421Z"
+    },
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "skillFolderHash": "9fa6850b305ad7237ffe61fc12f9e3d2d9c3d990",
+      "pluginName": "agent-browser",
+      "installedAt": "2026-03-14T18:10:34.657Z",
+      "updatedAt": "2026-03-14T18:14:09.625Z"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "skillFolderHash": "3116f3e62dbd02b44a598b1aa690d2a8938e8f89",
+      "installedAt": "2026-03-14T18:15:33.779Z",
+      "updatedAt": "2026-03-14T18:15:33.779Z"
+    },
+    "next-best-practices": {
+      "source": "vercel-labs/next-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/next-skills.git",
+      "skillPath": "skills/next-best-practices/SKILL.md",
+      "skillFolderHash": "ad17eb27952b39a6ab0061bd50e8a2213b63a3ec",
+      "installedAt": "2026-03-14T18:16:15.376Z",
+      "updatedAt": "2026-03-14T18:16:15.376Z"
+    },
+    "next-cache-components": {
+      "source": "vercel-labs/next-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/next-skills.git",
+      "skillPath": "skills/next-cache-components/SKILL.md",
+      "skillFolderHash": "a6f29564b9228af553737bd437c7016fc3dc44e0",
+      "installedAt": "2026-03-14T18:18:03.243Z",
+      "updatedAt": "2026-03-14T18:18:03.243Z"
+    },
+    "worktrunk": {
+      "source": "max-sixty/worktrunk",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
+      "skillPath": "skills/worktrunk/SKILL.md",
+      "skillFolderHash": "e00c3147475935e1793c6280be0ee4366debcb9c",
+      "pluginName": "worktrunk",
+      "installedAt": "2026-03-28T19:38:29.797Z",
+      "updatedAt": "2026-03-28T19:38:29.797Z"
+    },
+    "drawio": {
+      "source": "jgraph/drawio-mcp",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/jgraph/drawio-mcp.git",
+      "skillPath": "skill-cli/drawio/SKILL.md",
+      "skillFolderHash": "ed7d7a27c82f800d707510ef6832ee667de0ee68",
+      "installedAt": "2026-03-30T18:48:14.123Z",
+      "updatedAt": "2026-03-30T18:48:14.123Z"
+    },
+    "supabase-postgres-best-practices": {
+      "source": "supabase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/supabase/agent-skills.git",
+      "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
+      "skillFolderHash": "9e4dd36978eedd04efc649b4d431ab5ce4bb3896",
+      "pluginName": "postgres-best-practices",
+      "installedAt": "2026-04-10T14:06:16.048Z",
+      "updatedAt": "2026-04-10T14:06:16.048Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "antigravity",
+    "cline",
+    "codex",
+    "cursor",
+    "deepagents",
+    "firebender",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode",
+    "warp",
+    "claude-code"
+  ]
+}
