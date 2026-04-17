@@ -9,4 +9,5 @@ Diff:
 """
 
 [post-switch]
-tmux = "[ -n \"$TMUX\" ] && tmux rename-window {{ branch | sanitize }}"
+rename = "[ -n \"$TMUX\" ] && tmux rename-window {{ branch | sanitize }}"
+setpath = "[ -n \"$TMUX\" ] && tmux set-option -w @worktree_path '{{ worktree_path }}'"
