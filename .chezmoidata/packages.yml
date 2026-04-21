@@ -41,7 +41,6 @@ packages:
       - curl
       - gcc
       - neovim
-      - opencode
       - skills
       - worktrunk
       - fnm
@@ -72,6 +71,7 @@ packages:
       - sdkman/tap/sdkman-cli
       - hashicorp/tap/terraform
       - shopify/shopify/shopify-cli
+      - anomalyco/tap/opencode
       - terragrunt
       - gnu-units
       - flyctl
