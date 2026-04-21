@@ -17,15 +17,17 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 $env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/bin/')
-$env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/sbin:$PATH')
-$env.PATH = ($env.PATH | append '~/.local/bin/')
+$env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/sbin/')
+$env.PATH = ($env.PATH | append $"($env.HOME)/.local/bin")
 $env.EDITOR = 'nvim'
-zoxide init nushell | save -f ~/.zoxide.nu
 
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir $"($nu.cache-dir)"
-carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
 
-# atuin init nu | save -f ~/.local/share/atuin/init.nu
 $env.PYTHON_FOR_REGEN = '/usr/bin/python'
+
 source-env ~/.config/nushell/.env.nu
+
+carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
+atuin init nu | save -f ~/.local/share/atuin/init.nu
+zoxide init nushell | save -f ~/.zoxide.nu
