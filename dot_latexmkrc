@@ -1,0 +1,6 @@
+$pdf_mode = 5;
+
+# Homebrew's TeX launcher symlinks under ~/.linuxbrew/bin are broken on this
+# system, so call the real texlive binaries directly.
+$xelatex = '/home/linuxbrew/.linuxbrew/opt/texlive/bin/xelatex %O %S';
+$xdvipdfmx = '/home/linuxbrew/.linuxbrew/opt/texlive/bin/xdvipdfmx -E -o %D %O %S';
