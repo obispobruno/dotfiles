@@ -4,7 +4,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bash /var/home/bruno/.claude/statusline-command.sh"
+    "command": "bash /home/bruno/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "worktrunk@worktrunk": true,
