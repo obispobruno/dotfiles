@@ -3,10 +3,10 @@
   "plugin": ["@mohak34/opencode-notifier@latest", "superpowers@git+https://github.com/obra/superpowers.git"],
   "agent": {
     "explore": {
-      "model": "github-copilot/claude-haiku-4.5"
+      "model": "github-copilot/gpt-5.4-mini"
     },
     "general": {
-      "model": "github-copilot/claude-sonnet-4.6"
+      "model": "github-copilot/gpt-5.4"
     }
   }
 }
