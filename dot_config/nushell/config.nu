@@ -16,10 +16,26 @@
 # You can also pretty-print and page through the documentation for configuration
 # options using:
 #     config nu --doc | nu-highlight | less -R
+$env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/bin/')
+$env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/sbin/')
+$env.PATH = ($env.PATH | append $"($env.HOME)/.local/bin")
+$env.EDITOR = 'nvim'
+
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+mkdir $"($nu.cache-dir)"
+
+$env.PYTHON_FOR_REGEN = '/usr/bin/python'
+
+source-env ~/.config/nushell/.env.nu
+
+carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
+atuin init nu | save -f ~/.local/share/atuin/init.nu
+zoxide init nushell | save -f ~/.zoxide.nu
 
 if ($env.PWD | str starts-with "/var/home") {
     cd ("/" | append (pwd | path split | skip 2) | path join)
 }
+
 $env.config.show_banner = false
 
 def --env y [...args] {
