@@ -47,9 +47,8 @@ exec waybar
 exec $nextcloud
 exec swaync
 exec $discord
-{{- if eq .chezmoi.hostname "desktop-sericea" }}
 exec $browser
-exec steam
+{{- if eq .chezmoi.hostname "desktop-sericea" }}
 exec flatpak run io.github.berarma.Oversteer --profile 360
 {{- end }}
 
