@@ -8,8 +8,19 @@ Unlike `git merge`, this merges the current branch into the target branch — no
 
 Merge to the default branch:
 
-```bash
+```
 $ wt merge
+◎ Running pre-merge project:test
+  cargo nextest run
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Summary [   0.002s] 2 tests run: 2 passed, 0 skipped
+◎ Merging 1 commit to main @ a1b2c3d (no commit/squash/rebase needed)
+  * a1b2c3d feat: add hook registration
+   hook.rs | 31 +++++++++++++++++++++++++++++++
+   1 file changed, 31 insertions(+)
+✓ Merged to main (1 commit, 1 file, +31)
+◎ Removing hooks worktree & branch in background (same commit as main, _)
+○ Switched to worktree for main @ ~/repo
 ```
 
 Merge to a different branch:
@@ -66,66 +77,79 @@ Historically, ensuring tests ran before merging was difficult to enforce locally
 The full workflow: start an agent (one of many) on a task, work elsewhere, return when it's ready. Review the diff, run `wt merge`, move on. Pre-merge hooks validate before merging — if they pass, the branch goes to the default branch and the worktree cleans up.
 
 ```toml
-[pre-merge]
+[[pre-merge]]
 test = "cargo test"
 lint = "cargo clippy"
 ```
 
 ## Command reference
 
+```
 wt merge - Merge current branch into the target branch
 
-Squash &amp; rebase, fast-forward the target branch, remove the worktree.
+Squash & rebase, fast-forward the target branch, remove the worktree.
 
-Usage: <b><span class=c>wt merge</span></b> <span class=c>[OPTIONS]</span> <span class=c>[TARGET]</span>
+Usage: wt merge [OPTIONS] [TARGET]
 
-<b><span class=g>Arguments:</span></b>
-  <span class=c>[TARGET]</span>
+Arguments:
+  [TARGET]
           Target branch
 
           Defaults to default branch.
 
-<b><span class=g>Options:</span></b>
-      <b><span class=c>--no-squash</span></b>
+Options:
+      --no-squash
           Skip commit squashing
 
-      <b><span class=c>--no-commit</span></b>
+      --no-commit
           Skip commit and squash
 
-      <b><span class=c>--no-rebase</span></b>
+      --no-rebase
           Skip rebase (fail if not already rebased)
 
-      <b><span class=c>--no-remove</span></b>
+      --no-remove
           Keep worktree after merge
 
-      <b><span class=c>--no-ff</span></b>
+      --no-ff
           Create a merge commit (no fast-forward)
 
-      <b><span class=c>--stage</span></b><span class=c> &lt;STAGE&gt;</span>
+      --stage <STAGE>
           What to stage before committing [default: all]
 
           Possible values:
-          - <b><span class=c>all</span></b>:     Stage everything: untracked files + unstaged tracked
-            changes
-          - <b><span class=c>tracked</span></b>: Stage tracked changes only (like <b>git add -u</b>)
-          - <b><span class=c>none</span></b>:    Stage nothing, commit only what&#39;s already in the index
+          - all:     Stage everything: untracked files + unstaged tracked changes
+          - tracked: Stage tracked changes only (like git add -u)
+          - none:    Stage nothing, commit only what's already in the index
 
-  <b><span class=c>-h</span></b>, <b><span class=c>--help</span></b>
-          Print help (see a summary with &#39;-h&#39;)
+  -h, --help
+          Print help (see a summary with '-h')
 
-<b><span class=g>Automation:</span></b>
-  <b><span class=c>-y</span></b>, <b><span class=c>--yes</span></b>
-          Skip approval prompts
-
-      <b><span class=c>--no-verify</span></b>
+Automation:
+      --no-hooks
           Skip hooks
 
-<b><span class=g>Global Options:</span></b>
-  <b><span class=c>-C</span></b><span class=c> &lt;path&gt;</span>
+      --format <FORMAT>
+          Output format
+
+          JSON prints structured result to stdout after merge completes.
+
+          Possible values:
+          - text: Human-readable text output
+          - json: JSON output
+
+          [default: text]
+
+Global Options:
+  -C <path>
           Working directory for this command
 
-      <b><span class=c>--config</span></b><span class=c> &lt;path&gt;</span>
+      --config <path>
           User config file path
 
-  <b><span class=c>-v</span></b>, <b><span class=c>--verbose</span></b><span class=c>...</span>
-          Verbose output (-v: hooks, templates; -vv: debug report)
+  -v, --verbose...
+          Verbose output (-v: info logs + hook/alias template variable & output; -vv: debug logs +
+          diagnostic report + trace.log/output.log under .git/wt/logs/)
+
+  -y, --yes
+          Skip approval prompts
+```
