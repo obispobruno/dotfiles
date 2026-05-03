@@ -7,17 +7,9 @@
     "command": "bash /home/bruno/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "worktrunk@worktrunk": true,
     "superpowers@claude-plugins-official": true
   },
-  "extraKnownMarketplaces": {
-    "worktrunk": {
-      "source": {
-        "source": "github",
-        "repo": "max-sixty/worktrunk"
-      }
-    }
-  },
+  "extraKnownMarketplaces": {},
   "effortLevel": "high",
   "advisorModel": "opus",
   "skipDangerousModePermissionPrompt": true
