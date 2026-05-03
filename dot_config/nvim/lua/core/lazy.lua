@@ -17,18 +17,9 @@ local plugins = {
   'folke/zen-mode.nvim',
   'ThePrimeagen/harpoon',
   'ThePrimeagen/vim-be-good',
-  {
-    'ThePrimeagen/refactoring.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-    },
-    lazy = false,
-  },
   'akinsho/org-bullets.nvim',
   'nvim-orgmode/orgmode',
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
-  'jamestthompson3/nvim-remote-containers',
   {
     'lervag/vimtex',
     lazy = false, -- we don't want to lazy load VimTeX
@@ -78,11 +69,11 @@ local plugins = {
       vim.fn['mkdp#util#install']()
     end,
   },
-  -- {
-  --   'MeanderingProgrammer/render-markdown.nvim',
-  --   opts = {},
-  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-  -- },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+  },
   {
     'windwp/nvim-ts-autotag',
     config = function()
@@ -108,7 +99,6 @@ local plugins = {
       vim.g.gruvbox_material_background = 'medium' -- hard, medium, soft
     end,
   },
-  'navarasu/onedark.nvim',
   {
     'nvim-tree/nvim-tree.lua',
     version = '*',
