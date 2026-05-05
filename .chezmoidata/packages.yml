@@ -76,6 +76,7 @@ packages:
       - gnu-units
       - flyctl
       - pyenv
+      - uv
       - media-info
       - git-lfs
       - shfmt
