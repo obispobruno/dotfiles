@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+root="${1:-.}"
+
+mapfile -t dirs < <(find "$root" -type d -name '.terragrunt-cache' -prune)
+
+if [ "${#dirs[@]}" -eq 0 ]; then
+  echo "No .terragrunt-cache folders found under $root"
+  exit 0
+fi
+
+printf '%s\n' "${dirs[@]}"
+echo
+read -r -p "Delete these ${#dirs[@]} folder(s)? [y/N] " reply
+case "$reply" in
+  [yY]|[yY][eE][sS])
+    for d in "${dirs[@]}"; do
+      rm -rf -- "$d"
+      echo "deleted: $d"
+    done
+    ;;
+  *)
+    echo "Aborted."
+    exit 1
+    ;;
+esac
