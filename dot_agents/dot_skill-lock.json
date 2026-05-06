@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/next-skills.git",
       "skillPath": "skills/next-best-practices/SKILL.md",
-      "skillFolderHash": "ad17eb27952b39a6ab0061bd50e8a2213b63a3ec",
+      "skillFolderHash": "a236d702277c5364cf6f540712a8dddb46e79a46",
       "installedAt": "2026-03-14T18:16:15.376Z",
-      "updatedAt": "2026-03-14T18:16:15.376Z"
+      "updatedAt": "2026-05-05T19:38:14.277Z"
     },
     "next-cache-components": {
       "source": "vercel-labs/next-skills",
@@ -78,9 +78,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "9e9019d7340bf9aa9bc635e46274ce7990f507c0",
+      "skillFolderHash": "dbace1ed62005ec0da5f6c4850ec727ffe574e98",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-05-03T18:34:53.342Z"
+      "updatedAt": "2026-05-06T22:42:37.288Z"
     },
     "drawio": {
       "source": "jgraph/drawio-mcp",
