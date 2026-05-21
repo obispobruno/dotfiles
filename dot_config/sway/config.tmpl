@@ -55,12 +55,8 @@ exec flatpak run io.github.berarma.Oversteer --profile 360
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
 # Sleep and lock
 exec swayidle -w \
-         before-sleep 'swaylock -f' \
-         timeout 300 'swaylock -f' \
-         timeout 350 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"' \
-         timeout 400 'systemctl suspend' \
-         resume 'swaymsg "output * dpms on"'
+         before-sleep '~/.local/bin/lock.sh' \
+         timeout 300 '~/.local/bin/lock.sh' \
 {{- end }}
 
 output * bg /usr/share/backgrounds/ublue/aurora.jpg fill
