@@ -1,3 +1,4 @@
 - Always give commands to the user in one line, without any line breaks, in nushell.
-- Never push to remote repository unless I explicitly ask you to do so.
+- Never push to remote repository unless user explicitly asks you to do so.
 - drawio available with `flatpak run com.jgraph.drawio.desktop`.
+- Don't make worktree unless the user explicitly asks you to do so.
