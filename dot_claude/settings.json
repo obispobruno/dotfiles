@@ -2,6 +2,7 @@
   "env": {
     "CLAUDE_DISABLE_ADAPTATIVE_THINKING": "1"
   },
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "bash /home/bruno/.claude/statusline-command.sh"
@@ -10,7 +11,7 @@
     "superpowers@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {},
-  "effortLevel": "high",
+  "effortLevel": "medium",
   "advisorModel": "opus",
   "skipDangerousModePermissionPrompt": true
 }
