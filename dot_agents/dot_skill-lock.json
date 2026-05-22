@@ -42,9 +42,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
       "skillPath": "skills/agent-browser/SKILL.md",
-      "skillFolderHash": "121eecacd86c0aab06aef5cd4663e80c5397cd41",
+      "skillFolderHash": "c1470a475a0472fceda2401ea6763708a91680a8",
       "installedAt": "2026-03-14T18:10:34.657Z",
-      "updatedAt": "2026-04-28T14:23:34.094Z"
+      "updatedAt": "2026-05-11T13:43:48.926Z"
     },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
@@ -78,27 +78,36 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "dbace1ed62005ec0da5f6c4850ec727ffe574e98",
+      "skillFolderHash": "ba5ef79165791f2871e4b4b0f8b30d10530772c4",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-05-06T22:42:37.288Z"
+      "updatedAt": "2026-05-22T15:35:40.836Z"
     },
     "drawio": {
       "source": "jgraph/drawio-mcp",
       "sourceType": "github",
       "sourceUrl": "https://github.com/jgraph/drawio-mcp.git",
       "skillPath": "skill-cli/drawio/SKILL.md",
-      "skillFolderHash": "15c7a67b0943da02985fa2ae4ba9930bbba1970c",
+      "skillFolderHash": "9b79f5837225b7a32e5bb55c49e4355d902361ed",
       "installedAt": "2026-03-30T18:48:14.123Z",
-      "updatedAt": "2026-04-28T14:23:39.524Z"
+      "updatedAt": "2026-05-22T15:35:42.936Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/supabase/agent-skills.git",
       "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
-      "skillFolderHash": "1ee0423a38c358caa23150dfaaed01bbae020bea",
+      "skillFolderHash": "38cc9cab8bdc817a546adf7949a83e10e7157f06",
       "installedAt": "2026-04-10T14:06:16.048Z",
-      "updatedAt": "2026-04-28T14:23:41.750Z"
+      "updatedAt": "2026-05-22T15:35:44.297Z"
+    },
+    "terraform-style-guide": {
+      "source": "hashicorp/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/hashicorp/agent-skills.git",
+      "skillPath": "terraform/code-generation/skills/terraform-style-guide/SKILL.md",
+      "skillFolderHash": "a6d14b66fa495d767536a6705856fe4553958e24",
+      "installedAt": "2026-05-22T15:36:30.079Z",
+      "updatedAt": "2026-05-22T15:36:30.079Z"
     }
   },
   "dismissed": {
@@ -111,6 +120,7 @@
     "codex",
     "cursor",
     "deepagents",
+    "dexto",
     "firebender",
     "gemini-cli",
     "github-copilot",
