@@ -114,6 +114,7 @@ bindsym $mod+Shift+h exec 'swaymsg "output HDMI-A-1 dpms toggle; output DP-1 dpm
 bindsym $mod+Shift+k exec 'swaymsg "output eDP-1 dpms toggle"'
 {{- end }}
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
+bindsym $mod+s exec gamescope --mangoapp -e -W 2560 -H 1440 -r 180 -f -- steam -gamepadui
 bindsym $mod+Shift+k exec 'swaymsg "output HDMI-A-1 dpms toggle"'
 {{- end }}
 
