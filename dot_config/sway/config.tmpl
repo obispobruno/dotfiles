@@ -50,6 +50,7 @@ exec $discord
 exec $browser
 {{- if eq .chezmoi.hostname "desktop-sericea" }}
 exec flatpak run io.github.berarma.Oversteer --profile 360
+exec gammastep
 {{- end }}
 
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
