@@ -83,3 +83,4 @@ packages:
       - virtualenv
       - biome
       - pre-commit
+      - vercel-cli
