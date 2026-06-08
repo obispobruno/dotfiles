@@ -7,6 +7,10 @@ tap {{ . | quote }}
 {{ end -}}
 EOF
 
+{{ range .taps.linux.brew -}}
+brew trust {{ . | quote }}
+{{ end -}}
+
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.linux.brew -}}
 brew {{ . | quote }}
