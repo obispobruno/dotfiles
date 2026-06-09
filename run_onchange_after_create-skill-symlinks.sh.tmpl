@@ -1,0 +1,29 @@
+{{- $lock := include "dot_agents/dot_skill-lock.json" | fromJson -}}
+#!/usr/bin/env bash
+# Recreate ~/.claude/skills/<name> -> ~/.agents/skills/<name> for every
+# globally-installed skill. chezmoi re-runs this automatically whenever the
+# set of skills in .skill-lock.json changes (the rendered content changes).
+set -euo pipefail
+
+AGENTS_SKILLS="$HOME/.agents/skills"
+CLAUDE_SKILLS="$HOME/.claude/skills"
+mkdir -p "$CLAUDE_SKILLS"
+
+# 1. ensure a symlink for each skill in the lock
+{{ range $name, $_ := $lock.skills -}}
+ln -sfn "$AGENTS_SKILLS/{{ $name }}" "$CLAUDE_SKILLS/{{ $name }}"
+{{ end }}
+# 2. prune symlinks for skills no longer in the lock
+keep="{{ range $name, $_ := $lock.skills }} {{ $name }}{{ end }} "
+for link in "$CLAUDE_SKILLS"/*; do
+  [ -L "$link" ] || continue
+  case "$(readlink "$link")" in
+    *"/.agents/skills/"*) ;;
+    *) continue ;;
+  esac
+  name="$(basename "$link")"
+  case "$keep" in
+    *" $name "*) ;;
+    *) rm -f "$link" ;;
+  esac
+done
