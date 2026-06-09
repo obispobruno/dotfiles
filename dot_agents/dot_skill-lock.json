@@ -24,9 +24,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/shadcn/ui.git",
       "skillPath": "skills/shadcn/SKILL.md",
-      "skillFolderHash": "a8404703769866faf15bee897c9ae6e252ac2d35",
+      "skillFolderHash": "53547268e4c90c0dd7981e098e1ea4a89393575a",
       "installedAt": "2026-03-14T01:57:57.647Z",
-      "updatedAt": "2026-04-28T18:18:12.248Z"
+      "updatedAt": "2026-06-09T02:59:55.969Z"
     },
     "before-and-after": {
       "source": "vercel-labs/before-and-after",
@@ -78,27 +78,27 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "ba9ea43f037b1066ba754ed6fdb1c3aef625b72b",
+      "skillFolderHash": "66315ceafb64748c2e7ca6a1de5c11e5364c62b4",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-05-26T00:16:51.527Z"
+      "updatedAt": "2026-06-09T02:59:57.794Z"
     },
     "drawio": {
       "source": "jgraph/drawio-mcp",
       "sourceType": "github",
       "sourceUrl": "https://github.com/jgraph/drawio-mcp.git",
       "skillPath": "skill-cli/drawio/SKILL.md",
-      "skillFolderHash": "9b79f5837225b7a32e5bb55c49e4355d902361ed",
+      "skillFolderHash": "a8443ea703649dcf46a45a610c5c612bbaf20665",
       "installedAt": "2026-03-30T18:48:14.123Z",
-      "updatedAt": "2026-05-22T15:35:42.936Z"
+      "updatedAt": "2026-06-09T02:59:59.111Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/supabase/agent-skills.git",
       "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
-      "skillFolderHash": "38cc9cab8bdc817a546adf7949a83e10e7157f06",
+      "skillFolderHash": "6f1495c72c918e6f80c2f69df9005eacd5c57d7a",
       "installedAt": "2026-04-10T14:06:16.048Z",
-      "updatedAt": "2026-05-22T15:35:44.297Z"
+      "updatedAt": "2026-06-09T03:00:00.534Z"
     },
     "terraform-style-guide": {
       "source": "hashicorp/agent-skills",
