@@ -40,3 +40,4 @@ application/vnd.oasis.opendocument.text=org.libreoffice.LibreOffice.writer.deskt
 application/vnd.openxmlformats-officedocument.presentationml.presentation=org.onlyoffice.desktopeditors.desktop;
 application/msword=org.onlyoffice.desktopeditors.desktop;
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=org.onlyoffice.desktopeditors.desktop;
+text/csv=org.libreoffice.LibreOffice.calc.desktop;
