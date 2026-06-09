@@ -8,7 +8,8 @@
     "command": "bash /home/bruno/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "superpowers@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {},
   "effortLevel": "medium",
