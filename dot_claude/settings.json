@@ -2,7 +2,6 @@
   "env": {
     "CLAUDE_DISABLE_ADAPTATIVE_THINKING": "1"
   },
-  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "bash /home/bruno/.claude/statusline-command.sh"
@@ -12,7 +11,10 @@
     "vercel@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {},
-  "effortLevel": "medium",
+  "effortLevel": "high",
   "advisorModel": "opus",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "model": "opus[1m]",
+  "autoCompactEnabled": true,
+  "autoCompactWindow": 200000
 }
