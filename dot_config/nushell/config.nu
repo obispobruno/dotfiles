@@ -76,7 +76,7 @@ if not (which fnm | is-empty) {
 source ~/.zoxide.nu
 source $"($nu.cache-dir)/carapace.nu"
 source ~/.local/share/atuin/init.nu
-source ./vendor/autoload/wt.nu
+source ~/.local/share/nushell/vendor/autoload/wt.nu
 source ./aliases.nu
 
 $env.LANG = "C.UTF-8"
