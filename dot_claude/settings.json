@@ -2,6 +2,30 @@
   "env": {
     "CLAUDE_DISABLE_ADAPTATIVE_THINKING": "1"
   },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send -u normal -i utilities-terminal \"Claude Code ($(basename \"$PWD\"))\" 'Task Completed'; paplay /usr/share/sounds/freedesktop/stereo/complete.oga 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send -u critical -i dialog-question \"Claude Code ($(basename \"$PWD\"))\" 'Input Required'; paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bash /home/bruno/.claude/statusline-command.sh"
@@ -12,9 +36,8 @@
   },
   "extraKnownMarketplaces": {},
   "effortLevel": "high",
+  "autoCompactWindow": 200000,
   "advisorModel": "opus",
   "skipDangerousModePermissionPrompt": true,
-  "model": "opus[1m]",
-  "autoCompactEnabled": true,
-  "autoCompactWindow": 200000
+  "autoCompactEnabled": true
 }
