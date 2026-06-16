@@ -78,9 +78,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "4a43e828038b47aa33d60706a798492aeff3b934",
+      "skillFolderHash": "cc9c7e92f6f2716ea8644d96d83cd9d17aaa7665",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-06-12T18:09:40.912Z"
+      "updatedAt": "2026-06-16T19:24:27.923Z"
     },
     "drawio": {
       "source": "jgraph/drawio-mcp",
