@@ -18,6 +18,7 @@
 #     config nu --doc | nu-highlight | less -R
 $env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/bin/')
 $env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/sbin/')
+$env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/opt/libpq/bin')
 $env.PATH = ($env.PATH | append $"($env.HOME)/.local/bin")
 $env.EDITOR = 'nvim'
 
