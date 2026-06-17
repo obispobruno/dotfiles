@@ -85,3 +85,4 @@ packages:
       - pre-commit
       - vercel-cli
       - sem-cli
+      - libpq
