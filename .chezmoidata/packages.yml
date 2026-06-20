@@ -72,7 +72,6 @@ packages:
       - hashicorp/tap/terraform
       - shopify/shopify/shopify-cli
       - anomalyco/tap/opencode
-      - basecamp-cli
       - terragrunt
       - gnu-units
       - flyctl
@@ -87,3 +86,5 @@ packages:
       - vercel-cli
       - sem-cli
       - libpq
+    casks:
+      - basecamp/tap/basecamp-cli
