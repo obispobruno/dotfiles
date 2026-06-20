@@ -108,6 +108,15 @@
       "skillFolderHash": "a6d14b66fa495d767536a6705856fe4553958e24",
       "installedAt": "2026-05-22T15:36:30.079Z",
       "updatedAt": "2026-05-22T15:36:30.079Z"
+    },
+    "basecamp": {
+      "source": "basecamp/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/basecamp/skills.git",
+      "skillPath": "skills/basecamp/SKILL.md",
+      "skillFolderHash": "a4bd42f1dc1a50eb121fd71bc548582d3ba3bc97",
+      "installedAt": "2026-06-20T17:21:27.388Z",
+      "updatedAt": "2026-06-20T17:21:27.388Z"
     }
   },
   "dismissed": {
@@ -116,17 +125,16 @@
   "lastSelectedAgents": [
     "amp",
     "antigravity",
+    "antigravity-cli",
     "cline",
     "codex",
     "cursor",
     "deepagents",
-    "dexto",
-    "firebender",
     "gemini-cli",
     "github-copilot",
-    "kimi-cli",
+    "kimi-code-cli",
     "opencode",
     "warp",
-    "claude-code"
+    "zed"
   ]
 }
