@@ -88,3 +88,4 @@ packages:
       - libpq
     casks:
       - basecamp/tap/basecamp-cli
+      - claude-code
