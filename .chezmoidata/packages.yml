@@ -72,7 +72,7 @@ packages:
       - hashicorp/tap/terraform
       - shopify/shopify/shopify-cli
       - anomalyco/tap/opencode
-      - basecamp/tap/basecamp-cli
+      - basecamp-cli
       - terragrunt
       - gnu-units
       - flyctl
