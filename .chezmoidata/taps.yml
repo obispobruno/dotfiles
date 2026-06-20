@@ -5,3 +5,4 @@ taps:
       - sdkman/tap
       - shopify/shopify
       - anomalyco/tap
+      - basecamp/tap
