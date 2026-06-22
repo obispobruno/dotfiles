@@ -61,6 +61,8 @@ Shortcuts also apply to `--base`. For a fork PR/MR, the head commit is fetched a
 
 When called without arguments, `wt switch` opens an interactive picker to browse and select worktrees with live preview.
 
+The CI column shows cached PR/MR status when earlier runs (`wt list --full`, the statusline) have fetched it — the picker never fetches CI status itself. An entry whose branch has moved or whose TTL has passed keeps its PR/MR number, dimmed.
+
 **Keybindings:**
 
 | Key | Action |
@@ -77,6 +79,8 @@ When called without arguments, `wt switch` opens an interactive picker to browse
 <!-- Alt-r (remove worktree) works but is omitted: cursor resets after skim reload (#1695). Add once fixed. See #1881. -->
 
 Plain digits go to the filter, so a branch name containing a number can be typed directly; the preview tabs move to `Alt`.
+
+Typing a gutter sigil filters by row kind: `+` narrows to linked worktrees and `@` to the current worktree. The other sigils don't filter cleanly — `^` and `|` are skim's prefix-anchor and OR query operators (so `^` matches every row and `|` none), and `/` matches most rows because every worktree path contains it.
 
 **Preview tabs** — jump with `Alt-1`–`Alt-5`, or cycle with `Tab`/`Shift-Tab`:
 
@@ -209,6 +213,9 @@ Global Options:
 
       --config <path>
           User config file path
+
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
 
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug

@@ -73,6 +73,9 @@ Global Options:
       --config <path>
           User config file path
 
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
+
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
           logs and raw subprocess output written to .git/wt/logs/)
@@ -165,6 +168,9 @@ Global Options:
 
       --config <path>
           User config file path
+
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
 
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
@@ -262,6 +268,9 @@ Global Options:
       --config <path>
           User config file path
 
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
+
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
           logs and raw subprocess output written to .git/wt/logs/)
@@ -345,6 +354,9 @@ Global Options:
 
       --config <path>
           User config file path
+
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
 
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
@@ -496,6 +508,9 @@ Global Options:
       --config <path>
           User config file path
 
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
+
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
           logs and raw subprocess output written to .git/wt/logs/)
@@ -591,6 +606,9 @@ Global Options:
       --config <path>
           User config file path
 
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
+
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
           logs and raw subprocess output written to .git/wt/logs/)
@@ -658,7 +676,7 @@ Arguments:
 
 Options:
       --format <FORMAT>
-          Output format (text, json)
+          Output format
 
           [default: text]
           [possible values: text, json]
@@ -672,6 +690,9 @@ Global Options:
 
       --config <path>
           User config file path
+
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
 
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
@@ -753,6 +774,9 @@ Global Options:
       --config <path>
           User config file path
 
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
+
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
           logs and raw subprocess output written to .git/wt/logs/)
@@ -816,7 +840,7 @@ Options:
           Run removal in foreground (block until complete)
 
       --format <FORMAT>
-          Output format (text, json)
+          Output format
 
           [default: text]
           [possible values: text, json]
@@ -830,6 +854,9 @@ Global Options:
 
       --config <path>
           User config file path
+
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
 
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
@@ -890,9 +917,15 @@ The main worktree can't be moved with `git worktree move`. Instead, relocate
 switches it to the default branch and creates a new linked worktree at the
 expected path. Untracked and gitignored files remain at the original location.
 
+### Dirty worktrees
+
+Linked worktrees relocate as-is — `git worktree move` carries uncommitted
+changes along. Only the main worktree skips when dirty (its `git checkout`
+refuses), unless `--commit` is passed.
+
 ### Skipped worktrees
 
-- **Dirty** (without `--commit`) — use `--commit` to auto-commit first
+- **Dirty main worktree** (without `--commit`) — use `--commit` to auto-commit first
 - **Locked** — unlock with `git worktree unlock`
 - **Target blocked** (without `--clobber`) — use `--clobber` to backup blocker
 - **Detached HEAD** — no branch to compute expected path
@@ -943,6 +976,9 @@ Global Options:
 
       --config <path>
           User config file path
+
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
 
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug
@@ -1018,6 +1054,9 @@ Global Options:
 
       --config <path>
           User config file path
+
+      --config-set <toml>
+          Override config with inline TOML, e.g. --config-set list.full=true (repeatable)
 
   -v, --verbose...
           Verbose output (-v: info logs + hook/alias template variables on stderr; -vv: also debug

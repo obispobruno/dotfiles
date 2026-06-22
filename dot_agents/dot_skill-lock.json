@@ -42,9 +42,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
       "skillPath": "skills/agent-browser/SKILL.md",
-      "skillFolderHash": "c1470a475a0472fceda2401ea6763708a91680a8",
+      "skillFolderHash": "9b31e495b887e4ca123960415eca69fc7e1bba28",
       "installedAt": "2026-03-14T18:10:34.657Z",
-      "updatedAt": "2026-05-11T13:43:48.926Z"
+      "updatedAt": "2026-06-21T15:17:07.721Z"
     },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
@@ -78,9 +78,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "88439438a29524dfb55a62c683f50e9ca7344fe0",
+      "skillFolderHash": "d1052f34e6fdb60ff884daa6daf4cc4e932641f4",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-06-17T19:34:38.868Z"
+      "updatedAt": "2026-06-22T04:42:56.246Z"
     },
     "drawio": {
       "source": "jgraph/drawio-mcp",
