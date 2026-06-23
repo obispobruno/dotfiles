@@ -44,7 +44,7 @@
       "skillPath": "skills/agent-browser/SKILL.md",
       "skillFolderHash": "9b31e495b887e4ca123960415eca69fc7e1bba28",
       "installedAt": "2026-03-14T18:10:34.657Z",
-      "updatedAt": "2026-06-21T15:17:07.721Z"
+      "updatedAt": "2026-06-23T00:24:49.235Z"
     },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
