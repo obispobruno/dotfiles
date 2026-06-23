@@ -55,32 +55,14 @@
       "installedAt": "2026-03-14T18:15:33.779Z",
       "updatedAt": "2026-03-14T18:15:33.779Z"
     },
-    "next-best-practices": {
-      "source": "vercel-labs/next-skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/vercel-labs/next-skills.git",
-      "skillPath": "skills/next-best-practices/SKILL.md",
-      "skillFolderHash": "a236d702277c5364cf6f540712a8dddb46e79a46",
-      "installedAt": "2026-03-14T18:16:15.376Z",
-      "updatedAt": "2026-05-05T19:38:14.277Z"
-    },
-    "next-cache-components": {
-      "source": "vercel-labs/next-skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/vercel-labs/next-skills.git",
-      "skillPath": "skills/next-cache-components/SKILL.md",
-      "skillFolderHash": "a6f29564b9228af553737bd437c7016fc3dc44e0",
-      "installedAt": "2026-03-14T18:18:03.243Z",
-      "updatedAt": "2026-03-14T18:18:03.243Z"
-    },
     "worktrunk": {
       "source": "max-sixty/worktrunk",
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "d1052f34e6fdb60ff884daa6daf4cc4e932641f4",
+      "skillFolderHash": "be2848028f69c9c421e13f74d39328a56fbcce4b",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-06-22T04:42:56.246Z"
+      "updatedAt": "2026-06-23T00:22:08.493Z"
     },
     "drawio": {
       "source": "jgraph/drawio-mcp",
