@@ -15,9 +15,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/skills.git",
       "skillPath": "skills/find-skills/SKILL.md",
-      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "skillFolderHash": "eb6a23305aea6e340d14b9de3766e721f9f4861b",
       "installedAt": "2026-02-24T14:55:07.071Z",
-      "updatedAt": "2026-03-14T03:47:31.428Z"
+      "updatedAt": "2026-06-24T13:22:53.229Z"
     },
     "shadcn": {
       "source": "shadcn/ui",
@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "2d4512b4974e13de91af9c39cafc92d45f9513c4",
+      "skillFolderHash": "7223c6e50a44b75c5a53d71bf119c8372617487f",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-06-23T14:20:08.458Z"
+      "updatedAt": "2026-06-24T13:22:56.572Z"
     },
     "drawio": {
       "source": "jgraph/drawio-mcp",
