@@ -1,6 +1,6 @@
-- Always load skills even if there is a 1% chance that they might be useful
 - Never add Co-Authored-By: Claude to commits
 - Never add 🤖 Generated with Claude Code to pull requests
+- Never commit docs/superpowers files
 
 ## draw.io export (this machine)
 - The `drawio` CLI is NOT on PATH. It is installed via flatpak: `com.jgraph.drawio.desktop`.
