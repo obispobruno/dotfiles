@@ -2,6 +2,7 @@
   "env": {
     "CLAUDE_DISABLE_ADAPTATIVE_THINKING": "1"
   },
+  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -38,6 +39,7 @@
   "effortLevel": "high",
   "autoCompactWindow": 200000,
   "advisorModel": "opus",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "autoCompactEnabled": true
 }
