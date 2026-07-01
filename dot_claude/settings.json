@@ -33,7 +33,8 @@
   },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
-    "vercel@claude-plugins-official": true
+    "vercel@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {},
   "effortLevel": "high",
