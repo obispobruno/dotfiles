@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Forget all chezmoi entries whose status is DA (deleted in destination,
+# would be re-added by `chezmoi apply`). Removes them from the chezmoi
+# source state without touching the destination.
+set -euo pipefail
+
+dest_dir="$(chezmoi execute-template '{{ .chezmoi.destDir }}')"
+
+mapfile -t targets < <(chezmoi status | sed -n 's/^DA //p')
+
+if ((${#targets[@]} == 0)); then
+    echo "No DA entries in chezmoi status; nothing to forget."
+    exit 0
+fi
+
+echo "Forgetting ${#targets[@]} DA entries from chezmoi..."
+for t in "${targets[@]}"; do
+    # Skip entries already removed by forgetting a parent directory
+    chezmoi source-path -- "$dest_dir/$t" >/dev/null 2>&1 || continue
+    chezmoi forget --force -- "$dest_dir/$t"
+    echo "forgot: $t"
+done
+
+remaining="$(chezmoi status | grep -c '^DA' || true)"
+echo "Done. Remaining DA entries: $remaining"
