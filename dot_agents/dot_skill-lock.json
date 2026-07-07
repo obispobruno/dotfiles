@@ -60,18 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "284341419094ddd5b3b92ad2121e0db981f86f11",
+      "skillFolderHash": "6ac9f957b16acfb58e068aacd778c8d89915314a",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-07-06T20:03:16.590Z"
-    },
-    "drawio": {
-      "source": "jgraph/drawio-mcp",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/jgraph/drawio-mcp.git",
-      "skillPath": "skill-cli/drawio/SKILL.md",
-      "skillFolderHash": "a8443ea703649dcf46a45a610c5c612bbaf20665",
-      "installedAt": "2026-03-30T18:48:14.123Z",
-      "updatedAt": "2026-06-09T02:59:59.111Z"
+      "updatedAt": "2026-07-07T02:48:37.003Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -116,7 +107,7 @@
       "skillPath": "skills/core-skills/amazon-bedrock/SKILL.md",
       "skillFolderHash": "52ba62b4dd0e5dbd3ac734e3584dc0fbc55752da",
       "installedAt": "2026-07-06T20:01:35.880Z",
-      "updatedAt": "2026-07-06T20:09:25.383Z"
+      "updatedAt": "2026-07-07T02:57:29.927Z"
     },
     "aws-billing-and-cost-management": {
       "source": "aws/agent-toolkit-for-aws",
@@ -125,7 +116,7 @@
       "skillPath": "skills/core-skills/aws-billing-and-cost-management/SKILL.md",
       "skillFolderHash": "78db779f94238b6b7fec6d25cbe9986a03ad2a01",
       "installedAt": "2026-07-06T20:01:35.884Z",
-      "updatedAt": "2026-07-06T20:09:25.384Z"
+      "updatedAt": "2026-07-07T02:57:29.928Z"
     },
     "aws-blocks": {
       "source": "aws/agent-toolkit-for-aws",
@@ -134,7 +125,7 @@
       "skillPath": "skills/core-skills/aws-blocks/SKILL.md",
       "skillFolderHash": "3b99b8f25fa86e316a11edac229cd34bab5d215d",
       "installedAt": "2026-07-06T20:01:35.885Z",
-      "updatedAt": "2026-07-06T20:09:25.384Z"
+      "updatedAt": "2026-07-07T02:57:29.929Z"
     },
     "aws-cdk": {
       "source": "aws/agent-toolkit-for-aws",
@@ -143,7 +134,7 @@
       "skillPath": "skills/core-skills/aws-cdk/SKILL.md",
       "skillFolderHash": "6ed8c50838438d4a6f4746fb9d90c4e8ae63b288",
       "installedAt": "2026-07-06T20:01:35.885Z",
-      "updatedAt": "2026-07-06T20:09:25.384Z"
+      "updatedAt": "2026-07-07T02:57:29.929Z"
     },
     "aws-cloudformation": {
       "source": "aws/agent-toolkit-for-aws",
@@ -152,7 +143,7 @@
       "skillPath": "skills/core-skills/aws-cloudformation/SKILL.md",
       "skillFolderHash": "f597af79ff98108e2d6f4ccebae9bd3efd153653",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-07-06T20:09:25.385Z"
+      "updatedAt": "2026-07-07T02:57:29.930Z"
     },
     "aws-containers": {
       "source": "aws/agent-toolkit-for-aws",
@@ -161,7 +152,7 @@
       "skillPath": "skills/core-skills/aws-containers/SKILL.md",
       "skillFolderHash": "97f3fce0aeb70143e00b7cbde743f24a45673e1b",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-07-06T20:09:25.385Z"
+      "updatedAt": "2026-07-07T02:57:29.930Z"
     },
     "aws-iam": {
       "source": "aws/agent-toolkit-for-aws",
@@ -170,7 +161,7 @@
       "skillPath": "skills/core-skills/aws-iam/SKILL.md",
       "skillFolderHash": "5da0a0c41f57fbf7470deb7970a5f403ab40997d",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-07-06T20:09:25.386Z"
+      "updatedAt": "2026-07-07T02:57:29.930Z"
     },
     "aws-messaging-and-streaming": {
       "source": "aws/agent-toolkit-for-aws",
@@ -179,7 +170,7 @@
       "skillPath": "skills/core-skills/aws-messaging-and-streaming/SKILL.md",
       "skillFolderHash": "d38d5cf4c211899e6b379eea880923496329e9e4",
       "installedAt": "2026-07-06T20:01:35.887Z",
-      "updatedAt": "2026-07-06T20:09:25.386Z"
+      "updatedAt": "2026-07-07T02:57:29.931Z"
     },
     "aws-observability": {
       "source": "aws/agent-toolkit-for-aws",
@@ -188,7 +179,7 @@
       "skillPath": "skills/core-skills/aws-observability/SKILL.md",
       "skillFolderHash": "11eea317a047624076348e95f11a7fca96723dff",
       "installedAt": "2026-07-06T20:01:35.887Z",
-      "updatedAt": "2026-07-06T20:09:25.386Z"
+      "updatedAt": "2026-07-07T02:57:29.931Z"
     },
     "aws-sdk-js-v3-usage": {
       "source": "aws/agent-toolkit-for-aws",
@@ -197,7 +188,7 @@
       "skillPath": "skills/core-skills/aws-sdk-js-v3-usage/SKILL.md",
       "skillFolderHash": "62ae8b88569e68b87ed62072dc17867e795781d3",
       "installedAt": "2026-07-06T20:01:35.887Z",
-      "updatedAt": "2026-07-06T20:09:25.387Z"
+      "updatedAt": "2026-07-07T02:57:29.931Z"
     },
     "aws-sdk-python-usage": {
       "source": "aws/agent-toolkit-for-aws",
@@ -206,7 +197,7 @@
       "skillPath": "skills/core-skills/aws-sdk-python-usage/SKILL.md",
       "skillFolderHash": "b5a86516c050d6ff82d964d2e1105c34095e4ad6",
       "installedAt": "2026-07-06T20:01:35.888Z",
-      "updatedAt": "2026-07-06T20:09:25.387Z"
+      "updatedAt": "2026-07-07T02:57:29.932Z"
     },
     "aws-sdk-swift-usage": {
       "source": "aws/agent-toolkit-for-aws",
@@ -215,7 +206,7 @@
       "skillPath": "skills/core-skills/aws-sdk-swift-usage/SKILL.md",
       "skillFolderHash": "b09094fc5e414983df038fe40a2d34c433ca2d14",
       "installedAt": "2026-07-06T20:01:35.888Z",
-      "updatedAt": "2026-07-06T20:09:25.387Z"
+      "updatedAt": "2026-07-07T02:57:29.932Z"
     },
     "aws-serverless": {
       "source": "aws/agent-toolkit-for-aws",
@@ -224,7 +215,7 @@
       "skillPath": "skills/core-skills/aws-serverless/SKILL.md",
       "skillFolderHash": "5148dca2f4aee68e6fc7b95807279396332c5cb3",
       "installedAt": "2026-07-06T20:01:35.889Z",
-      "updatedAt": "2026-07-06T20:09:25.388Z"
+      "updatedAt": "2026-07-07T02:57:29.932Z"
     },
     "signing-in-to-aws": {
       "source": "aws/agent-toolkit-for-aws",
@@ -233,7 +224,7 @@
       "skillPath": "skills/core-skills/signing-in-to-aws/SKILL.md",
       "skillFolderHash": "ee531e3e75bc80420fa93a7cec433cc3cdb3340f",
       "installedAt": "2026-07-06T20:01:35.889Z",
-      "updatedAt": "2026-07-06T20:09:25.388Z"
+      "updatedAt": "2026-07-07T02:57:29.933Z"
     },
     "aws-secrets-manager": {
       "source": "aws/agent-toolkit-for-aws",
@@ -241,8 +232,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-core/skills/aws-secrets-manager/SKILL.md",
       "skillFolderHash": "b275f49c769d5c02149928c8ea2a11f980b3428f",
-      "installedAt": "2026-07-06T20:09:25.388Z",
-      "updatedAt": "2026-07-06T20:09:25.388Z"
+      "installedAt": "2026-07-07T02:57:29.933Z",
+      "updatedAt": "2026-07-07T02:57:29.933Z"
     },
     "agents-build": {
       "source": "aws/agent-toolkit-for-aws",
@@ -250,8 +241,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-build/SKILL.md",
       "skillFolderHash": "a7c7cfc787cecf4dc7a20fd2e61540e6263ddc3e",
-      "installedAt": "2026-07-06T20:09:25.389Z",
-      "updatedAt": "2026-07-06T20:09:25.389Z"
+      "installedAt": "2026-07-07T02:57:29.933Z",
+      "updatedAt": "2026-07-07T02:57:29.933Z"
     },
     "agents-connect": {
       "source": "aws/agent-toolkit-for-aws",
@@ -259,8 +250,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-connect/SKILL.md",
       "skillFolderHash": "d92b447658b287aaab5c91e04e910d8947c4ddef",
-      "installedAt": "2026-07-06T20:09:25.389Z",
-      "updatedAt": "2026-07-06T20:09:25.389Z"
+      "installedAt": "2026-07-07T02:57:29.934Z",
+      "updatedAt": "2026-07-07T02:57:29.934Z"
     },
     "agents-debug": {
       "source": "aws/agent-toolkit-for-aws",
@@ -268,8 +259,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-debug/SKILL.md",
       "skillFolderHash": "15df718425a2d246c9b517022f8cad98133aa647",
-      "installedAt": "2026-07-06T20:09:25.390Z",
-      "updatedAt": "2026-07-06T20:09:25.390Z"
+      "installedAt": "2026-07-07T02:57:29.934Z",
+      "updatedAt": "2026-07-07T02:57:29.934Z"
     },
     "agents-deploy": {
       "source": "aws/agent-toolkit-for-aws",
@@ -277,8 +268,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-deploy/SKILL.md",
       "skillFolderHash": "821a52c3717b9cf6bab0a9741d7bd732992a558d",
-      "installedAt": "2026-07-06T20:09:25.390Z",
-      "updatedAt": "2026-07-06T20:09:25.390Z"
+      "installedAt": "2026-07-07T02:57:29.934Z",
+      "updatedAt": "2026-07-07T02:57:29.934Z"
     },
     "agents-get-started": {
       "source": "aws/agent-toolkit-for-aws",
@@ -286,8 +277,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-get-started/SKILL.md",
       "skillFolderHash": "9a732edf9c0b65e14871bc3d293b4985cfaa6635",
-      "installedAt": "2026-07-06T20:09:25.390Z",
-      "updatedAt": "2026-07-06T20:09:25.390Z"
+      "installedAt": "2026-07-07T02:57:29.935Z",
+      "updatedAt": "2026-07-07T02:57:29.935Z"
     },
     "agents-harden": {
       "source": "aws/agent-toolkit-for-aws",
@@ -295,8 +286,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-harden/SKILL.md",
       "skillFolderHash": "4da687d992a44da500a6b0b74b6a1ece4c5d260f",
-      "installedAt": "2026-07-06T20:09:25.391Z",
-      "updatedAt": "2026-07-06T20:09:25.391Z"
+      "installedAt": "2026-07-07T02:57:29.935Z",
+      "updatedAt": "2026-07-07T02:57:29.935Z"
     },
     "agents-optimize": {
       "source": "aws/agent-toolkit-for-aws",
@@ -304,8 +295,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-optimize/SKILL.md",
       "skillFolderHash": "383f5d9466653d935ff645fbe9ecab2491775f3d",
-      "installedAt": "2026-07-06T20:09:25.391Z",
-      "updatedAt": "2026-07-06T20:09:25.391Z"
+      "installedAt": "2026-07-07T02:57:29.935Z",
+      "updatedAt": "2026-07-07T02:57:29.935Z"
     },
     "amazon-opensearch-service": {
       "source": "aws/agent-toolkit-for-aws",
@@ -313,8 +304,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/amazon-opensearch-service/SKILL.md",
       "skillFolderHash": "142c7fcd6a901e024a60bb56e0369474167bd7bc",
-      "installedAt": "2026-07-06T20:09:25.391Z",
-      "updatedAt": "2026-07-06T20:09:25.391Z"
+      "installedAt": "2026-07-07T02:57:29.936Z",
+      "updatedAt": "2026-07-07T02:57:29.936Z"
     },
     "connecting-to-data-source": {
       "source": "aws/agent-toolkit-for-aws",
@@ -322,8 +313,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/connecting-to-data-source/SKILL.md",
       "skillFolderHash": "af4c577873ceabf3cd9b0b90470754ad1e51d8e8",
-      "installedAt": "2026-07-06T20:09:25.392Z",
-      "updatedAt": "2026-07-06T20:09:25.392Z"
+      "installedAt": "2026-07-07T02:57:29.936Z",
+      "updatedAt": "2026-07-07T02:57:29.936Z"
     },
     "creating-data-lake-table": {
       "source": "aws/agent-toolkit-for-aws",
@@ -331,8 +322,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/creating-data-lake-table/SKILL.md",
       "skillFolderHash": "414d75850c7a44da8e2cff2b0a24bb62ac5028db",
-      "installedAt": "2026-07-06T20:09:25.392Z",
-      "updatedAt": "2026-07-06T20:09:25.392Z"
+      "installedAt": "2026-07-07T02:57:29.936Z",
+      "updatedAt": "2026-07-07T02:57:29.936Z"
     },
     "exploring-data-catalog": {
       "source": "aws/agent-toolkit-for-aws",
@@ -340,8 +331,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/exploring-data-catalog/SKILL.md",
       "skillFolderHash": "cf16547d48f062075c8204a793bb92052c35333e",
-      "installedAt": "2026-07-06T20:09:25.393Z",
-      "updatedAt": "2026-07-06T20:09:25.393Z"
+      "installedAt": "2026-07-07T02:57:29.937Z",
+      "updatedAt": "2026-07-07T02:57:29.937Z"
     },
     "finding-data-lake-assets": {
       "source": "aws/agent-toolkit-for-aws",
@@ -349,8 +340,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/finding-data-lake-assets/SKILL.md",
       "skillFolderHash": "e32f6445e9f80e2dca0bfe14ecf5e7ad53ac2721",
-      "installedAt": "2026-07-06T20:09:25.393Z",
-      "updatedAt": "2026-07-06T20:09:25.393Z"
+      "installedAt": "2026-07-07T02:57:29.937Z",
+      "updatedAt": "2026-07-07T02:57:29.937Z"
     },
     "ingesting-into-data-lake": {
       "source": "aws/agent-toolkit-for-aws",
@@ -358,8 +349,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/ingesting-into-data-lake/SKILL.md",
       "skillFolderHash": "d2938ee80db56f45b8f5e7cd2e6fe6abdfeb39d6",
-      "installedAt": "2026-07-06T20:09:25.394Z",
-      "updatedAt": "2026-07-06T20:09:25.394Z"
+      "installedAt": "2026-07-07T02:57:29.937Z",
+      "updatedAt": "2026-07-07T02:57:29.937Z"
     },
     "querying-data-lake": {
       "source": "aws/agent-toolkit-for-aws",
@@ -367,8 +358,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/querying-data-lake/SKILL.md",
       "skillFolderHash": "a619aa25a608b7efac3d5439b1e9c5a0d303defc",
-      "installedAt": "2026-07-06T20:09:25.394Z",
-      "updatedAt": "2026-07-06T20:09:25.394Z"
+      "installedAt": "2026-07-07T02:57:29.938Z",
+      "updatedAt": "2026-07-07T02:57:29.938Z"
     },
     "storing-and-querying-vectors": {
       "source": "aws/agent-toolkit-for-aws",
@@ -376,8 +367,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/storing-and-querying-vectors/SKILL.md",
       "skillFolderHash": "7b783a4689b151518e98395ec2d6c745973ba53d",
-      "installedAt": "2026-07-06T20:09:25.394Z",
-      "updatedAt": "2026-07-06T20:09:25.394Z"
+      "installedAt": "2026-07-07T02:57:29.938Z",
+      "updatedAt": "2026-07-07T02:57:29.938Z"
     },
     "analyzing-release-readiness": {
       "source": "aws/agent-toolkit-for-aws",
@@ -385,8 +376,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/analyzing-release-readiness/SKILL.md",
       "skillFolderHash": "22220183e5b148fb171a5bd0eae72e96d644f3b1",
-      "installedAt": "2026-07-06T20:09:25.395Z",
-      "updatedAt": "2026-07-06T20:09:25.395Z"
+      "installedAt": "2026-07-07T02:57:29.938Z",
+      "updatedAt": "2026-07-07T02:57:29.938Z"
     },
     "chatting-with-aws-devops-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -394,8 +385,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/chatting-with-aws-devops-agent/SKILL.md",
       "skillFolderHash": "edd9c42d7464aa26a9e5d1eb7b3632699d6ab929",
-      "installedAt": "2026-07-06T20:09:25.395Z",
-      "updatedAt": "2026-07-06T20:09:25.395Z"
+      "installedAt": "2026-07-07T02:57:29.939Z",
+      "updatedAt": "2026-07-07T02:57:29.939Z"
     },
     "coordinating-multi-space-devops-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -403,8 +394,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/coordinating-multi-space-devops-agent/SKILL.md",
       "skillFolderHash": "ee9d21044abfd3f3d1e4b5613d9ffe092aafa9a3",
-      "installedAt": "2026-07-06T20:09:25.396Z",
-      "updatedAt": "2026-07-06T20:09:25.396Z"
+      "installedAt": "2026-07-07T02:57:29.939Z",
+      "updatedAt": "2026-07-07T02:57:29.939Z"
     },
     "diff-scanning-with-aws-security-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -412,8 +403,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/diff-scanning-with-aws-security-agent/SKILL.md",
       "skillFolderHash": "78bacb08e32aec6a94d832483d0b8df74faa8349",
-      "installedAt": "2026-07-06T20:09:25.396Z",
-      "updatedAt": "2026-07-06T20:09:25.396Z"
+      "installedAt": "2026-07-07T02:57:29.940Z",
+      "updatedAt": "2026-07-07T02:57:29.940Z"
     },
     "investigating-incidents-with-aws-devops-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -421,8 +412,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/investigating-incidents-with-aws-devops-agent/SKILL.md",
       "skillFolderHash": "46093040d5302e6a586fceeab7279d0ea5b35b04",
-      "installedAt": "2026-07-06T20:09:25.396Z",
-      "updatedAt": "2026-07-06T20:09:25.396Z"
+      "installedAt": "2026-07-07T02:57:29.940Z",
+      "updatedAt": "2026-07-07T02:57:29.940Z"
     },
     "pentesting-with-aws-security-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -430,8 +421,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/pentesting-with-aws-security-agent/SKILL.md",
       "skillFolderHash": "00c7410defcf32fac1c5934f54a346b0856c16f8",
-      "installedAt": "2026-07-06T20:09:25.397Z",
-      "updatedAt": "2026-07-06T20:09:25.397Z"
+      "installedAt": "2026-07-07T02:57:29.940Z",
+      "updatedAt": "2026-07-07T02:57:29.940Z"
     },
     "remediating-with-aws-security-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -439,8 +430,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/remediating-with-aws-security-agent/SKILL.md",
       "skillFolderHash": "52b99a9208bb975cd774f861b837ac03261546d9",
-      "installedAt": "2026-07-06T20:09:25.397Z",
-      "updatedAt": "2026-07-06T20:09:25.397Z"
+      "installedAt": "2026-07-07T02:57:29.941Z",
+      "updatedAt": "2026-07-07T02:57:29.941Z"
     },
     "running-release-tests": {
       "source": "aws/agent-toolkit-for-aws",
@@ -448,8 +439,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/running-release-tests/SKILL.md",
       "skillFolderHash": "57620788b52c582f046e1513e6da40915ebe1467",
-      "installedAt": "2026-07-06T20:09:25.398Z",
-      "updatedAt": "2026-07-06T20:09:25.398Z"
+      "installedAt": "2026-07-07T02:57:29.941Z",
+      "updatedAt": "2026-07-07T02:57:29.941Z"
     },
     "scanning-with-aws-security-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -457,8 +448,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/scanning-with-aws-security-agent/SKILL.md",
       "skillFolderHash": "dc915b14c0b37112d79a5df5d05999501016cda3",
-      "installedAt": "2026-07-06T20:09:25.398Z",
-      "updatedAt": "2026-07-06T20:09:25.398Z"
+      "installedAt": "2026-07-07T02:57:29.942Z",
+      "updatedAt": "2026-07-07T02:57:29.942Z"
     },
     "setup": {
       "source": "aws/agent-toolkit-for-aws",
@@ -466,8 +457,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/setup/SKILL.md",
       "skillFolderHash": "f60a821d6b1e8fd380cc68526199a2be314f71f2",
-      "installedAt": "2026-07-06T20:09:25.399Z",
-      "updatedAt": "2026-07-06T20:09:25.399Z"
+      "installedAt": "2026-07-07T02:57:29.942Z",
+      "updatedAt": "2026-07-07T02:57:29.942Z"
     },
     "setup-devops-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -475,8 +466,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/setup-devops-agent/SKILL.md",
       "skillFolderHash": "4b3d53ccc19d5664f349a2f5c1e53aec35e26c90",
-      "installedAt": "2026-07-06T20:09:25.399Z",
-      "updatedAt": "2026-07-06T20:09:25.399Z"
+      "installedAt": "2026-07-07T02:57:29.943Z",
+      "updatedAt": "2026-07-07T02:57:29.943Z"
     },
     "setup-security-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -484,8 +475,8 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/setup-security-agent/SKILL.md",
       "skillFolderHash": "0b27efd53c0ca29a3d8882147a402dbcb6db4993",
-      "installedAt": "2026-07-06T20:09:25.399Z",
-      "updatedAt": "2026-07-06T20:09:25.399Z"
+      "installedAt": "2026-07-07T02:57:29.943Z",
+      "updatedAt": "2026-07-07T02:57:29.943Z"
     },
     "threat-modeling-with-aws-security-agent": {
       "source": "aws/agent-toolkit-for-aws",
@@ -493,8 +484,17 @@
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/threat-modeling-with-aws-security-agent/SKILL.md",
       "skillFolderHash": "a6783b1f796bdf737b096ee6230053eaac819d55",
-      "installedAt": "2026-07-06T20:09:25.400Z",
-      "updatedAt": "2026-07-06T20:09:25.400Z"
+      "installedAt": "2026-07-07T02:57:29.944Z",
+      "updatedAt": "2026-07-07T02:57:29.944Z"
+    },
+    "drawio": {
+      "source": "jgraph/drawio-mcp",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/jgraph/drawio-mcp.git",
+      "skillPath": "plugins/claude-code/skills/drawio/SKILL.md",
+      "skillFolderHash": "0c72e953acf979fa5f355f3f41984b71591093eb",
+      "installedAt": "2026-07-07T02:57:53.841Z",
+      "updatedAt": "2026-07-07T02:57:53.841Z"
     }
   },
   "dismissed": {
