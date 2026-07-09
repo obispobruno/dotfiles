@@ -56,10 +56,13 @@ $env.cursor_shape.vi_insert = 'line'
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
-$env.PYENV_ROOT = "~/.pyenv" | path expand
+# path join (not path expand) keeps the $HOME spelling — resolving the
+# /home -> /var/home symlink here puts the shims dir on PATH under two
+# spellings, which breaks pyenv's shim recursion guard and hangs uv
+$env.PYENV_ROOT = ($env.HOME | path join ".pyenv")
 if (( $"($env.PYENV_ROOT)/bin" | path type ) == "dir") {
   $env.PATH = $env.PATH | prepend $"($env.PYENV_ROOT)/bin" }
-$env.PATH = $env.PATH | prepend $"(pyenv root)/shims"
+$env.PATH = $env.PATH | prepend $"($env.PYENV_ROOT)/shims"
 pyenv rehash
 
 if not (which fnm | is-empty) {
