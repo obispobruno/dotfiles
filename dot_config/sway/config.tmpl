@@ -56,9 +56,9 @@ exec flatpak run io.github.berarma.Oversteer --profile 360
 
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
 # Sleep and lock
-exec swayidle -w \
-         before-sleep '~/.local/bin/lock.sh' \
-         timeout 300 '~/.local/bin/lock.sh' \
+# exec swayidle -w \
+#          before-sleep '~/.local/bin/lock.sh' \
+#          timeout 300 '~/.local/bin/lock.sh' \
 {{- end }}
 
 output * bg /usr/share/backgrounds/ublue/aurora.jpg fill
