@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "3dd8ed5e74b307ea684c8bff330fafc5bbf1146c",
+      "skillFolderHash": "38a2c339d9ed21def35f00966004e030d9774fd5",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-07-09T13:30:09.858Z"
+      "updatedAt": "2026-07-10T14:26:00.883Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -78,9 +78,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/hashicorp/agent-skills.git",
       "skillPath": "terraform/code-generation/skills/terraform-style-guide/SKILL.md",
-      "skillFolderHash": "a6d14b66fa495d767536a6705856fe4553958e24",
+      "skillFolderHash": "6479909cfba618b042f2272d160d68af1a48f96b",
       "installedAt": "2026-05-22T15:36:30.079Z",
-      "updatedAt": "2026-05-22T15:36:30.079Z"
+      "updatedAt": "2026-07-10T14:26:02.437Z"
     },
     "basecamp": {
       "source": "basecamp/skills",
