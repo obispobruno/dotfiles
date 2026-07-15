@@ -145,7 +145,7 @@ command = "MAX_THINKING_TOKENS=0 claude -p --no-session-persistence --model=haik
 
 ```toml
 [commit.generation]
-command = "codex exec -m gpt-5.4-mini -c model_reasoning_effort='low' -c system_prompt='' --sandbox=read-only --json - | jq -sr '[.[] | select(.item.type? == \"agent_message\")] | last.item.text'"
+command = "codex exec -m gpt-5.6-luna -c model_reasoning_effort='low' -c system_prompt='' --sandbox=read-only --json - | jq -sr '[.[] | select(.item.type? == \"agent_message\")] | last.item.text'"
 ```
 
 ### OpenCode
@@ -185,7 +185,7 @@ full = false       # Show CI status and LLM summaries (--full)
 branches = false   # Include branches without worktrees (--branches)
 remotes = false    # Include remote-only branches (--remotes)
 
-json-schema = 1    # JSON output schema: 1 (current, bare array) or 2 (envelope); unset emits 1 with a warning
+json-schema = 2    # JSON output schema: 2 (envelope) or 1 (bare array, the current default); unset emits 1 with a warning
 
 columns = ["branch", "status", "ci", "path"]   # Columns to show, in order — built-ins or custom headers (omit for the default set)
 
@@ -627,7 +627,7 @@ $ WORKTRUNK_COMMIT__GENERATION__COMMAND="echo 'test: automated commit'" wt merge
 | `WORKTRUNK_BIN` | Override binary path for shell wrappers; useful for testing dev builds |
 | `WORKTRUNK_CONFIG_PATH` | Override user config file location |
 | `WORKTRUNK_SYSTEM_CONFIG_PATH` | Override system config file location |
-| `WORKTRUNK_PROJECT_CONFIG_PATH` | Override project config file location (defaults to `.config/wt.toml`) |
+| `WORKTRUNK_PROJECT_CONFIG_PATH` | Override project config file location (defaults to `.config/wt.toml`); relative paths resolve from the worktree root |
 | `XDG_CONFIG_DIRS` | Colon-separated system config directories (default: `/etc/xdg`) |
 | `WORKTRUNK_DIRECTIVE_CD_FILE` | Internal: set by shell wrappers. wt writes a raw path; the wrapper `cd`s to it |
 | `WORKTRUNK_DIRECTIVE_EXEC_FILE` | Internal: set by shell wrappers. wt writes shell commands; the wrapper sources the file |
@@ -1068,7 +1068,7 @@ Worktrunk detects the default branch automatically:
 3. **Remote query** — If not cached, queries `git ls-remote` — typically 100ms–2s
 4. **Local inference** — If no remote, infers from local branches
 
-Once detected, the result is cached in `worktrunk.default-branch` for fast access.
+Once detected, the result is cached in `worktrunk.default-branch` for fast access. The cache isn't re-validated on every command, so a later change to `origin/HEAD` — a renamed default branch followed by `git remote set-head origin -a` — isn't picked up automatically. `wt config state` flags the drift when the cached value differs from the remote's local HEAD; `set` adopts the new branch and `clear` re-detects.
 
 The local inference fallback uses these heuristics in order:
 - If only one local branch exists, uses it

@@ -15,9 +15,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/skills.git",
       "skillPath": "skills/find-skills/SKILL.md",
-      "skillFolderHash": "eb6a23305aea6e340d14b9de3766e721f9f4861b",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
       "installedAt": "2026-02-24T14:55:07.071Z",
-      "updatedAt": "2026-06-24T13:22:53.229Z"
+      "updatedAt": "2026-07-15T18:06:17.540Z"
     },
     "shadcn": {
       "source": "shadcn/ui",
@@ -60,18 +60,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "38a2c339d9ed21def35f00966004e030d9774fd5",
+      "skillFolderHash": "4eb195bfb6931beb00910138914e4553e778532d",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-07-10T14:26:00.883Z"
+      "updatedAt": "2026-07-15T18:06:23.815Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/supabase/agent-skills.git",
       "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
-      "skillFolderHash": "6f1495c72c918e6f80c2f69df9005eacd5c57d7a",
+      "skillFolderHash": "d11b54a2ab36d33940504ca9ec3a57bfd6126f26",
       "installedAt": "2026-04-10T14:06:16.048Z",
-      "updatedAt": "2026-06-09T03:00:00.534Z"
+      "updatedAt": "2026-07-15T18:06:26.272Z"
     },
     "terraform-style-guide": {
       "source": "hashicorp/agent-skills",
@@ -105,9 +105,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/amazon-bedrock/SKILL.md",
-      "skillFolderHash": "52ba62b4dd0e5dbd3ac734e3584dc0fbc55752da",
+      "skillFolderHash": "da78c826e261ced3a4a0e1f3fea77ea950d0cb34",
       "installedAt": "2026-07-06T20:01:35.880Z",
-      "updatedAt": "2026-07-07T02:57:29.927Z"
+      "updatedAt": "2026-07-15T18:06:32.693Z"
     },
     "aws-billing-and-cost-management": {
       "source": "aws/agent-toolkit-for-aws",
