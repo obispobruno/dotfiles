@@ -42,9 +42,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
       "skillPath": "skills/agent-browser/SKILL.md",
-      "skillFolderHash": "9b31e495b887e4ca123960415eca69fc7e1bba28",
+      "skillFolderHash": "037e8078db4b20b4aa25c04f21c6de7d335ec449",
       "installedAt": "2026-03-14T18:10:34.657Z",
-      "updatedAt": "2026-06-23T00:24:49.235Z"
+      "updatedAt": "2026-07-22T12:43:49.114Z"
     },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "4eb195bfb6931beb00910138914e4553e778532d",
+      "skillFolderHash": "30835978f598bcb01ccd966df7ab3f04d983b60d",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-07-15T18:06:23.815Z"
+      "updatedAt": "2026-07-22T12:43:52.908Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -177,9 +177,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-observability/SKILL.md",
-      "skillFolderHash": "7dbd6a1dd902b3e3e15ee3c982d6dab5441e45d3",
+      "skillFolderHash": "c7a5a4a12d602cf6462605462c1482bf20c199f5",
       "installedAt": "2026-07-06T20:01:35.887Z",
-      "updatedAt": "2026-07-09T13:30:20.514Z"
+      "updatedAt": "2026-07-22T12:43:55.134Z"
     },
     "aws-sdk-js-v3-usage": {
       "source": "aws/agent-toolkit-for-aws",
@@ -213,9 +213,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-serverless/SKILL.md",
-      "skillFolderHash": "1b92e939d2661a5630bbd166879bae79d9afec78",
+      "skillFolderHash": "7f31a27aee48e9fdc96454d85036dc63ec0209ef",
       "installedAt": "2026-07-06T20:01:35.889Z",
-      "updatedAt": "2026-07-16T17:27:10.617Z"
+      "updatedAt": "2026-07-22T12:43:58.088Z"
     },
     "signing-in-to-aws": {
       "source": "aws/agent-toolkit-for-aws",
