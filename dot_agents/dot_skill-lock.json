@@ -60,18 +60,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "97439845cddead71a29a7a5c0b5a939f7b96037a",
+      "skillFolderHash": "6583300641e429ea6c2c0df50b9b3b57b20768f2",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-07-24T03:30:23.033Z"
+      "updatedAt": "2026-07-30T19:04:16.177Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/supabase/agent-skills.git",
       "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
-      "skillFolderHash": "d11b54a2ab36d33940504ca9ec3a57bfd6126f26",
+      "skillFolderHash": "27bde25111c4cd5e6f803fc9db5fbffe27bb26cf",
       "installedAt": "2026-04-10T14:06:16.048Z",
-      "updatedAt": "2026-07-15T18:06:26.272Z"
+      "updatedAt": "2026-07-30T19:04:17.626Z"
     },
     "terraform-style-guide": {
       "source": "hashicorp/agent-skills",
@@ -168,9 +168,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-messaging-and-streaming/SKILL.md",
-      "skillFolderHash": "d38d5cf4c211899e6b379eea880923496329e9e4",
+      "skillFolderHash": "328e2d09f6fb6d14bae0d9cd3b72e69802cf3342",
       "installedAt": "2026-07-06T20:01:35.887Z",
-      "updatedAt": "2026-07-07T02:57:29.931Z"
+      "updatedAt": "2026-07-30T19:04:21.249Z"
     },
     "aws-observability": {
       "source": "aws/agent-toolkit-for-aws",
