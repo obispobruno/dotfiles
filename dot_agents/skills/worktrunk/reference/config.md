@@ -354,6 +354,36 @@ step.copy-ignored.exclude = [".repo-local-cache/"]
 aliases.deploy = "make deploy BRANCH={{ branch }}"
 ```
 
+#### Matching several repositories with one entry
+
+A key containing `*` matches any run of characters, `/` included, so one entry covers a whole host or namespace — including nested groups. `*` is the only wildcard; every other character, `.` among them, is literal.
+
+```toml
+# Every repository on a self-hosted forge whose hostname carries no brand
+[projects."git.company.example/*"]
+forge.platform = "gitlab"
+
+# Everything under one namespace shares a layout
+[projects."git.company.example/platform/*"]
+worktree-path = ".worktrees/{{ branch | sanitize }}"
+```
+
+Every matching entry applies, least- to most-specific, following the rule above: a more specific entry — `git.company.example/platform/*` over `git.company.example/*` — wins where both set the same setting, while hooks and aliases from every matching entry all run, least-specific first. A literal key is the most specific of all; specificity is the count of non-`*` characters in the key. End a host-wide key with `/*` — a bare `git.company.example*` also covers hosts whose names merely start with that string.
+
+`approved-commands` matches the same way, so a pattern entry approves its commands for every repository it covers. Only a key written by hand is ever a pattern: `wt config approvals add` and the interactive prompt record under the exact identifier, and `wt config approvals clear` removes only that exact entry, leaving a pattern other repositories share intact.
+
+#### Forge platform and hostname
+
+`forge` names the forge for the matched repositories — the user-level counterpart of the project config's [forge platform](https://worktrunk.dev/config/#forge-platform) block, for a self-hosted host whose name carries no `github`, `gitlab`, or `gitea` for detection to read.
+
+```toml
+[projects."git.company.example/*"]
+forge.platform = "gitlab"                    # or "github", "gitea" (experimental), "azure-devops" (experimental)
+forge.hostname = "api.git.company.example"   # API host, when the remote's own host isn't it
+```
+
+Both fields describe the host rather than the repository, which is why a pattern keyed to a hostname suits them, and why an SSH alias resolved through `~/.ssh/config` — where the name in the remote URL is local to one machine — belongs here rather than in a repository's committed config. A repository's own `[forge]` block still wins over any entry here, field by field: a repository that sets only `platform` still takes a matching entry's `hostname`.
+
 Hooks support all three [hook forms](https://worktrunk.dev/hook/#hook-forms). A table runs multiple commands concurrently; an array-of-tables pipeline runs steps in sequence. The dotted-key examples below are equivalent to the table forms — TOML treats `projects."github.com/user/repo".post-start.server = "..."` and a `[projects."github.com/user/repo".post-start]` table the same way:
 
 ```toml
@@ -531,13 +561,15 @@ url = "http://localhost:{{ branch | hash_port }}"
 
 ## Forge platform
 
-Name the forge explicitly for SSH aliases or self-hosted instances, where it can't be detected from the remote URL:
+The forge is read from the remote's hostname: any host carrying `github`, `gitlab`, or `gitea` anywhere in it, plus the Azure DevOps service domains. Name the forge explicitly for a host carrying none of those, such as a Forgejo instance at `forge.example.com`:
 
 ```toml
 [forge]
 platform = "github"  # or "gitlab", "gitea" (experimental), "azure-devops" (experimental)
 hostname = "github.example.com"  # Example: API host (GHE / self-hosted GitLab)
 ```
+
+When many repositories share one self-hosted host, name it once in user config with a [pattern-keyed `[projects]` entry](https://worktrunk.dev/config/#user-project-specific-settings) instead of repeating this block in each repo. A repository's own `[forge]` still wins, field by field.
 
 ## Commit-message append [experimental]
 
@@ -630,6 +662,7 @@ $ WORKTRUNK_COMMIT__GENERATION__COMMAND="echo 'test: automated commit'" wt merge
 | `XDG_CONFIG_DIRS` | Colon-separated system config directories (default: `/etc/xdg`) |
 | `WORKTRUNK_DIRECTIVE_CD_FILE` | Internal: set by shell wrappers. wt writes a raw path; the wrapper `cd`s to it |
 | `WORKTRUNK_DIRECTIVE_EXEC_FILE` | Internal: set by shell wrappers. wt writes shell commands; the wrapper sources the file |
+| `WORKTRUNK_SHELL_CWD` | Internal: set by wt on alias and hook bodies, so a nested `wt` preserves the user's subdirectory |
 | `WORKTRUNK_SHELL` | Internal: set by shell wrappers to indicate shell type (e.g., `powershell`) |
 | `WORKTRUNK_MAX_CONCURRENT_COMMANDS` | Max parallel git commands (default: 32). Lower if hitting file descriptor limits. |
 | `WORKTRUNK_VERBOSE` | Verbosity level (`0`/`1`/`2`), like `-v`/`-vv` but applied everywhere — including shell completion, which no flag can reach |
@@ -787,9 +820,33 @@ Clear global approvals:
 $ wt config approvals clear --global
 ```
 
+Check whether an unattended run would stop for approval:
+```bash
+$ wt config approvals list --format=json | jq -r .state
+```
+
 ### How approvals work
 
 Approved commands are saved to `~/.config/worktrunk/approvals.toml`. Re-approval is required when the command template changes or the project moves. Use `--yes` to bypass prompts in CI.
+
+### Reading approval state
+
+`wt config approvals list` reads the state without prompting or writing it, so an orchestrator can find out whether a non-interactive run will stop for approval before scheduling one. `--format=json` emits:
+
+```json
+{
+  "state": "approval_required",
+  "commands": [
+    {"phase": "post-start", "name": "dev", "template": "npm run dev", "approved": false},
+    {"phase": "pre-merge", "template": "cargo test", "approved": true}
+  ],
+  "stale": ["some removed command"]
+}
+```
+
+`state` is `no_commands` (the project declares none), `approval_required` (at least one is unapproved), or `approved`. `name` is absent for an unnamed command and for the commit-template fragment.
+
+`stale` is separate rather than a fourth `state`, because it co-occurs with all three: these are approvals recorded earlier whose command has since been edited or removed from the project config. They are what `--yes` would silently re-approve, so an orchestrator preserving the approval model reads them before choosing that flag.
 
 ### Command reference
 
@@ -1295,11 +1352,11 @@ Markers appear at the end of the Status column, after git symbols:
 
 ```
 $ wt list
-  Branch       Status        HEAD±    main↕     main…±  Remote⇅  Commit    Age   Message
-@ main             ^⇡                                    ⇡1      33323bc1  1d    Initial commit
-+ feature-api      ↑ 🤖              ↑1        +1                70343f03  1d    Add REST API end…
-+ review-ui      ? ↑ 💬              ↑1        +1                a585d6ed  1d    Add dashboard co…
-+ wip-docs       ? –                                             33323bc1  1d    Initial commit
+  Branch       Status        HEAD±    main↕     main…±  Remote⇅  Commit   Age   Message
+@ main             ^⇡                                    ⇡1      33323bc  1d    Initial commit
++ feature-api      ↑ 🤖              ↑1        +1                70343f0  1d    Add REST API endp…
++ review-ui      ? ↑ 💬              ↑1        +1                a585d6e  1d    Add dashboard com…
++ wip-docs       ? –                                             33323bc  1d    Initial commit
 
 ○ Showing 4 worktrees, 2 with changes, 2 ahead, 1 column hidden
 ```
