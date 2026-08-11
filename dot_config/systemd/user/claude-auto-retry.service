@@ -1,0 +1,39 @@
+[Unit]
+Description=Wait out Claude Code usage limits and continue automatically
+Documentation=file:%h/.local/bin/claude-auto-retry
+
+# No dependency on tmux: the supervisor polls for panes and an empty sweep is a
+# normal idle tick, so it survives the tmux server starting late, restarting, or
+# never running at all.
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/claude-auto-retry
+Restart=always
+RestartSec=5
+
+# The script logs to stderr with its own HH:MM:SS stamps; journald adds its own,
+# so drop the duplicate. `journalctl --user -fu claude-auto-retry` to follow.
+SyslogIdentifier=claude-auto-retry
+
+# systemd user units get a minimal PATH — tmux and date must be reachable.
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+# Optional knobs: CAR_MESSAGE CAR_POLL CAR_MARGIN CAR_FALLBACK_HOURS CAR_MAX_RETRIES
+# The leading - makes the file optional.
+EnvironmentFile=-%h/.config/claude-auto-retry.env
+
+# It only talks to the tmux socket and reads its own config. /tmp must stay
+# writable — connecting to tmux's socket (/tmp/tmux-$UID/default here) needs write
+# access to it, and ProtectSystem=strict would otherwise mount /tmp read-only.
+# Do NOT add PrivateTmp: that would hide the real socket entirely.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/tmp %t
+PrivateDevices=yes
+RestrictAddressFamilies=AF_UNIX
+MemoryMax=64M
+
+[Install]
+WantedBy=default.target
