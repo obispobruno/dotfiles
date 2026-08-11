@@ -1,0 +1,349 @@
+#!/usr/bin/env bash
+# claude-auto-retry — wait out a Claude Code usage limit and continue automatically.
+#
+# Watches a tmux pane running Claude Code. When the session/usage-limit banner
+# appears ("5-hour limit reached · resets 3pm"), it parses the reset time, sleeps
+# until then, and types the retry message into the pane.
+#
+# Scope: usage limits only (hours-scale). Transient API overload (500/503/529) is
+# deliberately NOT handled — Claude Code retries those itself, and telling the
+# terminal error apart from its own in-flight backoff is where all the false
+# positives live.
+#
+# Usage:  claude-auto-retry            supervise every tmux pane running claude,
+#                                      picking up new ones as they appear. This is
+#                                      the mode the systemd user service runs.
+#         claude-auto-retry PANE_ID    watch one pane, exit when claude leaves it:
+#                                        tmux new-window -d 'claude-auto-retry %3'
+#
+# Env overrides: CAR_MESSAGE CAR_POLL CAR_MARGIN CAR_FALLBACK_HOURS CAR_MAX_RETRIES
+# Requires: bash 4+, tmux, GNU date (Linux).
+
+set -uo pipefail
+shopt -s nocasematch
+
+RETRY_MESSAGE=${CAR_MESSAGE:-continue}
+POLL_SECONDS=${CAR_POLL:-5}
+MARGIN_SECONDS=${CAR_MARGIN:-60}      # slack added after the parsed reset time
+FALLBACK_HOURS=${CAR_FALLBACK_HOURS:-5}
+MAX_RETRIES=${CAR_MAX_RETRIES:-5}     # consecutive sends that fail to clear the banner
+CAPTURE_LINES=120                     # a banner can sit ~90 rows up behind a tall widget
+TAIL_LINES=12                         # detection window, measured in CONTENT lines
+GRACE_SECONDS=3600                    # a reset this recently past = just fired, retry now
+SUBMIT_DELAY=0.15                     # see send_retry()
+
+log() { printf '[%s] %s\n' "$(date +%H:%M:%S)" "$*" >&2; }
+die() { log "$*"; exit 1; }
+
+[[ ${1:-} == -h || ${1:-} == --help ]] && { sed -n '2,/^# Requires/p' "$0" | cut -c3-; exit 0; }
+
+# --- Patterns -----------------------------------------------------------------
+# Multibyte glyphs use alternation, never bracket classes: bracket expressions
+# over multibyte chars misbehave outside a UTF-8 locale.
+
+WORKING_RE='esc to interrupt|Retrying in|attempt [0-9]+/[0-9]+|waiting for [0-9]+ background agents? to finish'
+
+# The banner renders across two lines: a limit line, then a reset line under it.
+LIMIT_RE='(hit|exceeded|reached).*(your|the).*limit|[0-9]+-hour limit|limit reached|usage limit|out of.*usage|rate limit|try again in'
+RESET_RE='resets? (at )?[0-9]{1,2}(:[0-9]{2})?|resets? in[: ]|try again in [0-9]+ *(hours?|minutes?|h|m)'
+
+# Claude Code's interactive limit menu. If it is up, keystrokes drive the menu —
+# never type the retry message into it.
+MENU_RE='stop and wait for limit to reset'
+
+CHROME_HINT_RE='shift\+tab to|\? for shortcuts|/usage-credits|/clear to save'
+
+# UI furniture rendered BELOW content. Stripping it before taking the tail makes
+# the window measure distance-in-content, so a tall task widget or input box
+# can't push a live banner out of view.
+is_chrome_line() {
+  local l=$1
+  [[ $l =~ $WORKING_RE ]] && return 1          # live footer is content, not chrome
+  [[ -z ${l//[[:space:]]/} ]] && return 0
+  [[ -z $(printf '%s' "$l" | tr -d '[:space:]─│╭╮╰╯┌┐└┘├┤┬┴┼▏▕|') ]] && return 0
+  # Boxed input row. The CLOSING │ is required: without it this also matches a
+  # boxed menu row ("│ ❯ 1. Stop and wait…") and strips it as furniture.
+  [[ $l =~ ^[[:space:]]*│[[:space:]]*(\>|❯)[^│]*│[[:space:]]*$ ]] && return 0
+  [[ $l =~ ^[[:space:]]*(\>|❯)[[:space:]]*$ ]] && return 0   # bare prompt
+  [[ $l =~ ⏵⏵ ]] && return 0                                 # mode footer
+  [[ $l =~ $CHROME_HINT_RE ]] && return 0                    # footer hints
+  [[ $l =~ \|[[:space:]]*v[0-9]+\.[0-9]+\.[0-9]+ ]] && return 0
+  [[ $l =~ ^[[:space:]]*(✻|✢|✽|✳|✴|✶|✷)[[:space:]] ]] && return 0
+  [[ $l =~ ^[[:space:]]+(□|◻|■|◼|▢|▪|✓|✔|☐|☑)[[:space:]]+[^[:space:]] ]] && return 0
+  [[ $l =~ ^[[:space:]]*[0-9]+[[:space:]]+tasks?[[:space:]]*\( ]] && return 0
+  return 1
+}
+
+# Error text inside a tool-call render ("● Bash(grep 'rate limit' …)" and its
+# ⎿/indented children) is text ABOUT a limit, not the live state. Mask it.
+TOOL_HEADER_RE='^[[:space:]]*(●|⏺|∙)[[:space:]]*[^[:space:]]+\('
+TOOL_CHILD_RE='^[[:space:]]*(⎿|└)'
+
+# --- Pane -------------------------------------------------------------------
+
+CLAUDE_CMD_RE='^(claude|node|npx|bun|deno)$'
+
+# Every pane whose foreground process is claude, as "paneid<TAB>panepid".
+#
+# The pid is half the state key. tmux recycles pane ids, so a fresh %3 must not
+# inherit the previous occupant's wait timer or retry count — keying on id alone
+# is how a monitor ends up sending keys into a stranger's session. Re-running
+# this every tick is also the whole lifecycle: panes that stop running claude
+# simply stop being listed, so discovery and reaping are the same operation.
+#
+# TMUX_PANE is excluded so a foreground run can't watch the pane it is typing in.
+# Under systemd that variable is unset, which is what we want: the service should
+# see every pane, including whichever one launched it.
+list_claude_panes() {
+  local id pid cmd
+  while IFS=$'\t' read -r id pid cmd; do
+    [[ $id == "${TMUX_PANE:-}" ]] && continue
+    [[ $cmd =~ $CLAUDE_CMD_RE ]] && printf '%s\t%s\n' "$id" "$pid"
+  done < <(tmux list-panes -a -F '#{pane_id}	#{pane_pid}	#{pane_current_command}' 2>/dev/null)
+  return 0
+}
+
+# Re-checked immediately before sending: discovery ran up to a poll interval ago,
+# and if claude exited to a shell in the meantime the retry message would be
+# typed straight into that shell.
+pane_command() { tmux display-message -t "$PANE" -p '#{pane_current_command}' 2>/dev/null; }
+claude_is_up() { [[ $(pane_command) =~ $CLAUDE_CMD_RE ]]; }
+
+# --- Capture ------------------------------------------------------------------
+
+WIN=()      # detection window: content lines, tool-echo lines blanked
+TAIL_RAW="" # last rows verbatim, for the working-state gate
+
+capture() {
+  local raw
+  raw=$(tmux capture-pane -t "$PANE" -p -S "-$CAPTURE_LINES" 2>/dev/null) || return 1
+  raw=$(printf '%s' "$raw" | sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g')
+
+  local -a lines=()
+  mapfile -t lines <<<"$raw"
+  local n=${#lines[@]} from
+  from=$((n > 20 ? n - 20 : 0))
+  TAIL_RAW=$(printf '%s\n' "${lines[@]:from}")
+
+  # Tool-echo mask over the FULL pane (a block can start above the window).
+  local -a masked=()
+  local i in_block=0
+  for i in "${!lines[@]}"; do
+    if [[ ${lines[i]} =~ $TOOL_HEADER_RE ]]; then
+      masked[i]=1; in_block=1
+    elif ((in_block)) && { [[ ${lines[i]} =~ $TOOL_CHILD_RE ]] || [[ ${lines[i]} =~ ^[[:space:]]+[^[:space:]] ]]; }; then
+      masked[i]=1
+    else
+      masked[i]=0; in_block=0
+    fi
+  done
+
+  # Drop trailing chrome, then take the last TAIL_LINES content rows.
+  local end=${#lines[@]}
+  while ((end > 0)) && is_chrome_line "${lines[end - 1]}"; do ((end--)); done
+  local start=$((end - TAIL_LINES)); ((start < 0)) && start=0
+
+  WIN=()
+  for ((i = start; i < end; i++)); do
+    ((masked[i])) && WIN+=("") || WIN+=("${lines[i]}")
+  done
+}
+
+window_has() { local re=$1 l; for l in "${WIN[@]}"; do [[ $l =~ $re ]] && return 0; done; return 1; }
+window_text() { printf '%s\n' "${WIN[@]}"; }
+
+# Claude is mid-flight (streaming, or inside its own retry backoff) — not a
+# terminal state, never act.
+is_working() { [[ $TAIL_RAW =~ $WORKING_RE ]]; }
+
+# Both halves of the banner in the window. The reset line always renders directly
+# under the limit line, so one 12-line content window subsumes the proximity rule.
+is_rate_limited() { window_has "$LIMIT_RE" && window_has "$RESET_RE"; }
+
+# Interactive limit menu is open — typing anything would pick an option. Matched
+# against the RAW tail, not the chrome-stripped window: the menu is UI, so any
+# chrome rule that touches it would hide the very thing this guard looks for.
+menu_is_up() { [[ $TAIL_RAW =~ $MENU_RE ]]; }
+
+# --- Reset-time math ----------------------------------------------------------
+
+TZNAME=""
+at_time() { # at_time <hour> <min> [tomorrow] -> epoch seconds
+  local spec="$1:$2"
+  [[ -n ${3:-} ]] && spec="tomorrow $spec"
+  if [[ -n $TZNAME ]]; then TZ="$TZNAME" date -d "$spec" +%s 2>/dev/null
+  else date -d "$spec" +%s 2>/dev/null; fi
+}
+
+# Echoes seconds to wait, given the banner text.
+compute_wait() {
+  local text=$1 now hh mm ampm fallback=$((FALLBACK_HOURS * 3600))
+  now=$(date +%s)
+  TZNAME=""
+
+  # Relative form first: "try again in 5 minutes".
+  if [[ $text =~ (try again|wait|resets?[[:space:]]+in)[:[:space:]][[:space:]]*(for[[:space:]]+)?(in[[:space:]]+)?([0-9]+)[[:space:]]*(hours?|minutes?|mins?|h|m) ]]; then
+    local n=$((10#${BASH_REMATCH[4]})) unit=${BASH_REMATCH[5]}
+    [[ ${unit:0:1} == m ]] && echo $((n * 60 + MARGIN_SECONDS)) || echo $((n * 3600 + MARGIN_SECONDS))
+    return
+  fi
+
+  # Absolute form: "resets 3pm (UTC)" / "resets at 15:00".
+  if ! [[ $text =~ resets?[[:space:]]+(at[[:space:]]+)?([0-9]{1,2})(:([0-9]{2}))?[[:space:]]*(am|pm)?[[:space:]]*(\(([^\)]+)\))? ]]; then
+    echo $((fallback + MARGIN_SECONDS)); return
+  fi
+  hh=$((10#${BASH_REMATCH[2]}))
+  mm=$((10#${BASH_REMATCH[4]:-0}))
+  ampm=${BASH_REMATCH[5],,}
+  local tz=${BASH_REMATCH[7]:-}
+  # Only trust a timezone we can actually resolve; otherwise use local time.
+  [[ -n $tz && -e /usr/share/zoneinfo/$tz ]] && TZNAME=$tz
+
+  [[ $ampm == pm && $hh -ne 12 ]] && hh=$((hh + 12))
+  [[ $ampm == am && $hh -eq 12 ]] && hh=0
+  if ((hh > 23 || mm > 59)); then echo $((fallback + MARGIN_SECONDS)); return; fi
+
+  local d1 d2 diff
+  if [[ -z $ampm ]] && ((hh >= 1 && hh <= 12)); then
+    # Bare "resets 3" is 12h-ambiguous — take the nearest future reading.
+    local alt=$(((hh + 12) % 24))
+    d1=$(( $(at_time "$hh" "$mm") - now ))
+    d2=$(( $(at_time "$alt" "$mm") - now ))
+    if ((d1 > 0 && d2 > 0)); then diff=$((d1 < d2 ? d1 : d2))
+    elif ((d1 > 0)); then diff=$d1
+    elif ((d2 > 0)); then diff=$d2
+    else
+      local recent=$((d1 > d2 ? d1 : d2)) early=$hh
+      ((d1 > d2)) && early=$alt
+      if ((recent > -GRACE_SECONDS)); then diff=0
+      else diff=$(( $(at_time "$early" "$mm" tomorrow) - now )); fi
+    fi
+  else
+    diff=$(( $(at_time "$hh" "$mm") - now ))
+    if ((diff < 0)); then
+      # A just-passed reset means it fired moments ago — retry now, don't park a
+      # full day. Only a stale one rolls to tomorrow (date-anchored, so DST holds).
+      if ((diff > -GRACE_SECONDS)); then diff=0
+      else diff=$(( $(at_time "$hh" "$mm" tomorrow) - now )); fi
+    fi
+  fi
+
+  ((diff < 0)) && diff=0
+  echo $((diff + MARGIN_SECONDS))
+}
+
+# --- Send ---------------------------------------------------------------------
+
+# The text and the submitting Enter MUST be two separate send-keys calls with a
+# pause between. Claude Code's Ink/React TUI otherwise treats the Enter as part of
+# the bracketed-paste burst and just inserts a newline. -l sends the text
+# literally so words like "Enter" in a custom message aren't parsed as key names.
+send_retry() {
+  tmux send-keys -t "$PANE" -l "$RETRY_MESSAGE" || return 1
+  sleep "$SUBMIT_DELAY"
+  tmux send-keys -t "$PANE" Enter || return 1
+}
+
+# --- Per-pane state machine ---------------------------------------------------
+# One entry per watched pane, keyed "paneid/panepid" (see list_claude_panes).
+
+declare -A ST WU AT     # status, wait_until, attempts
+
+# tick <key> — advance one pane by one poll. $PANE is already set to its id.
+tick() {
+  local key=$1 now w
+  capture || return 0          # transient; if the pane really went away,
+  now=$(date +%s)              # discovery drops it on the next sweep
+
+  case ${ST[$key]} in
+  monitoring)
+    if ! is_working && is_rate_limited; then
+      w=$(compute_wait "$(window_text)")
+      ST[$key]=waiting
+      WU[$key]=$((now + w))
+      log "$PANE: usage limit detected — waiting $((w / 60))m, retry at $(date -d "@${WU[$key]}" +%H:%M:%S)"
+    fi
+    ;;
+  waiting)
+    if ! is_rate_limited; then
+      log "$PANE: banner cleared — back to monitoring"
+      ST[$key]=monitoring; AT[$key]=0
+    elif ((now >= ${WU[$key]})); then
+      if is_working; then
+        WU[$key]=$((now + 30))          # claude picked back up on its own
+      elif menu_is_up; then
+        log "$PANE: limit-options menu is open — not sending (dismiss it to let me retry)"
+        WU[$key]=$((now + 30))
+      elif ! claude_is_up; then
+        WU[$key]=$((now + 30))          # exited to a shell since discovery; don't type into it
+      else
+        AT[$key]=$((${AT[$key]} + 1))
+        if ((${AT[$key]} > MAX_RETRIES)); then
+          log "$PANE: still limited after $MAX_RETRIES retries — giving up on this pane"
+          ST[$key]=givenup
+          return 0
+        fi
+        log "$PANE: sending '$RETRY_MESSAGE' (attempt ${AT[$key]}/$MAX_RETRIES)"
+        send_retry || log "$PANE: send failed"
+        w=$(compute_wait "$(window_text)")   # re-read the banner for the next window
+        ((w < 30)) && w=30
+        WU[$key]=$(($(date +%s) + w))
+      fi
+    fi
+    ;;
+  givenup)
+    # Stay parked until the banner clears; then this pane is healthy again.
+    if ! is_rate_limited; then
+      log "$PANE: banner cleared — resuming"
+      ST[$key]=monitoring; AT[$key]=0
+    fi
+    ;;
+  esac
+}
+
+# --- Main loop ----------------------------------------------------------------
+
+command -v tmux >/dev/null || die "tmux not found"
+
+TARGET=${1:-}
+if [[ -n $TARGET ]]; then
+  tmux display-message -t "$TARGET" -p '' >/dev/null 2>&1 || die "no such pane: $TARGET"
+  log "watching $TARGET; retry message: '$RETRY_MESSAGE'"
+else
+  log "supervising all claude panes; retry message: '$RETRY_MESSAGE'"
+fi
+
+while :; do
+  declare -A live=()
+  while IFS=$'\t' read -r id pid; do
+    [[ -n $TARGET && $id != "$TARGET" ]] && continue
+    key="$id/$pid"
+    live[$key]=1
+    if [[ -z ${ST[$key]:-} ]]; then
+      ST[$key]=monitoring; WU[$key]=0; AT[$key]=0
+      log "$id: claude is up (pid $pid) — watching"
+    fi
+    PANE=$id
+    tick "$key" </dev/null    # keep tmux out of the pane list we are reading
+  done < <(list_claude_panes)
+
+  # Reap: anything we hold state for that no longer runs claude. A pane that
+  # merely stopped existing and one whose claude exited look identical here,
+  # which is the point — either way there is nothing left to retry into.
+  for key in "${!ST[@]}"; do
+    [[ -n ${live[$key]:-} ]] && continue
+    log "${key%%/*}: claude is gone — dropping"
+    unset "ST[$key]" "WU[$key]" "AT[$key]"
+  done
+
+  # Single-pane mode is a one-shot job, not a service: when its pane is done, so
+  # are we. Supervisor mode idles here instead — an empty sweep just means no
+  # claude is running yet (or the tmux server is down and will come back).
+  if [[ -n $TARGET ]] && ((${#live[@]} == 0)); then
+    log "claude is no longer running in $TARGET — exiting"
+    exit 0
+  fi
+  unset live
+
+  sleep "$POLL_SECONDS"
+done
