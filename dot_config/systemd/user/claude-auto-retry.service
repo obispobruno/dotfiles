@@ -17,7 +17,13 @@ RestartSec=5
 SyslogIdentifier=claude-auto-retry
 
 # systemd user units get a minimal PATH — tmux and date must be reachable.
-Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+# tmux is installed via Homebrew only, so linuxbrew's bin must be on PATH.
+Environment=PATH=%h/.local/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:/usr/bin:/bin
+
+# Without a UTF-8 locale the tmux client sanitizes the literal TAB in the
+# script's list-panes -F separator to '_', so pane discovery silently finds
+# nothing. The script's regexes also assume UTF-8 for multibyte glyphs.
+Environment=LANG=C.UTF-8
 
 # Optional knobs: CAR_MESSAGE CAR_POLL CAR_MARGIN CAR_FALLBACK_HOURS CAR_MAX_RETRIES
 # The leading - makes the file optional.
