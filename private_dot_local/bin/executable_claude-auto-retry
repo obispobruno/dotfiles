@@ -51,6 +51,10 @@ RESET_RE='resets? (at )?[0-9]{1,2}(:[0-9]{2})?|resets? in[: ]|try again in [0-9]
 # never type the retry message into it.
 MENU_RE='stop and wait for limit to reset'
 
+# Enter accepts the HIGHLIGHTED row. Only answer the menu when ❯ sits on option
+# 1 ("Stop and wait…"); anywhere else Enter would pick a different option.
+MENU_PICK_RE='(❯|>)[[:space:]]*1\.[[:space:]]*stop and wait'
+
 CHROME_HINT_RE='shift\+tab to|\? for shortcuts|/usage-credits|/clear to save'
 
 # UI furniture rendered BELOW content. Stripping it before taking the tail makes
@@ -165,6 +169,32 @@ is_rate_limited() { window_has "$LIMIT_RE" && window_has "$RESET_RE"; }
 # chrome rule that touches it would hide the very thing this guard looks for.
 menu_is_up() { [[ $TAIL_RAW =~ $MENU_RE ]]; }
 
+# A LIVE menu replaces Claude Code's input box. If an input row is still
+# rendered, the MENU_RE match was quoted menu text scrolling through the
+# conversation — pressing Enter there could submit someone's half-typed prompt,
+# so menu_is_up stays the conservative don't-send guard and only menu_is_live
+# is allowed to answer.
+menu_is_live() {
+  menu_is_up || return 1
+  local l
+  while IFS= read -r l; do
+    [[ $l =~ ^[[:space:]]*│[[:space:]]*(\>|❯)[^│]*│[[:space:]]*$ ]] && return 1
+    [[ $l =~ ^[[:space:]]*(\>|❯)[[:space:]]*$ ]] && return 1
+  done <<<"$TAIL_RAW"
+  return 0
+}
+
+# Answer a live limit menu: Enter confirms option 1, "Stop and wait for limit
+# to reset" — Claude Code then parks itself and resumes when the limit lifts.
+answer_menu() {
+  if [[ $TAIL_RAW =~ $MENU_PICK_RE ]]; then
+    log "$PANE: limit menu open — pressing Enter ('stop and wait for limit to reset')"
+    tmux send-keys -t "$PANE" Enter || log "$PANE: Enter send failed"
+  else
+    log "$PANE: limit menu open but selection is not on option 1 — leaving it alone"
+  fi
+}
+
 # --- Reset-time math ----------------------------------------------------------
 
 TZNAME=""
@@ -257,7 +287,12 @@ tick() {
 
   case ${ST[$key]} in
   monitoring)
-    if ! is_working && is_rate_limited; then
+    if ! is_working && menu_is_live; then
+      # The menu appears WITHOUT the two-line banner, so is_rate_limited never
+      # fires on it — it must be handled here, not just guarded against.
+      answer_menu
+      ST[$key]=waiting; WU[$key]=$((now + 30)); AT[$key]=0
+    elif ! is_working && is_rate_limited; then
       w=$(compute_wait "$(window_text)")
       ST[$key]=waiting
       WU[$key]=$((now + w))
@@ -265,7 +300,13 @@ tick() {
     fi
     ;;
   waiting)
-    if ! is_rate_limited; then
+    if menu_is_live; then
+      # Still (or newly) showing the menu — answer it, throttled to every 30s.
+      if ((now >= ${WU[$key]})); then
+        answer_menu
+        WU[$key]=$((now + 30))
+      fi
+    elif ! is_rate_limited; then
       log "$PANE: banner cleared — back to monitoring"
       ST[$key]=monitoring; AT[$key]=0
     elif ((now >= ${WU[$key]})); then
