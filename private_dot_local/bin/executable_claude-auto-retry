@@ -45,7 +45,13 @@ WORKING_RE='esc to interrupt|Retrying in|attempt [0-9]+/[0-9]+|waiting for [0-9]
 
 # The banner renders across two lines: a limit line, then a reset line under it.
 LIMIT_RE='(hit|exceeded|reached).*(your|the).*limit|[0-9]+-hour limit|limit reached|usage limit|out of.*usage|rate limit|try again in'
-RESET_RE='resets? (at )?[0-9]{1,2}(:[0-9]{2})?|resets? in[: ]|try again in [0-9]+ *(hours?|minutes?|h|m)'
+
+# Weekly limits reset days out, so their banner names a DATE the 5-hour one omits:
+# "resets Aug 16, 1pm (America/Montevideo)" vs "resets 3pm". Without the month
+# alternative below, RESET_RE sees "resets Aug" — no digit — and the whole banner
+# goes undetected. Trailing [a-z]* absorbs both "Aug" and "August".
+MONTH_RE='(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*'
+RESET_RE="resets? (at )?[0-9]{1,2}(:[0-9]{2})?|resets? (at )?$MONTH_RE [0-9]{1,2}|resets? in[: ]|try again in [0-9]+ *(hours?|minutes?|h|m)"
 
 # Claude Code's interactive limit menu. If it is up, keystrokes drive the menu —
 # never type the retry message into it.
@@ -72,6 +78,13 @@ is_chrome_line() {
   [[ $l =~ ⏵⏵ ]] && return 0                                 # mode footer
   [[ $l =~ $CHROME_HINT_RE ]] && return 0                    # footer hints
   [[ $l =~ \|[[:space:]]*v[0-9]+\.[0-9]+\.[0-9]+ ]] && return 0
+  # Status footer. The version form above is an older layout; current builds render
+  # "Opus 5 (1M context) | Context: 136k/1M | 5h: 33% | 7d: 100%".
+  [[ $l =~ \|[[:space:]]*Context:[[:space:]]*[0-9] ]] && return 0
+  [[ $l =~ ^[[:space:]]*⧉ ]] && return 0                     # worktree/branch line
+  # Input-box border WITH a title in it ("──── Session title ──"). The pure
+  # box-char rule above only catches the untitled one.
+  [[ $l =~ ^[[:space:]]*───.*─[[:space:]]*$ ]] && return 0
   [[ $l =~ ^[[:space:]]*(✻|✢|✽|✳|✴|✶|✷)[[:space:]] ]] && return 0
   [[ $l =~ ^[[:space:]]+(□|◻|■|◼|▢|▪|✓|✔|☐|☑)[[:space:]]+[^[:space:]] ]] && return 0
   [[ $l =~ ^[[:space:]]*[0-9]+[[:space:]]+tasks?[[:space:]]*\( ]] && return 0
@@ -121,7 +134,11 @@ TAIL_RAW="" # last rows verbatim, for the working-state gate
 capture() {
   local raw
   raw=$(tmux capture-pane -t "$PANE" -p -S "-$CAPTURE_LINES" 2>/dev/null) || return 1
-  raw=$(printf '%s' "$raw" | sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g')
+  # NBSP -> space: Claude Code pads the prompt row with U+00A0, which glibc does
+  # NOT put in [[:space:]]. Left alone it silently kills every rule anchored on
+  # trailing whitespace — the bare-prompt chrome rule and menu_is_live's
+  # "an input box is still rendered" guard both stop matching.
+  raw=$(printf '%s' "$raw" | sed -e 's/\x1b\[[0-9;?]*[a-zA-Z]//g' -e 's/\xc2\xa0/ /g')
 
   local -a lines=()
   mapfile -t lines <<<"$raw"
@@ -174,12 +191,20 @@ menu_is_up() { [[ $TAIL_RAW =~ $MENU_RE ]]; }
 # conversation — pressing Enter there could submit someone's half-typed prompt,
 # so menu_is_up stays the conservative don't-send guard and only menu_is_live
 # is allowed to answer.
+#
+# Only rows BELOW the menu line disqualify. Claude Code draws the input box at
+# the bottom, so a live menu has nothing after it, while quoted menu text has
+# the real box further down. Scanning the whole tail instead would let a bare
+# prompt row left ABOVE the menu veto a genuinely live one.
 menu_is_live() {
   menu_is_up || return 1
-  local l
+  local l below=0
   while IFS= read -r l; do
-    [[ $l =~ ^[[:space:]]*│[[:space:]]*(\>|❯)[^│]*│[[:space:]]*$ ]] && return 1
-    [[ $l =~ ^[[:space:]]*(\>|❯)[[:space:]]*$ ]] && return 1
+    if ((below)); then
+      [[ $l =~ ^[[:space:]]*│[[:space:]]*(\>|❯)[^│]*│[[:space:]]*$ ]] && return 1
+      [[ $l =~ ^[[:space:]]*(\>|❯)[[:space:]]*$ ]] && return 1
+    fi
+    [[ $l =~ $MENU_RE ]] && below=1
   done <<<"$TAIL_RAW"
   return 0
 }
@@ -205,6 +230,12 @@ at_time() { # at_time <hour> <min> [tomorrow] -> epoch seconds
   else date -d "$spec" +%s 2>/dev/null; fi
 }
 
+at_date() { # at_date <month> <day> <hour> <min> [year] -> epoch seconds
+  local spec="$1 $2 ${5:-} $3:$4"
+  if [[ -n $TZNAME ]]; then TZ="$TZNAME" date -d "$spec" +%s 2>/dev/null
+  else date -d "$spec" +%s 2>/dev/null; fi
+}
+
 # Echoes seconds to wait, given the banner text.
 compute_wait() {
   local text=$1 now hh mm ampm fallback=$((FALLBACK_HOURS * 3600))
@@ -216,6 +247,38 @@ compute_wait() {
     local n=$((10#${BASH_REMATCH[4]})) unit=${BASH_REMATCH[5]}
     [[ ${unit:0:1} == m ]] && echo $((n * 60 + MARGIN_SECONDS)) || echo $((n * 3600 + MARGIN_SECONDS))
     return
+  fi
+
+  # Date-qualified form: "resets Aug 16, 1pm (America/Montevideo)" — what a weekly
+  # limit renders. The day is stated, so none of the 12h-ambiguity or roll-to-
+  # tomorrow logic below applies: guessing here is how a 6-day wait becomes 5h.
+  if [[ $text =~ resets?[[:space:]]+(at[[:space:]]+)?$MONTH_RE[[:space:]]+([0-9]{1,2}),?[[:space:]]*([0-9]{1,2})?(:([0-9]{2}))?[[:space:]]*(am|pm)?[[:space:]]*(\(([^\)]+)\))? ]]; then
+    local mon=${BASH_REMATCH[2]} day=$((10#${BASH_REMATCH[3]}))
+    hh=$((10#${BASH_REMATCH[4]:-0}))
+    mm=$((10#${BASH_REMATCH[6]:-0}))
+    ampm=${BASH_REMATCH[7],,}
+    local dtz=${BASH_REMATCH[9]:-}
+    [[ -n $dtz && -e /usr/share/zoneinfo/$dtz ]] && TZNAME=$dtz
+
+    [[ $ampm == pm && $hh -ne 12 ]] && hh=$((hh + 12))
+    [[ $ampm == am && $hh -eq 12 ]] && hh=0
+    if ((hh > 23 || mm > 59 || day < 1 || day > 31)); then
+      echo $((fallback + MARGIN_SECONDS)); return
+    fi
+
+    local target diff
+    target=$(at_date "$mon" "$day" "$hh" "$mm")
+    if [[ -z $target ]]; then echo $((fallback + MARGIN_SECONDS)); return; fi
+    diff=$((target - now))
+    # date -d assumes the current year. Near a year boundary ("resets Jan 3" seen
+    # on Dec 30) that lands ~11 months in the past — retry with next year. A
+    # merely stale banner is only days back and correctly means "retry now".
+    if ((diff < -25920000)); then                       # 300 days
+      target=$(at_date "$mon" "$day" "$hh" "$mm" "$(($(date +%Y) + 1))")
+      [[ -n $target ]] && diff=$((target - now))
+    fi
+    ((diff < 0)) && diff=0
+    echo $((diff + MARGIN_SECONDS)); return
   fi
 
   # Absolute form: "resets 3pm (UTC)" / "resets at 15:00".
