@@ -34,9 +34,17 @@
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
     "vercel@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true
+    "claude-md-management@claude-plugins-official": true,
+    "ai-setup@pento-marketplace": true
   },
-  "extraKnownMarketplaces": {},
+  "extraKnownMarketplaces": {
+    "pento-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "pentoai/pento-eng-plugins"
+      }
+    }
+  },
   "effortLevel": "high",
   "autoCompactWindow": 200000,
   "advisorModel": "opus",
