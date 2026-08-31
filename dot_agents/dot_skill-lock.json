@@ -42,9 +42,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
       "skillPath": "skills/agent-browser/SKILL.md",
-      "skillFolderHash": "037e8078db4b20b4aa25c04f21c6de7d335ec449",
+      "skillFolderHash": "82def67855a0d2aad7794207951820fa5422fdb0",
       "installedAt": "2026-03-14T18:10:34.657Z",
-      "updatedAt": "2026-07-22T12:43:49.114Z"
+      "updatedAt": "2026-08-31T03:48:51.468Z"
     },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "696d952c42df704157407f64df186075107d57ca",
+      "skillFolderHash": "85c0a2c58e134047e8b7d439f649dd47e0bc063d",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-08-07T01:11:47.297Z"
+      "updatedAt": "2026-08-31T03:48:54.866Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -141,36 +141,36 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-cloudformation/SKILL.md",
-      "skillFolderHash": "073d65637eeaf1e3f2af172496a3f99a81842d39",
+      "skillFolderHash": "dce17e3a01ee4fa3f2e35909941d84eaac3e9053",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-08-07T01:11:58.075Z"
+      "updatedAt": "2026-08-31T03:48:57.103Z"
     },
     "aws-containers": {
       "source": "aws/agent-toolkit-for-aws",
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-containers/SKILL.md",
-      "skillFolderHash": "0036eaa27d8555cf55d691c32d1dc659808b1e4d",
+      "skillFolderHash": "b110a7b9fb8cffa87a572618d03917a2a372539d",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-08-07T01:12:00.056Z"
+      "updatedAt": "2026-08-31T03:48:59.658Z"
     },
     "aws-iam": {
       "source": "aws/agent-toolkit-for-aws",
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-iam/SKILL.md",
-      "skillFolderHash": "53fafe6165ae796ce54b8d9c32db1af279c97933",
+      "skillFolderHash": "fa551ce5da19be3e7b81b6574bfd9db32d9931f3",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-08-07T01:12:02.854Z"
+      "updatedAt": "2026-08-31T03:49:02.529Z"
     },
     "aws-messaging-and-streaming": {
       "source": "aws/agent-toolkit-for-aws",
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-messaging-and-streaming/SKILL.md",
-      "skillFolderHash": "ad69d0e4f6bea6919be474591ea353b5860f19e8",
+      "skillFolderHash": "7e6c72d7a3d892a5f58b8baaf1eed27cbed679b3",
       "installedAt": "2026-07-06T20:01:35.887Z",
-      "updatedAt": "2026-08-07T01:12:05.110Z"
+      "updatedAt": "2026-08-31T03:49:05.349Z"
     },
     "aws-observability": {
       "source": "aws/agent-toolkit-for-aws",
@@ -213,9 +213,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-serverless/SKILL.md",
-      "skillFolderHash": "9fc1560f61f60eaf42df58b96edf1b0b4df52c87",
+      "skillFolderHash": "b78019d98cbc202a46677576e784e489624bb917",
       "installedAt": "2026-07-06T20:01:35.889Z",
-      "updatedAt": "2026-08-07T01:12:09.304Z"
+      "updatedAt": "2026-08-31T03:49:07.781Z"
     },
     "signing-in-to-aws": {
       "source": "aws/agent-toolkit-for-aws",
@@ -240,9 +240,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-build/SKILL.md",
-      "skillFolderHash": "13ffc0ddcf5e50210026a5638e738c108ec06286",
+      "skillFolderHash": "95af9de91567e991ca12823ee56f911948f1706a",
       "installedAt": "2026-07-07T02:57:29.933Z",
-      "updatedAt": "2026-08-07T01:12:13.820Z"
+      "updatedAt": "2026-08-31T03:49:10.390Z"
     },
     "agents-connect": {
       "source": "aws/agent-toolkit-for-aws",
@@ -303,9 +303,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/amazon-opensearch-service/SKILL.md",
-      "skillFolderHash": "c1841f430b0fbce0ca7b0dff447f729a29ec310a",
+      "skillFolderHash": "7a39359938fc379e5e02e9574cfa570cb799e29c",
       "installedAt": "2026-07-07T02:57:29.936Z",
-      "updatedAt": "2026-08-07T01:12:16.576Z"
+      "updatedAt": "2026-08-31T03:49:12.863Z"
     },
     "connecting-to-data-source": {
       "source": "aws/agent-toolkit-for-aws",
