@@ -47,7 +47,7 @@
   },
   "effortLevel": "high",
   "autoCompactWindow": 200000,
-  "advisorModel": "opus",
+  "advisorModel": "fable",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "autoCompactEnabled": true
