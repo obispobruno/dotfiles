@@ -1,7 +1,4 @@
 {
-  "env": {
-    "CLAUDE_DISABLE_ADAPTATIVE_THINKING": "1"
-  },
   "model": "claude-fable-5-1[1m]",
   "hooks": {
     "Stop": [
@@ -46,7 +43,7 @@
     }
   },
   "effortLevel": "high",
-  "autoCompactWindow": 200000,
+  "autoCompactWindow": 260000,
   "advisorModel": "fable",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
