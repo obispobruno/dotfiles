@@ -24,18 +24,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/shadcn/ui.git",
       "skillPath": "skills/shadcn/SKILL.md",
-      "skillFolderHash": "0a31c3c2535a62b22bf23a1b10a142178a6b7dbf",
+      "skillFolderHash": "d24ae83d8555877ca133847a9d7e6d44bff51b0e",
       "installedAt": "2026-03-14T01:57:57.647Z",
-      "updatedAt": "2026-07-24T03:30:20.960Z"
+      "updatedAt": "2026-09-04T03:07:19.057Z"
     },
     "before-and-after": {
       "source": "vercel-labs/before-and-after",
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/before-and-after.git",
       "skillPath": "skill/SKILL.md",
-      "skillFolderHash": "494b495538546c3a5594285e726970ff8f27a1ee",
+      "skillFolderHash": "9e1c84a44068f559bf2e89344bdca99a0f6dd2b7",
       "installedAt": "2026-03-14T03:51:11.421Z",
-      "updatedAt": "2026-03-14T03:51:11.421Z"
+      "updatedAt": "2026-09-04T03:07:21.155Z"
     },
     "agent-browser": {
       "source": "vercel-labs/agent-browser",
@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "85c0a2c58e134047e8b7d439f649dd47e0bc063d",
+      "skillFolderHash": "bf0e4c4525c2e2bbaa83329ee87e6d58dacf8f4c",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-08-31T03:48:54.866Z"
+      "updatedAt": "2026-09-04T03:07:25.131Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -87,9 +87,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/basecamp/skills.git",
       "skillPath": "skills/basecamp/SKILL.md",
-      "skillFolderHash": "875c92020b2f8619e0c74cfb46359c000969978a",
+      "skillFolderHash": "c60a8921c4360da5e2a11aaaf43032501fb1cf48",
       "installedAt": "2026-06-20T17:21:27.388Z",
-      "updatedAt": "2026-08-07T01:11:48.795Z"
+      "updatedAt": "2026-09-04T03:07:26.909Z"
     },
     "fastapi": {
       "source": "fastapi/fastapi",
@@ -231,18 +231,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-core/skills/aws-secrets-manager/SKILL.md",
-      "skillFolderHash": "f3acc32a9957a287ae05a770eccb46373c7ce4cf",
+      "skillFolderHash": "648d7c77ce3dbc83c4b0dfd471b04243c5a97d69",
       "installedAt": "2026-07-07T02:57:29.933Z",
-      "updatedAt": "2026-08-07T01:12:11.807Z"
+      "updatedAt": "2026-09-04T03:07:30.466Z"
     },
     "agents-build": {
       "source": "aws/agent-toolkit-for-aws",
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-build/SKILL.md",
-      "skillFolderHash": "95af9de91567e991ca12823ee56f911948f1706a",
+      "skillFolderHash": "c4e6fa69cb9be68714f7ccf56c29d42b6585e73e",
       "installedAt": "2026-07-07T02:57:29.933Z",
-      "updatedAt": "2026-08-31T03:49:10.390Z"
+      "updatedAt": "2026-09-04T03:07:33.887Z"
     },
     "agents-connect": {
       "source": "aws/agent-toolkit-for-aws",
@@ -303,9 +303,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/amazon-opensearch-service/SKILL.md",
-      "skillFolderHash": "7a39359938fc379e5e02e9574cfa570cb799e29c",
+      "skillFolderHash": "649758c661a01a0cc20f526b831b9279c6ced552",
       "installedAt": "2026-07-07T02:57:29.936Z",
-      "updatedAt": "2026-08-31T03:49:12.863Z"
+      "updatedAt": "2026-09-04T03:07:37.655Z"
     },
     "connecting-to-data-source": {
       "source": "aws/agent-toolkit-for-aws",
@@ -465,9 +465,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents-for-devsecops/skills/setup-devops-agent/SKILL.md",
-      "skillFolderHash": "4b3d53ccc19d5664f349a2f5c1e53aec35e26c90",
+      "skillFolderHash": "7e2b70b80949763f2259f93c2c16c940e0eb5773",
       "installedAt": "2026-07-07T02:57:29.943Z",
-      "updatedAt": "2026-07-07T02:57:29.943Z"
+      "updatedAt": "2026-09-04T03:07:40.971Z"
     },
     "setup-security-agent": {
       "source": "aws/agent-toolkit-for-aws",
