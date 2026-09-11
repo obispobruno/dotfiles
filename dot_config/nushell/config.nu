@@ -25,6 +25,8 @@ $env.EDITOR = 'nvim'
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir $"($nu.cache-dir)"
 
+$env.TG_PROVIDER_CACHE = "1"
+
 $env.PYTHON_FOR_REGEN = '/usr/bin/python'
 
 source-env ~/.config/nushell/.env.nu
