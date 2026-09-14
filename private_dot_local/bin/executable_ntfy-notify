@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Generic desktop handler for `ntfy subscribe --from-config`; usable by any topic.
+# ntfy exports: $title $message $priority $tags $topic
+# Icon/sound are chosen from the tag, NOT the priority: a sender can keep ntfy
+# priority high so phones raise a heads-up, while urgency here stays `normal`
+# because swaync's timeout-critical is 0 (critical never auto-dismisses).
+set -u
+case "${tags:-}" in
+  *question*)  icon=dialog-question;    sound=/usr/share/sounds/freedesktop/stereo/dialog-warning.oga ;;
+  *warning*)   icon=dialog-warning;     sound=/usr/share/sounds/freedesktop/stereo/dialog-warning.oga ;;
+  *)           icon=utilities-terminal; sound=/usr/share/sounds/freedesktop/stereo/complete.oga ;;
+esac
+notify-send -u normal -i "$icon" "${title:-ntfy}" "${message:-}"
+paplay "$sound" 2>/dev/null || true

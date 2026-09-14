@@ -1,0 +1,13 @@
+[Unit]
+Description=ntfy subscriber
+Documentation=https://docs.ntfy.sh/subscribe/cli/
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/linuxbrew/.linuxbrew/bin/ntfy subscribe --from-config
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

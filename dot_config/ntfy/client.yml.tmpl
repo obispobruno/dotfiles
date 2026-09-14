@@ -1,0 +1,6 @@
+default-host: https://ntfy.sh
+
+subscribe:
+  # Claude Code session notifications (Stop / Notification hooks)
+  - topic: {{ .ntfyTopic }}
+    command: {{ .chezmoi.homeDir }}/.local/bin/ntfy-notify

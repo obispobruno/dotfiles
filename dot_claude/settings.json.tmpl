@@ -7,7 +7,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send -u normal -i utilities-terminal \"Claude Code ($(basename \"$PWD\"))\" 'Task Completed'; paplay /usr/share/sounds/freedesktop/stereo/complete.oga 2>/dev/null || true"
+            "command": "curl -fsS --max-time 10 -H \"Title: Claude Code ($(hostname -s): $(basename \"$PWD\"))\" -H \"Priority: default\" -H \"Tags: white_check_mark\" -d 'Task Completed' https://ntfy.sh/{{ .ntfyTopic }} >/dev/null 2>&1 || true; rm -f \"${XDG_CACHE_HOME:-$HOME/.cache}/claude-ntfy/last-input\"",
+            "timeout": 15
           }
         ]
       }
@@ -18,7 +19,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send -u critical -i dialog-question \"Claude Code ($(basename \"$PWD\"))\" 'Input Required'; paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga 2>/dev/null || true"
+            "command": "\"$HOME/.claude/ntfy-input.sh\"",
+            "timeout": 15
           }
         ]
       }

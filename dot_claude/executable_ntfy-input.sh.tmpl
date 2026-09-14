@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Claude Code `Notification` hook -> ntfy.
+# Fires when Claude needs permission, and also on a plain idle timeout. The idle
+# case is pure noise (it repeats, and it follows a Stop you were already told
+# about), so it is filtered out; a cooldown backstops anything the filter misses.
+set -u
+COOLDOWN=600
+state="${XDG_CACHE_HOME:-$HOME/.cache}/claude-ntfy"
+mkdir -p "$state"
+stamp="$state/last-input"
+
+payload=$(cat)
+msg=$(printf '%s' "$payload" | python3 -c 'import sys,json
+try: print(json.load(sys.stdin).get("message",""))
+except Exception: print("")' 2>/dev/null)
+
+printf '%s\t%s\n' "$(date -Is)" "${msg:-<empty>}" >> "$state/notification.log"
+
+# 1. drop the idle nag
+case "${msg,,}" in
+  *"waiting for your input"*|*"idle"*) exit 0 ;;
+esac
+
+# 2. cooldown: at most one input notification per COOLDOWN seconds.
+#    The Stop hook clears the stamp, so a new turn always notifies promptly.
+now=$(date +%s)
+if [ -f "$stamp" ] && [ $(( now - $(cat "$stamp" 2>/dev/null || echo 0) )) -lt "$COOLDOWN" ]; then
+  exit 0
+fi
+printf '%s' "$now" > "$stamp"
+
+curl -fsS --max-time 10 \
+  -H "Title: Claude Code ($(hostname -s): $(basename "$PWD"))" \
+  -H "Priority: high" \
+  -H "Tags: question" \
+  -d "Input Required" \
+  "https://ntfy.sh/{{ .ntfyTopic }}" >/dev/null 2>&1 || true

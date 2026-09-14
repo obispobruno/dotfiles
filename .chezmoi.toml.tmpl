@@ -1,3 +1,7 @@
+{{- $ntfyTopic := promptStringOnce . "ntfyTopic" "ntfy topic for Claude Code notifications" -}}
 [git]
     autoCommit = true
     autoPush = true
+
+[data]
+    ntfyTopic = {{ $ntfyTopic | quote }}
