@@ -20,8 +20,13 @@ set-option -ag terminal-overrides ",xterm-256color:RGB"
 
 # Set prefix
 unbind C-b
+{{- if eq .chezmoi.hostname "openclaw" }}
+set -g prefix C-n
+bind C-n send-prefix
+{{- else }}
 set -g prefix M-n
 bind M-n send-prefix
+{{- end }}
 set -g status-style 'bg=#282828 fg=#ebdbb2'
 
 # Hide status bar
