@@ -33,6 +33,7 @@ packages:
       - gh
       - tmux
       - tmuxp
+      - herdr
       - vim
       - ncdu
       - rust
