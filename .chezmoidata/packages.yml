@@ -39,6 +39,7 @@ packages:
       - htop
       - wget
       - curl
+      - ntfy
       - gcc
       - neovim
       - skills
