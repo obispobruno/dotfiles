@@ -31,7 +31,7 @@ The most common creation hook is `post-start` — it runs background tasks (dev 
 | `pre-remove` | Cleanup before worktree deletion: saving test artifacts, backing up state. Runs in the worktree being removed |
 | `post-remove` | Stopping dev servers, removing containers, notifying external systems. Template variables reference the removed worktree |
 
-During `wt merge`, hooks run in this order: pre-commit → post-commit → pre-merge → pre-remove → post-remove + post-merge. See [`wt merge`](https://worktrunk.dev/merge/#pipeline) for the complete pipeline.
+During `wt merge`, the blocking hooks run in this order: pre-commit → pre-merge → pre-remove. The `post-*` hooks all start together once the merge finishes, each in the worktree it is anchored on — post-merge, post-switch and post-remove in the destination, post-commit in the worktree the commit was made in. A merge that removes that worktree reports `post-commit` as skipped instead of running it — the worktree is gone by the time the hook would start. Use `pre-remove` for work that must finish there, or `--no-remove` to keep the worktree. See [`wt merge`](https://worktrunk.dev/merge/#pipeline) for the complete pipeline.
 
 # Security
 
@@ -93,7 +93,7 @@ server = "npm run dev"
 
 Here `install` runs first, then `build` and `server` run together.
 
-Templates are syntax-checked before the pipeline starts and rendered as each step runs, so a step can store [per-branch vars](https://worktrunk.dev/config/#wt-config-state-vars) that later steps read via `{{ vars.<key> }}`. Because an earlier step can still change those values, a preview stands the reference in for its value instead of resolving it: `wt hook <type> --dry-run` and `wt hook show --expanded` render `{{ vars.thing | default('none') }}` as `{{ vars.thing }}` — the reference is defined, so the `default` never fires — while every other variable expands. A filter that transforms its input still runs, against the placeholder text: `{{ vars.thing | upper }}` previews as `{{ VARS.THING }}`.
+Templates are syntax-checked before the pipeline starts and rendered as each step runs, so a step can store [per-branch vars](https://worktrunk.dev/config/#wt-config-state-vars) that later steps read via `{{ vars.<key> }}`. Because an earlier step can still change those values, a preview stands the reference in for its value instead of resolving it: `wt hook <type> --dry-run` and `wt hook show --expanded` render `{{ vars.thing | default('none') }}` as `{{ vars.thing }}` — the reference is defined, so the `default` never fires — while every other variable expands. A filter that transforms its input still runs, against the placeholder text, and its output is shell-escaped like any other value: `{{ vars.thing | upper }}` previews as `'{{ VARS.THING }}'`.
 
 Most hooks don't need `[[hook]]` blocks. Reach for them when there's a dependency chain — typically setup that must complete before later steps, like installing dependencies before running a build and dev server concurrently.
 
@@ -104,9 +104,11 @@ Most hooks don't need `[[hook]]` blocks. Reach for them when there's a dependenc
 | Location | `.config/wt.toml` | `~/.config/worktrunk/config.toml` |
 | Scope | Single repository | All repositories (or [per-project](https://worktrunk.dev/config/#user-project-specific-settings)) |
 | Approval | Required | Not required |
-| Execution order | After user hooks | First |
+| Execution order | `pre-*`: after user hooks. `post-*`: alongside them | `pre-*`: first. `post-*`: alongside project hooks |
 
 To run a specific hook when user and project both define the same name, use `user:name` or `project:name` syntax.
+
+A `pre-*` hook blocks the command, so both sources run as one pipeline: user commands first, and a failure there skips the project's. A `post-*` hook runs in the background, where each source is its own detached pipeline — they start together, neither waits for the other, and a failure in one leaves the other running. Order within a source is still yours to set with `[[hook]]` blocks; across `post-*` sources there is none. Two `post-*` hooks that write the same file, or run `git` in the same worktree, will race, so put commands that depend on each other in one source.
 
 ## Template variables
 
@@ -114,7 +116,7 @@ Hooks can use template variables that expand at runtime:
 
 | Kind | Variable | Description |
 |------|----------|-------------|
-| active    | `{{ branch }}`                | Branch name |
+| active    | `{{ branch }}`                | Branch name; unset in a detached worktree |
 |           | `{{ worktree_path }}`         | Worktree path |
 |           | `{{ worktree_name }}`         | Worktree directory name |
 |           | `{{ commit }}`                | Branch HEAD SHA |
@@ -157,7 +159,7 @@ All hooks share the same perspective — `{{ branch | hash_port }}` produces the
 
 - `pre-switch`: hook runs in the source worktree; `worktree_path` is the destination when that worktree already exists — a switch that creates one has no destination directory yet, so `worktree_path` stays on the source (use `pre-start` to work in the new worktree)
 - `post-remove`: the active worktree is gone, so the hook runs in the primary worktree
-- `post-merge` with removal: the active worktree is gone, so the hook runs in the target worktree
+- `post-merge`: the hook runs in the target branch's worktree (the primary worktree if the target has none), including under `--no-remove`, where the merged worktree `worktree_path` names is still on disk
 
 Undefined variables error — use conditionals or defaults for optional behavior:
 
@@ -166,6 +168,8 @@ Undefined variables error — use conditionals or defaults for optional behavior
 # Rebase onto upstream if tracking a remote branch (e.g., wt switch --create feature --base origin/feature)
 sync = "{% if upstream %}git fetch && git rebase {{ upstream }}{% endif %}"
 ```
+
+A detached worktree is on no branch, so `branch` is undefined there — as are the `base` and `target` names derived from it, whether by a manual `wt hook` or by an operation whose source or destination worktree is detached (`base` in a `pre-switch` fired from one, `target` in a removal that lands in one) — and the same `{% if branch %}` guard applies. This matches `wt list --format=json`, which reports `branch: null` for the same worktree.
 
 Run any hook-firing command with `-v` to see the resolved variables for the actual invocation — each hook prints a `template variables:` block showing every in-scope variable and its value (`(unset)` for conditional vars that didn't populate, like `target_worktree_path` during `wt switch -`). Aliases do the same under `-v`: `wt -v <alias>` prints the alias's in-scope variables before the pipeline runs.
 
@@ -241,7 +245,7 @@ setup = "cp {{ worktree_path_of_branch('main') }}/config.local {{ worktree_path 
 
 ## JSON context
 
-Hooks receive all template variables as JSON on stdin, enabling complex logic that templates can't express:
+Hooks receive all template variables as JSON on stdin, enabling complex logic that templates can't express. Variables that are unset in a template are absent from the JSON too, so read the optional ones with a default — `branch` has none in a detached worktree:
 
 ```toml
 [pre-start]
@@ -251,7 +255,7 @@ setup = "python3 scripts/pre-start-setup.py"
 ```python
 import json, sys, subprocess
 ctx = json.load(sys.stdin)
-if ctx['branch'].startswith('feature/') and 'backend' in ctx['repo']:
+if ctx.get('branch', '').startswith('feature/') and 'backend' in ctx['repo']:
     subprocess.run(['make', 'seed-db'])
 ```
 

@@ -135,6 +135,13 @@ Full CLI coverage: 189 tracked in-scope endpoints across todos, cards, messages,
      or `--edit` where offered.
    - Trailing newlines are trimmed from stdin content, so `printf 'x\n' | ... -`
      posts `x` (this keeps `boost create -` inside its 16-rune limit).
+  - Universal `-` support (and the stray-`-` guard) shipped in **v0.10.0**. Older
+    CLIs do not support it consistently: `comments create/update` read stdin,
+    while unsupported inputs may treat `-` as literal content or fail. For
+    example, `messages create "Title" -` posts a body of `-`, which Markdown
+    renders as an empty bullet list. When the CLI version is unknown, check
+    `basecamp --version` first, or pass the content portably as
+    `"$(cat file.md)"` and verify the posted `content` when it matters.
 6. **Project scope is mandatory for most commands** — via `--in <project>` or `.basecamp/config.json`. Cross-project exceptions: `basecamp reports assigned` for assigned work, `basecamp assignments` for structured assignment views, `basecamp reports overdue` for overdue todos, `basecamp reports schedule` for upcoming schedule across all projects, `basecamp recordings <type>` for browsing by type, `basecamp notifications` for notifications, `basecamp gauges list` for account-wide gauges, and the seven list commands covered in item 7.
 7. **Account-wide listing.** `basecamp todos list --all-projects --json` lists across every project; the same flag does the same on `cards list`, `messages list`, `comments list`, `files list`, `forwards list`, and `checkins answers`. It overrides a configured project, and with no project in scope those commands already list account-wide rather than prompting. Flags that name something inside a single project are rejected there rather than silently ignored.
    Account-wide listings return **the first 100 items by default** — account-wide "all" is the whole account, not one project's worth. Use `--limit N` to raise the cap (it walks pages until N are collected) or `--all` for everything. `--page N` fetches exactly one page, but only on the paginated listings.
@@ -1233,8 +1240,8 @@ basecamp people update me --bio "..." --title "..." --json   # Edit your own pro
 basecamp people out-of-office me --json            # Your out-of-office status
 basecamp people out-of-office me --start 2026-09-14 --end 2026-09-18 --json  # Set out-of-office
 basecamp people out-of-office me --clear --json    # Clear out-of-office
-basecamp people add <id> --project <project>       # Add to project
-basecamp people remove <id> --project <project>    # Remove from project
+basecamp people add <id> --project <project>       # Add a team member to a project
+basecamp people remove <id> --project <project>    # Remove a team member from a project
 ```
 
 `people update me` edits your own profile (bio, title, name, email, location,
@@ -1242,6 +1249,32 @@ time zone); pass a flag with an empty value to clear that field. `people
 out-of-office me` shows your away status, sets it with `--start`/`--end`
 (natural language or YYYY-MM-DD, end not before start), or clears it with
 `--clear`.
+
+`people list` reports each person's `client` flag. `people add`/`remove` manage
+team members only — a client's id passed to them is dropped server-side, never
+cross-graded — so clients have their own verbs:
+
+```bash
+basecamp people clients enable --in <project>                 # Turn client access on (do this first)
+basecamp people clients list --in <project>                   # Clients on the project
+basecamp people clients add <id|email|name> --in <project>    # Grant an existing client user
+basecamp people clients invite annie@example.com --in <project>                 # Invite a new client by email
+basecamp people clients invite "Annie Bryan <annie@example.com>" --in <project> # ... with a name
+basecamp people clients invite - --in <project>               # One invitee per line on stdin
+basecamp people clients remove <id|email|name> --in <project> # Revoke a client's access
+basecamp people clients disable --in <project>                # Turn client access off (after removing every client)
+```
+
+Enabling clients is a deliberate, separate step: it applies the project's
+default client visibility (timeline and most tools shared; card table,
+Campfire, and Doors private), so `add`/`invite` never enable implicitly and
+answer `forbidden` with an `enable` hint while clients are off. `invite` takes
+`--company` (applies to every invitee) and `--title` (one invitee only), and is
+all-or-nothing: a token that is not an address is refused locally as `usage`
+(2) naming each one, an address the server rejects exits `validation` (9)
+naming each rejected row, and a seat shortfall exits `limit_exceeded` (10) — in
+every case nobody was invited. `add`/`remove` report the ids the server did not grant or revoke
+(already on the project, or not a client user) in the notice.
 
 ### Search
 
@@ -1352,6 +1385,9 @@ basecamp auth login                               # Re-authenticate
 basecamp auth login --scope full                  # Full access (the default; ignored by Launchpad)
 basecamp auth login --scope read                  # Read-only access (ignored by Launchpad)
 basecamp auth login --device-code                 # Headless authentication with manual browser instructions
+basecamp auth login --with-token -P bot --account <id>  # Import a personal access token from stdin (pipe it in)
+basecamp auth login --expect-identity <id>        # Discard the login unless it authenticated as this identity
+basecamp profile create <name> --account <id> --expect-identity <id>  # Same assertion for a new profile
 ```
 
 **Network errors / localhost URLs:**
