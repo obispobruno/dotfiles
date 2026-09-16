@@ -25,5 +25,6 @@ alias wgd = sudo wg-quick down wg0
 alias wgdd = sudo wg-quick down wg1
 alias hollywood = docker run -it --rm bcbcarl/hollywood
 alias c = claude --dangerously-skip-permissions
+alias h = herdr --remote openclaw --session openclaw --remote-keybindings server
 alias lt = eza --tree --level 2 --icons --git
 alias tree = eza --tree
