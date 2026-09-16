@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# herdr-dev-tab: bound to prefix+d in ~/.config/herdr/config.toml
+# ([[keys.command]] type = "shell"). Opens a "dev" tab in the active herdr
+# workspace for the s2k-2.0 worktree that contains the focused pane:
+# left pane runs the API (uv run poe dev), right pane runs Vite (pnpm dev).
+# Both read their ports from that worktree's .env.local, so the same key works
+# in the primary worktree on the default ports.
+set -euo pipefail
+trap 'notify "failed: $BASH_COMMAND (exit $?)"; exit 1' ERR
+
+HERDR="${HERDR_BIN_PATH:-herdr}"
+DOMAIN_SUFFIX="brunolcl.duckdns.org"
+ROUTES="$HOME/.local/bin/wt-caddy-route"
+
+notify() { "$HERDR" notification show "dev tab" --body "$1" >/dev/null 2>&1 || true; }
+json_get() { python3 -c 'import json,sys; d=json.load(sys.stdin)
+for k in sys.argv[1:]: d=d[k]
+print(d)' "$@"; }
+
+cwd="${HERDR_ACTIVE_PANE_CWD:-$PWD}"
+if ! root="$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null)"; then
+  notify "not inside a git worktree: $cwd"; exit 1
+fi
+if [ ! -d "$root/s2k-dashboards/backend" ] || [ ! -d "$root/s2k-dashboards/front" ]; then
+  notify "not an s2k-2.0 worktree: $root"; exit 1
+fi
+
+branch="$(git -C "$root" rev-parse --abbrev-ref HEAD)"
+name="$("$ROUTES" name "$branch")"   # same DNS label the Caddy route hook uses
+env_file="$root/s2k-dashboards/front/.env.local"
+front_port=""
+if [ -f "$env_file" ]; then
+  front_port="$(sed -n 's/^DEV_PORT=//p' "$env_file" | tail -1)"
+fi
+url="http://localhost:${front_port:-5173}"
+if [ -x "$ROUTES" ] && "$ROUTES" ls 2>/dev/null | grep -q "^$name "; then
+  url="https://$name.$DOMAIN_SUFFIX"
+fi
+
+ws_args=()
+if [ -n "${HERDR_ACTIVE_WORKSPACE_ID:-}" ]; then
+  ws_args=(--workspace "$HERDR_ACTIVE_WORKSPACE_ID")
+fi
+
+tab_json="$("$HERDR" tab create "${ws_args[@]}" --cwd "$root/s2k-dashboards/backend" --label dev --focus)"
+api_pane="$(printf '%s' "$tab_json" | json_get result root_pane pane_id)"
+split_json="$("$HERDR" pane split "$api_pane" --direction right --ratio 0.5 \
+  --cwd "$root/s2k-dashboards/front" --no-focus)"
+front_pane="$(printf '%s' "$split_json" | json_get result pane pane_id)"
+
+"$HERDR" pane rename "$api_pane" api >/dev/null
+"$HERDR" pane rename "$front_pane" front >/dev/null
+"$HERDR" pane run "$api_pane" "uv run poe dev" >/dev/null
+"$HERDR" pane run "$front_pane" "echo $url" >/dev/null
+"$HERDR" pane run "$front_pane" "pnpm dev" >/dev/null

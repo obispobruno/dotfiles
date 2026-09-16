@@ -2,3 +2,15 @@ onboarding = false
 
 [terminal]
 default_shell = "/home/linuxbrew/.linuxbrew/bin/nu"
+
+[theme]
+name = "one-dark"
+auto_switch = false
+
+# Open a "dev" tab (API pane + Vite pane) for the s2k worktree of the focused
+# pane. Script: ~/.local/bin/herdr-dev-tab.
+[[keys.command]]
+key = "prefix+d"
+type = "shell"
+command = "/home/openclaw/.local/bin/herdr-dev-tab"
+description = "dev tab: API + Vite for this worktree"

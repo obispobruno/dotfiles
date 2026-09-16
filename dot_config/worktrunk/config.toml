@@ -11,3 +11,24 @@ Diff:
 [post-switch]
 rename = "[ -n \"$TMUX\" ] && tmux rename-window {{ branch | sanitize }}"
 setpath = "[ -n \"$TMUX\" ] && tmux set-option -w @worktree_path '{{ worktree_path }}'"
+
+# --- s2k-2.0 only: LAN-reachable named URL per worktree via the local Caddy
+# container (~/.local/bin/wt-caddy-route). Guarded because user hooks run for
+# every repository. The project's own .config/wt.toml writes .env.local first
+# (pre-start blocks; post-start runs after it), so the append lands in the
+# generated file.
+[post-start]
+caddy-route = """{% if repo == 's2k-2.0' %}
+name=$(~/.local/bin/wt-caddy-route name {{ branch }})
+~/.local/bin/wt-caddy-route add "$name" {{ branch | hash_port }}
+env={{ worktree_path }}/s2k-dashboards/front/.env.local
+line="DEV_ALLOWED_HOST=$name.brunolcl.duckdns.org"
+grep -qxF "$line" "$env" 2>/dev/null || echo "$line" >> "$env"
+{% endif %}"""
+
+[post-remove]
+caddy-route = "{% if repo == 's2k-2.0' %}~/.local/bin/wt-caddy-route rm \"$(~/.local/bin/wt-caddy-route name {{ branch }})\"{% endif %}"
+
+[aliases]
+# `url` is owned by the project config (localhost URL); this one is the LAN name.
+open-url = "echo https://$(~/.local/bin/wt-caddy-route name {{ branch }}).brunolcl.duckdns.org"

@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+# wt-caddy-route: per-worktree reverse-proxy routes in the local Caddy container.
+# Called by the post-start / post-remove hooks in ~/.config/worktrunk/config.toml.
+#
+#   wt-caddy-route add <name> <port>   upsert https://<name>.$DOMAIN_SUFFIX -> localhost:<port>
+#   wt-caddy-route rm <name>           delete the route, silent if absent
+#   wt-caddy-route ls                  list routes as "<name> -> localhost:<port>"
+#   wt-caddy-route name <branch>       DNS label for a branch: lowercase, [a-z0-9-],
+#                                      <=63 chars (long names: 58 chars + "-" + 4-char hash)
+set -euo pipefail
+
+DOMAIN_SUFFIX="brunolcl.duckdns.org"   # one-line switch to e.g. "192.168.1.208.sslip.io"
+ADMIN="http://localhost:2019"
+SERVER="wt"
+CONTAINER="caddy"
+SERVER_JSON='{"listen":[":443"],"automatic_https":{"disable":true},"tls_connection_policies":[{}],"routes":[]}'
+
+usage() { sed -n '4,9p' "$0" >&2; exit 2; }
+
+# Caddy's admin API returns HTTP 200 with body "null" for a path whose leaf
+# key doesn't exist, so `curl -sf` alone can't tell "missing" from "present".
+json_exists() { local b; b=$(curl -sf "$1" 2>/dev/null) && [ -n "$b" ] && [ "$b" != "null" ]; }
+
+ensure_caddy() {
+  if ! docker inspect -f '{{.State.Running}}' "$CONTAINER" 2>/dev/null | grep -qx true; then
+    docker start "$CONTAINER" >/dev/null
+  fi
+  local i
+  for i in $(seq 1 30); do
+    curl -sf "$ADMIN/config/" >/dev/null 2>&1 && break
+    sleep 1
+  done
+  if json_exists "$ADMIN/config/apps/http/servers/$SERVER"; then
+    return 0
+  fi
+  if json_exists "$ADMIN/config/apps/http/servers"; then
+    curl -sf -X PUT "$ADMIN/config/apps/http/servers/$SERVER" \
+      -H 'Content-Type: application/json' -d "$SERVER_JSON" >/dev/null
+  else
+    curl -sf "$ADMIN/load" -H 'Content-Type: application/json' \
+      -d "{\"apps\":{\"http\":{\"servers\":{\"$SERVER\":$SERVER_JSON}}}}" >/dev/null
+  fi
+}
+
+# One DNS label per branch. The wildcard certificate covers exactly one label,
+# so dots must go too, and labels are capped at 63 octets (RFC 1035).
+cmd_name() {
+  local branch="$1" label hash
+  label=$(printf '%s' "$branch" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
+  if [ "${#label}" -gt 63 ]; then
+    hash=$(printf '%s' "$branch" | md5sum | cut -c1-4)
+    label="${label:0:58}"; label="${label%%-}-$hash"
+  fi
+  [ -n "$label" ] || { echo "branch yields an empty label: $branch" >&2; exit 2; }
+  printf '%s\n' "$label"
+}
+
+valid_name() { [[ "$1" =~ ^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$ ]]; }
+
+cmd_add() {
+  local name="$1" port="$2"
+  [[ "$port" =~ ^[0-9]+$ ]] || { echo "port must be numeric: $port" >&2; exit 2; }
+  valid_name "$name" || { echo "invalid DNS label '$name'; use: wt-caddy-route name <branch>" >&2; exit 2; }
+  ensure_caddy
+  curl -sf -X DELETE "$ADMIN/id/wt:$name" >/dev/null 2>&1 || true
+  curl -sf -X POST "$ADMIN/config/apps/http/servers/$SERVER/routes" \
+    -H 'Content-Type: application/json' -d "{
+      \"@id\": \"wt:$name\",
+      \"match\": [{\"host\": [\"$name.$DOMAIN_SUFFIX\"]}],
+      \"handle\": [{\"handler\": \"reverse_proxy\",
+                    \"upstreams\": [{\"dial\": \"localhost:$port\"}]}],
+      \"terminal\": true
+    }" >/dev/null
+  echo "https://$name.$DOMAIN_SUFFIX -> localhost:$port"
+}
+
+cmd_rm() {
+  local name="$1"
+  curl -sf -X DELETE "$ADMIN/id/wt:$name" >/dev/null 2>&1 || true
+}
+
+cmd_ls() {
+  local body
+  body=$(curl -sf "$ADMIN/config/apps/http/servers/$SERVER/routes" 2>/dev/null) || true
+  if [ -z "${body:-}" ] || [ "$body" = "null" ]; then
+    return 0
+  fi
+  echo "$body" | jq -r '.[] | select((."@id" // "") | startswith("wt:"))
+             | "\(."@id" | ltrimstr("wt:")) -> \(.handle[0].upstreams[0].dial)"'
+}
+
+case "${1:-}" in
+  add) [ $# -eq 3 ] || usage; cmd_add "$2" "$3" ;;
+  rm)  [ $# -eq 2 ] || usage; cmd_rm "$2" ;;
+  ls)  [ $# -eq 1 ] || usage; cmd_ls ;;
+  name) [ $# -eq 2 ] || usage; cmd_name "$2" ;;
+  *) usage ;;
+esac
