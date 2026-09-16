@@ -9,7 +9,7 @@
 #                                      <=63 chars (long names: 58 chars + "-" + 4-char hash)
 set -euo pipefail
 
-DOMAIN_SUFFIX="brunolcl.duckdns.org"   # one-line switch to e.g. "192.168.1.208.sslip.io"
+DOMAIN_SUFFIX="brunolcl.duckdns.org"   # one-line switch to another suffix, e.g. an sslip.io name
 ADMIN="http://localhost:2019"
 SERVER="wt"
 CONTAINER="caddy"
