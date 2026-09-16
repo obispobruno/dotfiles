@@ -50,6 +50,14 @@ front_pane="$(printf '%s' "$split_json" | json_get result pane pane_id)"
 
 "$HERDR" pane rename "$api_pane" api >/dev/null
 "$HERDR" pane rename "$front_pane" front >/dev/null
+
+# The shell prints startup output (fnm "Using Node ...", prompt init) for a
+# moment after the pane opens; text typed before that swallows the command.
+# Wait for the first prompt, then send each pane a single command line.
+wait_prompt() {
+  "$HERDR" pane wait-output "$1" --regex "${DEV_TAB_PROMPT_REGEX:-❯}" --timeout 15000 >/dev/null 2>&1 || sleep 2
+}
+wait_prompt "$api_pane"
 "$HERDR" pane run "$api_pane" "uv run poe dev" >/dev/null
-"$HERDR" pane run "$front_pane" "echo $url" >/dev/null
-"$HERDR" pane run "$front_pane" "pnpm dev" >/dev/null
+wait_prompt "$front_pane"
+"$HERDR" pane run "$front_pane" "echo $url; pnpm dev" >/dev/null
