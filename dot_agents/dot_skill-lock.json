@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "53b074d9b92a1eb3c0f5b0c65db96f56f8404324",
+      "skillFolderHash": "39a2cf64395363b9e5f96e1a01405f015eabb3f3",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-09-15T16:40:42.379Z"
+      "updatedAt": "2026-09-18T02:48:15.136Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -240,9 +240,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-build/SKILL.md",
-      "skillFolderHash": "2fd9d94465a3058e943b34f830c1fa5a51ea143b",
+      "skillFolderHash": "14ce50426a0b0de5410a4abb5d0d8855c4bf1210",
       "installedAt": "2026-07-07T02:57:29.933Z",
-      "updatedAt": "2026-09-15T16:40:58.260Z"
+      "updatedAt": "2026-09-18T02:48:17.409Z"
     },
     "agents-connect": {
       "source": "aws/agent-toolkit-for-aws",
