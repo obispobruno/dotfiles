@@ -7,6 +7,10 @@ default_shell = "/home/linuxbrew/.linuxbrew/bin/nu"
 name = "one-dark"
 auto_switch = false
 
+[keys]
+# Open an existing worktree of the current repo in its own workspace.
+open_worktree = "prefix+shift+e"
+
 # Open a "dev" tab (API pane + Vite pane) for the s2k worktree of the focused
 # pane. Script: ~/.local/bin/herdr-dev-tab.
 [[keys.command]]
