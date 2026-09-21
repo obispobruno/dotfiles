@@ -73,7 +73,7 @@ packages:
       - sdkman/tap/sdkman-cli
       - hashicorp/tap/terraform
       - shopify/shopify/shopify-cli
-      - anomalyco/tap/opencode
+      - anomalyco/tap/opencode-v2
       - terragrunt
       - gnu-units
       - flyctl
