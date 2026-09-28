@@ -1,22 +1,13 @@
-{{ if eq .chezmoi.os "linux" -}}
 [credential "https://github.com"]
 	helper = 
 	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
-{{ end -}}
-{{ if eq .chezmoi.os "darwin" -}}
-[credential "https://github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
-{{ end -}}
 [user]
 	email = obispobruno@tuta.com
 	name = obispobruno
+	signingkey = /home/openclaw/.ssh/id_ed25519_signing.pub
 [init]
 	defaultBranch = main
 [push]
@@ -29,3 +20,9 @@
 	clean = git-lfs clean -- %f
 [pull]
 	rebase = true
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
