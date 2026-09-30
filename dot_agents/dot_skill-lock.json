@@ -503,7 +503,7 @@
       "skillPath": "skills/herdr/SKILL.md",
       "skillFolderHash": "67042ed7910d4177a9000e0679e78b0346060927",
       "installedAt": "2026-09-30T21:22:53.526Z",
-      "updatedAt": "2026-09-30T21:22:53.526Z"
+      "updatedAt": "2026-09-30T21:23:56.219Z"
     }
   },
   "dismissed": {
@@ -521,6 +521,7 @@
     "kimi-code-cli",
     "opencode",
     "warp",
-    "zed"
+    "zed",
+    "claude-code"
   ]
 }
