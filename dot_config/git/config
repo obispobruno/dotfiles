@@ -7,7 +7,7 @@
 [user]
 	email = obispobruno@tuta.com
 	name = obispobruno
-	signingkey = /home/openclaw/.ssh/id_ed25519_signing.pub
+	signingkey = ~/.ssh/id_ed25519_signing.pub
 [init]
 	defaultBranch = main
 [push]
