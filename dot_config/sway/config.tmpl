@@ -21,8 +21,10 @@ set $notes "flatpak run net.cozic.joplin_desktop"
 set $nextcloud "flatpak run com.nextcloud.desktopclient.nextcloud"
 set $opentabletdriver "flatpak run net.opentabletdriver.OpenTabletDriver"
 set $browser "flatpak run app.zen_browser.zen"
+set $browser "flatpak run com.slack.Slack"
 set $file_explorer kitty --detach --hold sh -c "tmux new-session -dAs Ex; tmux send-keys -t Ex yy Enter; tmux attach -t Ex"
 set $discord "flatpak run com.discordapp.Discord"
+set $slack "flatpak run com.slack.Slack"
 set $steam "flatpak run com.valvesoftware.Steam"
 set $freetube "flatpak run io.freetubeapp.FreeTube"
 set $jellyfin "flatpak run org.jellyfin.JellyfinDesktop"
@@ -50,9 +52,6 @@ exec swaync
 exec $discord
 exec $browser
 exec wlsunset -T 6500 -t 3600 -S 07:00 -s 20:00
-{{- if eq .chezmoi.hostname "desktop-sericea" }}
-exec flatpak run io.github.berarma.Oversteer --profile 360
-{{- end }}
 
 {{ if (or (eq .chezmoi.hostname "laptop-sericea") (eq .chezmoi.hostname "work-laptop")) }}
 # Sleep and lock
