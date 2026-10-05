@@ -22,7 +22,7 @@ set $notes "flatpak run net.cozic.joplin_desktop"
 set $nextcloud "flatpak run com.nextcloud.desktopclient.nextcloud"
 set $opentabletdriver "flatpak run net.opentabletdriver.OpenTabletDriver"
 set $browser "flatpak run app.zen_browser.zen"
-set $slack "flatpak run com.slack.Slack"
+set $slack flatpak run com.slack.Slack
 set $file_explorer kitty --detach --hold sh -c "tmux new-session -dAs Ex; tmux send-keys -t Ex yy Enter; tmux attach -t Ex"
 set $discord "flatpak run com.discordapp.Discord"
 set $steam "flatpak run com.valvesoftware.Steam"
