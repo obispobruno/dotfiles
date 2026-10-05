@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "39a2cf64395363b9e5f96e1a01405f015eabb3f3",
+      "skillFolderHash": "c3e2ebc6aeca4b5e3c8bc6b4c701afe5e02645eb",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-09-18T02:48:15.136Z"
+      "updatedAt": "2026-10-05T17:53:50.148Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -96,18 +96,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/fastapi/fastapi.git",
       "skillPath": "fastapi/.agents/skills/fastapi/SKILL.md",
-      "skillFolderHash": "a3a558959c169f0766fba515c08bcee1870024ed",
+      "skillFolderHash": "a03510686d4a1f6ec46b78c57e3e3d89093218bc",
       "installedAt": "2026-06-29T17:26:57.306Z",
-      "updatedAt": "2026-06-29T17:26:57.306Z"
+      "updatedAt": "2026-10-05T17:53:53.786Z"
     },
     "amazon-bedrock": {
       "source": "aws/agent-toolkit-for-aws",
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/amazon-bedrock/SKILL.md",
-      "skillFolderHash": "4d4d4de15a1d8452a96650836ab04664879d0955",
+      "skillFolderHash": "7bbe5f85169cc357b81030c0f98c807cb0e0c427",
       "installedAt": "2026-07-06T20:01:35.880Z",
-      "updatedAt": "2026-08-07T01:11:51.106Z"
+      "updatedAt": "2026-10-05T17:53:57.264Z"
     },
     "aws-billing-and-cost-management": {
       "source": "aws/agent-toolkit-for-aws",
@@ -141,18 +141,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-cloudformation/SKILL.md",
-      "skillFolderHash": "dce17e3a01ee4fa3f2e35909941d84eaac3e9053",
+      "skillFolderHash": "794fe9db246c60cab7724b05950d61d1ac1745e0",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-08-31T03:48:57.103Z"
+      "updatedAt": "2026-10-05T17:54:00.166Z"
     },
     "aws-containers": {
       "source": "aws/agent-toolkit-for-aws",
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-containers/SKILL.md",
-      "skillFolderHash": "1057356e2d11b14ed2f423c79ab006ee511fe380",
+      "skillFolderHash": "4c61417283a31ceeea786c5eceb49f26b34d850f",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-09-15T16:40:51.034Z"
+      "updatedAt": "2026-10-05T17:54:03.399Z"
     },
     "aws-iam": {
       "source": "aws/agent-toolkit-for-aws",
@@ -177,9 +177,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-observability/SKILL.md",
-      "skillFolderHash": "6c48488cb26ae4835e3705c4eae8cf826ac81f65",
+      "skillFolderHash": "911b24cc6582fff41dd7f98131a7bba3bdb3c79c",
       "installedAt": "2026-07-06T20:01:35.887Z",
-      "updatedAt": "2026-08-07T01:12:07.241Z"
+      "updatedAt": "2026-10-05T17:54:06.399Z"
     },
     "aws-sdk-js-v3-usage": {
       "source": "aws/agent-toolkit-for-aws",
@@ -213,9 +213,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-serverless/SKILL.md",
-      "skillFolderHash": "b78019d98cbc202a46677576e784e489624bb917",
+      "skillFolderHash": "abc141d51d34c96ce918e9f9ee80d998a572278a",
       "installedAt": "2026-07-06T20:01:35.889Z",
-      "updatedAt": "2026-08-31T03:49:07.781Z"
+      "updatedAt": "2026-10-05T17:54:10.731Z"
     },
     "signing-in-to-aws": {
       "source": "aws/agent-toolkit-for-aws",
@@ -240,9 +240,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-agents/skills/agents-build/SKILL.md",
-      "skillFolderHash": "14ce50426a0b0de5410a4abb5d0d8855c4bf1210",
+      "skillFolderHash": "aaf72dbbcafff53ff6f0612051acc5ced89e0684",
       "installedAt": "2026-07-07T02:57:29.933Z",
-      "updatedAt": "2026-09-18T02:48:17.409Z"
+      "updatedAt": "2026-10-05T17:54:13.474Z"
     },
     "agents-connect": {
       "source": "aws/agent-toolkit-for-aws",
@@ -492,9 +492,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/jgraph/drawio-mcp.git",
       "skillPath": "plugins/claude-code/skills/drawio/SKILL.md",
-      "skillFolderHash": "f05186e51e58bc9a868c6b2c5114241f7fbc928a",
+      "skillFolderHash": "6a376d2c8d641b96a210841aac961bb33853a545",
       "installedAt": "2026-07-07T02:57:53.841Z",
-      "updatedAt": "2026-07-09T13:30:23.281Z"
+      "updatedAt": "2026-10-05T17:54:15.877Z"
     },
     "herdr": {
       "source": "herdrdev/herdr",
