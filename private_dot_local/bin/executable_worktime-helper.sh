@@ -4,12 +4,12 @@
 #
 # Configurable via env vars:
 #   WORKTIME_DAYS   days of week, 1=Mon .. 7=Sun   (default: "1 2 3 4 5")
-#   WORKTIME_START  start hour, inclusive, 0-23     (default: 0)
-#   WORKTIME_END    end hour, exclusive, 1-24       (default: 24)
+#   WORKTIME_START  start hour, inclusive, 0-23     (default: 8)
+#   WORKTIME_END    end hour, exclusive, 1-24       (default: 17)
 
 days=${WORKTIME_DAYS:-1 2 3 4 5}
-start=${WORKTIME_START:-0}
-end=${WORKTIME_END:-24}
+start=${WORKTIME_START:-8}
+end=${WORKTIME_END:-17}
 
 day=$(date +%u)
 hour=$((10#$(date +%H)))
