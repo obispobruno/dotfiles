@@ -16,6 +16,7 @@ set $clipboard_screenshot "grim - | wl-copy"
 set $screenclip ~/.local/bin/screenclip.sh
 set $savescreenclip ~/.local/bin/save_screenclip.sh
 set $leave ~/.local/bin/leave.sh
+set $is-worktime ~/.local/bin/worktime-helper.sh
 set $music "flatpak run org.jeffvli.feishin"
 set $notes "flatpak run net.cozic.joplin_desktop"
 set $nextcloud "flatpak run com.nextcloud.desktopclient.nextcloud"
@@ -50,6 +51,7 @@ exec waybar
 exec $nextcloud
 exec swaync
 exec $discord
+exec $is-worktime && $slack
 exec $browser
 exec wlsunset -T 6500 -t 3600 -S 07:00 -s 20:00
 
