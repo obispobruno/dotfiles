@@ -24,9 +24,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/shadcn/ui.git",
       "skillPath": "skills/shadcn/SKILL.md",
-      "skillFolderHash": "b5791523e07794a4deb201e78eab3f3adbd022c0",
+      "skillFolderHash": "900e3dff4bc1b341db90a147bee6dbed4c2add3c",
       "installedAt": "2026-03-14T01:57:57.647Z",
-      "updatedAt": "2026-09-15T16:40:39.529Z"
+      "updatedAt": "2026-10-20T12:56:35.484Z"
     },
     "before-and-after": {
       "source": "vercel-labs/before-and-after",
@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "c3e2ebc6aeca4b5e3c8bc6b4c701afe5e02645eb",
+      "skillFolderHash": "b0f31458553052ccc028b973179c79e2564fd830",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-10-05T17:53:50.148Z"
+      "updatedAt": "2026-10-20T12:56:38.514Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -87,18 +87,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/basecamp/skills.git",
       "skillPath": "skills/basecamp/SKILL.md",
-      "skillFolderHash": "e1e8113851935e9305f5406c19e3ff60735aa475",
+      "skillFolderHash": "03469f06b4f513d25ddcc840d74814282d22365f",
       "installedAt": "2026-06-20T17:21:27.388Z",
-      "updatedAt": "2026-09-15T16:40:46.167Z"
+      "updatedAt": "2026-10-20T12:56:40.837Z"
     },
     "fastapi": {
       "source": "fastapi/fastapi",
       "sourceType": "github",
       "sourceUrl": "https://github.com/fastapi/fastapi.git",
       "skillPath": "fastapi/.agents/skills/fastapi/SKILL.md",
-      "skillFolderHash": "a03510686d4a1f6ec46b78c57e3e3d89093218bc",
+      "skillFolderHash": "d6cbf6ac3f1dd79d57542826d39d6011bb055fa8",
       "installedAt": "2026-06-29T17:26:57.306Z",
-      "updatedAt": "2026-10-05T17:53:53.786Z"
+      "updatedAt": "2026-10-20T12:56:44.990Z"
     },
     "amazon-bedrock": {
       "source": "aws/agent-toolkit-for-aws",
@@ -159,9 +159,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-iam/SKILL.md",
-      "skillFolderHash": "fa551ce5da19be3e7b81b6574bfd9db32d9931f3",
+      "skillFolderHash": "5e1f56c0e6418455b9b11bfefd098b61f01cc287",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-08-31T03:49:02.529Z"
+      "updatedAt": "2026-10-20T12:56:48.139Z"
     },
     "aws-messaging-and-streaming": {
       "source": "aws/agent-toolkit-for-aws",
@@ -213,9 +213,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-serverless/SKILL.md",
-      "skillFolderHash": "abc141d51d34c96ce918e9f9ee80d998a572278a",
+      "skillFolderHash": "aebb7e2613ba3cf42e8f5701370cfaeafdcbde1e",
       "installedAt": "2026-07-06T20:01:35.889Z",
-      "updatedAt": "2026-10-05T17:54:10.731Z"
+      "updatedAt": "2026-10-20T12:56:50.997Z"
     },
     "signing-in-to-aws": {
       "source": "aws/agent-toolkit-for-aws",
@@ -492,18 +492,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/jgraph/drawio-mcp.git",
       "skillPath": "plugins/claude-code/skills/drawio/SKILL.md",
-      "skillFolderHash": "6a376d2c8d641b96a210841aac961bb33853a545",
+      "skillFolderHash": "86041bd7fa1c54a2975d7d558cd94567c827b8c9",
       "installedAt": "2026-07-07T02:57:53.841Z",
-      "updatedAt": "2026-10-05T17:54:15.877Z"
+      "updatedAt": "2026-10-20T12:56:53.274Z"
     },
     "herdr": {
       "source": "herdrdev/herdr",
       "sourceType": "github",
       "sourceUrl": "https://github.com/herdrdev/herdr.git",
       "skillPath": "skills/herdr/SKILL.md",
-      "skillFolderHash": "67042ed7910d4177a9000e0679e78b0346060927",
+      "skillFolderHash": "2be0d86d481d1bb29c62e11ef37b78d27d01b478",
       "installedAt": "2026-09-30T21:22:53.526Z",
-      "updatedAt": "2026-09-30T21:23:56.219Z"
+      "updatedAt": "2026-10-20T12:56:57.947Z"
     },
     "grill-me": {
       "source": "mattpocock/skills",

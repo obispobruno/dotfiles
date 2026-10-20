@@ -99,6 +99,8 @@ The CI column shows each row's PR/MR CI and review status, the same as [`wt list
 | `Alt-p` | Toggle preview panel |
 | `Ctrl-u`/`Ctrl-d` | Scroll preview up/down |
 
+On macOS, `Alt` is the Option key; the terminal needs to send it as Meta (e.g. Terminal.app's [Use Option as Meta key](https://support.apple.com/guide/terminal/change-profiles-keyboard-settings-trmlkbrd/mac)).
+
 The filter matches each row's branch, path, and — when it has a PR/MR — the PR/MR's number, title, and author. Typing `+` narrows to linked worktrees, and `@` to the current worktree.
 
 **Preview tabs:**
@@ -121,6 +123,8 @@ The comparison base is the merge-base with the default branch, or with its upstr
 [switch.picker]
 pager = "delta --paging=never --width=$COLUMNS"
 ```
+
+**Starting list-only:** Set `preview = false` under `[switch.picker]` to open the picker with the preview hidden; `Alt-p` still shows it.
 
 ## Pull requests and merge requests
 
