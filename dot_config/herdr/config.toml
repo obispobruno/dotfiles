@@ -11,7 +11,7 @@ auto_switch = false
 open_worktree = "prefix+shift+e"
 
 [[keys.command]]
-key = "prefix+a"
+key = "prefix+d"
 type = "shell"
 command = "/home/openclaw/.local/bin/herdr-dev-tab"
 description = "dev tab: API + Vite for this worktree"
