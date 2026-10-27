@@ -60,9 +60,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "b0f31458553052ccc028b973179c79e2564fd830",
+      "skillFolderHash": "38965ccda02675456e08d6415065b0f6cc2e3152",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-10-20T12:56:38.514Z"
+      "updatedAt": "2026-10-27T15:47:57.119Z"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -87,9 +87,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/basecamp/skills.git",
       "skillPath": "skills/basecamp/SKILL.md",
-      "skillFolderHash": "03469f06b4f513d25ddcc840d74814282d22365f",
+      "skillFolderHash": "c71362b25f02937e16d7e30871d14c70e89c2f9e",
       "installedAt": "2026-06-20T17:21:27.388Z",
-      "updatedAt": "2026-10-20T12:56:40.837Z"
+      "updatedAt": "2026-10-27T15:47:59.179Z"
     },
     "fastapi": {
       "source": "fastapi/fastapi",
@@ -105,9 +105,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/amazon-bedrock/SKILL.md",
-      "skillFolderHash": "7bbe5f85169cc357b81030c0f98c807cb0e0c427",
+      "skillFolderHash": "c42da7de285e29c0cf99ebfc9c77ae84343f265c",
       "installedAt": "2026-07-06T20:01:35.880Z",
-      "updatedAt": "2026-10-05T17:53:57.264Z"
+      "updatedAt": "2026-10-27T15:48:02.152Z"
     },
     "aws-billing-and-cost-management": {
       "source": "aws/agent-toolkit-for-aws",
@@ -150,9 +150,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-containers/SKILL.md",
-      "skillFolderHash": "4c61417283a31ceeea786c5eceb49f26b34d850f",
+      "skillFolderHash": "dad459c6e50103d5e14f512ab53349366cbeb680",
       "installedAt": "2026-07-06T20:01:35.886Z",
-      "updatedAt": "2026-10-05T17:54:03.399Z"
+      "updatedAt": "2026-10-27T15:48:06.405Z"
     },
     "aws-iam": {
       "source": "aws/agent-toolkit-for-aws",
@@ -177,9 +177,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-observability/SKILL.md",
-      "skillFolderHash": "911b24cc6582fff41dd7f98131a7bba3bdb3c79c",
+      "skillFolderHash": "7bb3fb10c27b5e8cf53d7a3ae6d9bcd5c9918942",
       "installedAt": "2026-07-06T20:01:35.887Z",
-      "updatedAt": "2026-10-05T17:54:06.399Z"
+      "updatedAt": "2026-10-27T15:48:09.578Z"
     },
     "aws-sdk-js-v3-usage": {
       "source": "aws/agent-toolkit-for-aws",
@@ -492,9 +492,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/jgraph/drawio-mcp.git",
       "skillPath": "plugins/claude-code/skills/drawio/SKILL.md",
-      "skillFolderHash": "86041bd7fa1c54a2975d7d558cd94567c827b8c9",
+      "skillFolderHash": "c449b1ac5d593a1ae5168e912ef70065cd83f435",
       "installedAt": "2026-07-07T02:57:53.841Z",
-      "updatedAt": "2026-10-20T12:56:53.274Z"
+      "updatedAt": "2026-10-27T15:48:13.711Z"
     },
     "herdr": {
       "source": "herdrdev/herdr",
@@ -548,9 +548,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/usestrix/strix.git",
       "skillPath": "skills/ci-security-scanning-with-strix/SKILL.md",
-      "skillFolderHash": "ff2ac38de21a04ba5a30a2add8cc8710f6891b98",
+      "skillFolderHash": "b3ee8c4780c187d607516ed557d23bc5b2902490",
       "installedAt": "2026-10-20T16:58:57.049Z",
-      "updatedAt": "2026-10-20T16:58:57.049Z"
+      "updatedAt": "2026-10-27T15:48:16.064Z"
     },
     "find-security-vulnerabilities-in-code": {
       "source": "usestrix/strix",
@@ -593,9 +593,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/usestrix/strix.git",
       "skillPath": "skills/penetration-testing-with-strix/SKILL.md",
-      "skillFolderHash": "8d9439a99c433d50d26af6898b6890cfea8efd6c",
+      "skillFolderHash": "86746c362cd6e105042d307438fcca52f3615651",
       "installedAt": "2026-10-20T16:58:57.051Z",
-      "updatedAt": "2026-10-20T16:58:57.051Z"
+      "updatedAt": "2026-10-27T15:48:19.030Z"
     },
     "web-app-penetration-testing": {
       "source": "usestrix/strix",

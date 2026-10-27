@@ -111,7 +111,7 @@ Most hooks don't need `[[hook]]` blocks. Reach for them when there's a dependenc
 
 To run a specific hook when user and project both define the same name, use `user:name` or `project:name` syntax.
 
-A `pre-*` hook blocks the command, so both sources run as one pipeline: user commands first, and a failure there skips the project's. A `post-*` hook runs in the background, where each source is its own detached pipeline — they start together, neither waits for the other, and a failure in one leaves the other running. Order within a source is still yours to set with `[[hook]]` blocks; across `post-*` sources there is none. Two `post-*` hooks that write the same file, or run `git` in the same worktree, will race, so put commands that depend on each other in one source.
+For `pre-*` hooks, a user-hook failure skips project hooks. For `post-*` hooks, a failure in one source does not stop the other. Concurrent hooks can race when writing the same file or running Git in the same worktree. Commands that depend on each other should use ordered `[[hook]]` blocks within one source.
 
 ## Template variables
 
@@ -183,6 +183,30 @@ Variables use dot access and the `default` filter for missing keys. JSON object/
 # .config/wt.toml
 [post-start]
 dev = "ENV={{ vars.env | default('development') }} npm start -- --port {{ vars.config.port | default('3000') }}"
+```
+
+The `tojson` filter renders a whole object or array as JSON, for commands that take JSON input:
+
+```toml
+# .config/wt.toml
+[post-start]
+seed = "curl -X POST localhost:3000/seed -d {{ vars.config | tojson }}"
+```
+
+Logic that templates can't express belongs in a script, with the values it needs passed as arguments:
+
+```toml
+# .config/wt.toml
+[post-start]
+setup = "python3 scripts/post-start-setup.py {{ branch }} {{ repo }}"
+```
+
+```python
+# scripts/post-start-setup.py
+import subprocess, sys
+branch, repo = sys.argv[1], sys.argv[2]
+if branch.startswith('feature/') and 'backend' in repo:
+    subprocess.run(['make', 'seed-db'])
 ```
 
 ## Worktrunk filters
@@ -263,28 +287,12 @@ wt switch "$(wt step eval "{{ expected_worktree_path_of_branch('feature') }}")"
 
 ## Interactive hooks
 
-Hooks can prompt when run serially in the foreground, as in this `pre-start` hook:
+A hook command inherits wt's stdin, so it can prompt, when it runs in the foreground with no other command alongside it. Commands that run concurrently, such as the keys of a multi-key table, get empty stdin, as do `post-*` hooks running in the background and the hooks `wt step prune` runs for several worktrees at once. This `pre-start` hook asks before trusting the worktree:
 
 ```toml
 # .config/wt.toml
 [pre-start]
 trust = "gum confirm 'trust this worktree?' && mise trust"
-```
-
-Logic that templates can't express belongs in a script, with the values it needs passed as arguments:
-
-```toml
-# .config/wt.toml
-[post-start]
-setup = "python3 scripts/post-start-setup.py {{ branch }} {{ repo }}"
-```
-
-```python
-# scripts/post-start-setup.py
-import subprocess, sys
-branch, repo = sys.argv[1], sys.argv[2]
-if branch.startswith('feature/') and 'backend' in repo:
-    subprocess.run(['make', 'seed-db'])
 ```
 
 ## Copying untracked files
@@ -342,9 +350,9 @@ $ wt hook post-start
 
 ## Passing values
 
-`--KEY=VALUE` binds `KEY` whenever `{{ KEY }}` appears in any command of the hook — the same smart-routing rule `wt <alias>` uses. Built-in variables can be overridden: `--branch=foo` sets `{{ branch }}` inside hook templates (the worktree's actual branch doesn't move). Hyphens in keys become underscores: `--my-var=x` sets `{{ my_var }}`.
+`--KEY=VALUE` binds `KEY` whenever `{{ KEY }}` appears in any selected hook command — the same smart-routing rule `wt <alias>` uses. Built-in variables can be overridden: `--branch=foo` sets `{{ branch }}` inside hook templates (the worktree's actual branch doesn't move). Hyphens in keys become underscores: `--my-var=x` sets `{{ my_var }}`.
 
-Any `--KEY=VALUE` whose key isn't referenced by a hook template forwards into `{{ args }}` as a literal `--KEY=VALUE` token. Tokens after `--` also forward into `{{ args }}` verbatim. `{{ args }}` renders as a space-joined, shell-escaped string; index with `{{ args[0] }}`, loop with `{% for a in args %}…{% endfor %}`, count with `{{ args | length }}`.
+Any `--KEY=VALUE` whose key isn't referenced by a selected hook template forwards into `{{ args }}` as a literal `--KEY=VALUE` token. Tokens after `--` also forward into `{{ args }}` verbatim. `{{ args }}` renders as a space-joined, shell-escaped string; index with `{{ args[0] }}`, loop with `{% for a in args %}…{% endfor %}`, count with `{{ args | length }}`.
 
 # Recipes
 
