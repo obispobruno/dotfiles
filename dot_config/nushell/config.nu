@@ -87,3 +87,4 @@ source ./aliases.nu
 
 $env.LANG = "C.UTF-8"
 $env.LC_ALL = "C.UTF-8"
+$env.CLAUDE_CODE_EVEN_MORE_DANGEROUSLY_SKIP_PERMISSIONS = "1"
