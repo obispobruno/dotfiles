@@ -11,6 +11,7 @@ triggers:
   - basecamp subtasks
   - basecamp project
   - project wallpaper
+  - project logo
   - basecamp cards
   - basecamp chat
   - basecamp campfire
@@ -29,9 +30,15 @@ triggers:
   - basecamp checkin
   - basecamp check-in
   - basecamp timeline
+  - basecamp timesheet
+  - log time
   - basecamp template
   - basecamp webhook
+  - external link
   - basecamp gauge
+  - basecamp hill chart
+  - hill chart progress
+  - update the hill chart
   - basecamp assignment
   - basecamp notification
   - basecamp account
@@ -43,6 +50,10 @@ triggers:
   - mark done
   - create todo
   - move card
+  - move to another project
+  - copy to another project
+  - copy todo
+  - copy card
   - download file
   - search basecamp
   - find in basecamp
@@ -77,8 +88,8 @@ argument-hint: "[action] [args...]"
 
 # Basecamp CLI
 
-Use the installed CLI as the command reference. This skill defines the operating
-rules; it intentionally does not duplicate the CLI's command catalog.
+The installed CLI is the command reference. This skill sets the operating rules
+and does not duplicate its catalog.
 
 ## Discovery-first workflow
 
@@ -106,9 +117,8 @@ For each task:
 5. Execute with an explicit output mode, then read structured errors and
    breadcrumbs before deciding what to do next.
 
-Targeted leaf help is cheap and local; root help returns the full command catalog
-and is not token-cheap. Do not load root help merely to confirm global flags
-already documented by this skill. For obvious Docs & Files requests, route
+Leaf help is cheap and local; root help returns the full catalog and costs many
+tokens. Do not load it to confirm global flags this skill documents. For obvious Docs & Files requests, route
 straight to `files list`, `files download`, or `files uploads create` before
 trying parent or root help. A subcommand's `inherited_flags` is intentionally
 short; global flags such as `--agent`, `--jq`, `--profile`, and `--verbose` still
@@ -126,14 +136,24 @@ apply where supported.
 - Comments are flat. A reply is posted to the parent recording, never to a
   comment ID. For a comment URL, use `comments show` or `comments thread` to get
   `reply_target` when context matters.
-- Respect project context. Check `.basecamp/config.json` before assuming a
-  project; otherwise pass `--in <project>` or the scope shown by leaf help.
+- Respect project context. Before assuming a project, run
+  `basecamp config show --json`: its `project_id` is the effective value across
+  flags, env and every config layer, with its source. Do not read
+  `.basecamp/config.json` directly; it is only one layer. With no `project_id`,
+  pass `--in <project>` or the scope shown by leaf help.
 - Use non-interactive output for agent work. Do not allow an ambiguous picker to
   block execution.
 - When a result reports content or description attachments, download and inspect
-  them. Images often contain the essential task context.
+  them; images often hold the task's context.
+- A move into another container prints the item's new ID; use it afterwards,
+  since the old ID stops taking writes. A copy prints its own ID. Never repeat a
+  copy: Basecamp files it in the background, so a copy that is still running or
+  lost its answer may already exist. Check with `basecamp filings show <id>`
+  or the hint it printed.
 - Follow the installed command's help over examples remembered from earlier CLI
   versions.
+- Before writing to Basecamp, run `basecamp instructions` and follow what it
+  prints.
 
 ## Output modes
 
@@ -146,13 +166,13 @@ Choose deliberately:
 | Consume data without an envelope | `--agent` |
 | Present portable output directly to a person | `--md` |
 
-`--jq` implies JSON. It normally filters the JSON envelope, so data is commonly
-under `.data`. With `--agent --jq`, it filters the data-only payload. Use `--md`
+`--jq` implies JSON and filters the envelope, so data is usually under `.data`.
+With `--agent --jq`, it filters the data-only payload. Use `--md`
 for human-facing listings, but remember that `--md` alone does not suppress
 interactive prompts. Add enough scope to remove ambiguity or set
 `BASECAMP_NONINTERACTIVE=1`.
 
-Examples of generic transformations, not command discovery:
+Generic examples, not command discovery:
 
 ```bash
 basecamp <leaf-command> --jq '.data | length'
@@ -161,8 +181,8 @@ basecamp <leaf-command> --jq '[.data[] | {id, name}]'
 
 ## Project, account, and pagination scope
 
-Do not infer that a command is project-scoped or account-wide from its noun.
-Inspect the leaf help and its notes. Use the user's explicit project/account when
+Do not infer project or account scope from a command's noun; inspect leaf help
+and its notes. Use the user's explicit project/account when
 provided; otherwise honor trusted local configuration.
 
 For paginated commands, inspect help before combining pagination flags. In
@@ -217,6 +237,10 @@ basecamp pings messages "Jane Smith" --agent
 - A message URL (`/circles/<id>@<line>`) works with `basecamp show` and
   `chat line`; edit or delete such a message with `chat update` or `chat delete`
   on that URL.
+- Nothing in a ping changes through the generic recording commands: `recordings
+  trash`, `archive`, `restore` and `visibility`, `subscriptions add` and
+  `remove`, and `spotlight` are refused (exit 4). Only your own subscription
+  changes there, with `subscriptions subscribe` or `subscriptions unsubscribe`.
 
 ## Spotlights
 
@@ -251,8 +275,47 @@ basecamp projects wallpaper remove --in "<project>" --json
   or `tile`, and leaving it out keeps the current mode.
 - Each command returns the project. `.data.wallpaper` is `{url, mode}`, and is
   absent when the project has none; `projects show` carries the same field.
-  The URL requires authentication and redirects to the image; it is not a
-  public image link.
+  The URL needs authentication and redirects to the image.
+
+## Project logo
+
+The logo is the image beside a project's name, separate from its wallpaper. The
+`projects logo` group sets and removes it, for the project in `--in`/`--project`
+or the configured default:
+
+```bash
+basecamp projects logo set brand.png --in "<project>" --json
+basecamp projects logo remove --in "<project>" --json
+```
+
+- People and agents who can edit the project can change its logo. Others get
+  403, and a project the caller cannot see gets 404; do not retry or route
+  around either refusal.
+- Uploads are checked as for the wallpaper. Removing a logo from a project
+  that has none succeeds.
+- Each command returns the project. `.data.logo` is `{url}`, and is absent when
+  the project has none; `projects show` carries the same field. Like the
+  wallpaper's, the URL needs authentication.
+
+## Timesheet entries
+
+Time is logged against one item (to-do, message, card, document, upload,
+schedule entry). `timesheet report`, `timesheet project` and `timesheet item`
+read entries; `timesheet entry` writes them, addressed by account alone with
+no `--in`:
+
+```bash
+basecamp timesheet entry create <item-id|url> --hours 1.5 --date yesterday --json
+basecamp timesheet entry show <entry-id|url> --json
+basecamp timesheet entry update <entry-id|url> --hours 2:15 --json
+basecamp timesheet entry delete <entry-id|url> --force --json
+```
+
+- `--hours` is a decimal or `h:mm`; `--date` defaults to today on create;
+  `--person` (ID, name, email or `me`) logs time for someone else.
+- `delete` is permanent: entries are never trashed. Machine output needs
+  `--force`.
+- Accounts without timesheets enabled answer 403.
 
 ## Content and stdin
 
@@ -273,12 +336,17 @@ A pipe is never consumed implicitly. Only one input may read stdin in an
 invocation. Do not use shell-specific ANSI-C quoting such as `$'line 1\nline 2'`
 in portable commands.
 
-Rich-text fields support [Mermaid](https://mermaid.js.org) diagrams. Put the
-source in a fenced code block with the language `mermaid`, and Basecamp shows
-the diagram to people reading the post. Previews, emails, and exports show the
-source, and so does a post whose source does not parse. Use a diagram for a
-flow, sequence, timeline, or structure that is easier to follow as a picture
-than as prose. Diagram source spans several lines, so pass it on stdin:
+Basecamp shows blocks flush unless a blank line in the Markdown separates
+them: leave one between every two blocks, headings and lists too. In prose,
+one newline is no break. Don't hand-write HTML: `--format html` is stored as
+written, blocks touching. A fold stays Markdown, no `--format html`:
+`<details><summary>What</summary>` and `</details>` each alone on a line,
+blank lines around, Markdown between.
+
+Rich-text fields support Mermaid diagrams. Put the source in a fenced code block
+with the language `mermaid`, and Basecamp shows the diagram to people reading
+the post; previews, emails, exports and source that doesn't parse show the
+text. Use one where a picture beats prose; pass it on stdin:
 
 ````bash
 basecamp messages create "Release flow" - --in "<project>" --json <<'EOF'
@@ -308,18 +376,18 @@ EOF
 With `--format html` nothing is embedded for you: run
 `basecamp embeds create <url> --json` and put its `attachment` tag in the HTML.
 
-For deterministic mentions, prefer the machine-provided mention syntax from
-people or comment results, for example `[@Name](mention:SGID)`. Mention support
-varies by field; leaf help is authoritative.
+Mentions need no HTML. For deterministic ones, use the syntax people and
+comment results print, such as `[@Name](mention:SGID)`; leaf help says where
+mentions work.
 
 ## Errors and recovery
 
 Structured failures include `error`, `code`, `retryable`, and often `hint`.
 
 - Retry only when `retryable` is true, with bounded backoff.
-- `retryable: false` means there is no positive retry signal; it covers both
-  known verdicts and unclassified failures. Inspect `code`, `error`, and `hint`
-  before choosing recovery, and do not blindly repeat the same call.
+- `retryable: false` is no retry signal, for known verdicts and unclassified
+  failures alike. Inspect `code`, `error` and `hint` before choosing recovery;
+  do not blindly repeat the call.
 - For usage errors, inspect leaf help and supply the named positional argument.
 - If the CLI rejects a command or flag as unknown, check the group's help for
   its current form first. If this skill names it and the help lacks it, the CLI
@@ -332,9 +400,11 @@ Structured failures include `error`, `code`, `retryable`, and often `hint`.
 - Before any login recovery, inspect `oauth_type`. An `agent` profile must be
   recovered with the agent/client-credentials flow named by the CLI hint; a
   normal person login can replace the agent identity.
+- `basecamp feedback` reports bugs, missing capabilities or confusing behavior
+  to the Basecamp team, when it appears in `basecamp commands`.
 
-Do not improvise raw API calls merely because a command failed. First inspect the
-relevant help and error hint. Use `basecamp api` only when the CLI has no native
+Do not improvise raw API calls because a command failed; inspect its help and
+error hint first. Use `basecamp api` only when the CLI has no native
 operation and the API path and payload are known.
 
 ## Mutations
@@ -346,6 +416,9 @@ Before changing Basecamp:
    notification behavior.
 3. Make the smallest requested change.
 4. Return the resulting ID/URL and summarize what changed.
+
+When you assign someone to a to-do or card, pass `--notify` to tell them;
+Basecamp stays silent otherwise.
 
 For destructive or broad operations, preview when the command offers a dry-run
 and do not expand the user's requested scope.

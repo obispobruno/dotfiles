@@ -1,5 +1,10 @@
 # Omni Programmatic Access Reference
 
+Errors from the access-grant APIs, and gaps in the Space's role or IAM (model inference,
+Agent Playground), are answered from `setting-up-cloudwatch-observability` →
+`references/cloudwatch-omni/access-grants.md` and `setting-up-cloudwatch-observability` →
+`references/cloudwatch-omni/spaces-and-domains.md`.
+
 ## Identifiers and rules at a glance
 
 The sections below carry the detail behind each line.
@@ -9,6 +14,7 @@ The sections below carry the detail behind each line.
 - **SigV4 signing name** `cloudwatch` — different from both of the above.
 - **Authorization has two caller classes, and an answer gives both.** A grant-mediated caller (Access Profile, IAM Identity Center, console) needs a matching grant on the Space or is denied. A direct IAM caller signing with its own credentials is not denied by the Space when no grant matches — its own IAM policy alone decides — and reaches only Spaces its own account owns.
 - **Request members** come from the per-resource reference for that resource, never from inference off an operation name.
+- **Metrics** (a gauge, a counter rate, a histogram percentile) are read with PromQL through CloudWatch's Prometheus-compatible API — `https://monitoring.<region>.amazonaws.com/api/v1/query_range` (or `/api/v1/query`), SigV4 signing name `monitoring` — per [../cloudwatch/promql.md](../cloudwatch/promql.md), section 4.
 - **All four paths exist** — public API, CLI/SDKs, CloudFormation, Agent Toolkit. Name all four when asked broadly how to call Omni, and never answer that Omni has no API, SDK, CLI, or endpoint.
 
 CloudWatch Omni is not console-only. A script, a service, a CI job, an infrastructure-as-code template, or an AI coding agent can all drive it. There are four programmatic paths — the public API, the AWS CLI and SDKs, AWS CloudFormation, and the Agent Toolkit for AWS — and this file covers each, so an answer never wrongly denies that Omni can be used from code. Asked broadly how to call Omni from code, **name all four** before going deep on the one the reader needs: an omitted path reads as a path that does not exist, and dropping CloudFormation sends an IaC team off to write a script.
@@ -60,7 +66,7 @@ Explaining a denial means saying which layer denied it, and naming what authoriz
 
 ## 2. AWS CLI and AWS SDKs
 
-CloudWatch Omni is supported by the **AWS CLI** and the **AWS SDKs**, under the `cloudwatchomni` service name: `aws cloudwatchomni <operation>`, and the corresponding client in each SDK — `boto3.client("cloudwatchomni")` and its equivalent elsewhere.
+CloudWatch Omni is supported by the **AWS CLI** and the **AWS SDKs**, under the `cloudwatchomni` service name: `aws cloudwatchomni <operation>`, and the corresponding client in each SDK — `boto3.client("cloudwatchomni")` and its equivalent elsewhere. The CLI needs **AWS CLI 2.39.2 or later** ([command reference](https://docs.aws.amazon.com/cli/latest/reference/cloudwatchomni/)); an older CLI fails with an unknown-service error, which is a client-version problem, not a permissions problem.
 
 **The client name has no hyphen.** `cloudwatchomni` is the CLI and SDK service name; `cloudwatch-omni` is the endpoint prefix from section 1 and is not a client name. A hyphenated `boto3.client("cloudwatch-omni")` (or `aws cloudwatch-omni`) raises an unknown-service error even on a client new enough to carry the model, which then reads as the version problem below when it is only a misspelling. Every SDK example starts from this client:
 
@@ -70,15 +76,16 @@ import boto3
 client = boto3.client("cloudwatchomni", region_name="us-east-1")  # cloudwatchomni, not cloudwatch-omni
 ```
 
-Two things to know when a call does not work:
+Three things to know when a call does not work:
 
-- **`aws cloudwatchomni …` reporting that the service is not supported means the local CLI predates Omni's service model.** The AWS CLI and each SDK ship a snapshot of service models, so a version older than Omni's release has no `cloudwatchomni` client. This is a client-version issue and says nothing about whether Omni is enabled on the account — the failure happens during argument parsing, before any request is sent. Upgrade to a version that carries it:
+- **`aws cloudwatchomni …` reporting that the service is not supported means the local CLI predates Omni's service model** (AWS CLI before 2.39.2). The AWS CLI and each SDK ship a snapshot of service models, so a version older than Omni's release has no `cloudwatchomni` client. This is a client-version issue and says nothing about whether Omni is enabled on the account — the failure happens during argument parsing, before any request is sent. Upgrade to a version that carries it:
   - **AWS CLI v2** — check `aws --version`, then reinstall/upgrade per <https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html>: macOS `brew upgrade awscli` or the `.pkg` installer; Linux re-run the zip installer with `--update`; Windows the MSI.
   - **boto3** — `pip install -U boto3 botocore`.
   - **Other SDKs** — upgrade to the latest release.
 
   Give the customer that command; do **not** run `brew`, `pip install -U`, or an installer on the host yourself — a package-manager upgrade mutates their machine beyond the request (a Homebrew upgrade, for example, can replace the system Python other tools depend on). **Nor should you confirm the diagnosis by running the command in your own shell.** The client that failed is on the customer's machine and yours is a different installation, so `aws cloudwatchomni list-domains` succeeding for you proves nothing about theirs and does not mean the problem is solved; reporting it as fixed or verified, or pasting your own output as evidence, hands them a false resolution. Have them re-run `aws cloudwatchomni list-domains` after upgrading. If the command is still unknown then, the CLI build is older than the service launch — tell the customer that rather than substituting a CloudWatch or X-Ray command.
 - **`aws cloudwatch <omni-operation>` will always fail**, at any version. Omni is a distinct service that shares only the `cloudwatch` signing name, so CloudWatch and X-Ray clients cannot reach Spaces, Omni alerts, views, dashboards, or Omni SQL. They are not a substitute, and must never be offered as one.
+- **An AgentCore dataset list call failing with `AccessDeniedException` and the message `Unable to determine service/operation name to be authorized` means the client is too old for that Region, not that IAM denied it.** Regions that have AgentCore's dataset API change serve `list-datasets`, `list-dataset-versions` and `list-dataset-examples` (`bedrock-agentcore-control`) as POST only, and a CLI or SDK that predates the change still sends GET, which those Regions don't route. The other dataset operations, such as `get-dataset`, keep working, which is how this differs from a permissions problem: a real IAM deny names the action it refused. Give the customer the upgrade command above and have them re-run the call. Do not add or change IAM permissions for it, and do not report the service or the datasets as unavailable.
 
 Any SDK or CLI that carries the `cloudwatchomni` model signs and encodes the request per section 1. Hand-rolling instead means reproducing that encoding yourself, and supplying each operation's members from the per-resource reference that documents them — they are written out in those files (see `ListAlerts` in [alerts.md](alerts.md)), but there is no public machine-readable model to generate a client from, so the work is per operation and by hand.
 
