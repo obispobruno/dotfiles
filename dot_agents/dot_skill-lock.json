@@ -51,18 +51,20 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
       "skillPath": "skills/web-design-guidelines/SKILL.md",
-      "skillFolderHash": "3116f3e62dbd02b44a598b1aa690d2a8938e8f89",
+      "skillFolderHash": "8ff770c9b25b9fdb5a97503fc98d86b723813031",
       "installedAt": "2026-03-14T18:15:33.779Z",
-      "updatedAt": "2026-03-14T18:15:33.779Z"
+      "updatedAt": "2026-11-26T00:06:26.981Z",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb"
     },
     "worktrunk": {
       "source": "max-sixty/worktrunk",
       "sourceType": "github",
       "sourceUrl": "https://github.com/max-sixty/worktrunk.git",
       "skillPath": "skills/worktrunk/SKILL.md",
-      "skillFolderHash": "38627770e5e8d639231fb738549c420fdb1c9902",
+      "skillFolderHash": "5481fc8c4cb5675a04d8a0032ac3e0c32bc84c14",
       "installedAt": "2026-03-28T19:38:29.797Z",
-      "updatedAt": "2026-11-17T17:04:54.976Z"
+      "updatedAt": "2026-11-26T00:06:27.163Z",
+      "commit": "40a846a504158f473408b51293fb8665627c149c"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -96,9 +98,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/fastapi/fastapi.git",
       "skillPath": "fastapi/.agents/skills/fastapi/SKILL.md",
-      "skillFolderHash": "62e6bb5a3e81ff6d8552db8d1ebce53fc84b66a9",
+      "skillFolderHash": "8e800691db6f946f4431900728affe18fe26acb2",
       "installedAt": "2026-06-29T17:26:57.306Z",
-      "updatedAt": "2026-11-17T17:04:55.101Z"
+      "updatedAt": "2026-11-26T00:06:27.316Z",
+      "commit": "05e6df7e906c3decba377c37548019973f40bf15"
     },
     "amazon-bedrock": {
       "source": "aws/agent-toolkit-for-aws",
@@ -117,15 +120,6 @@
       "skillFolderHash": "efd1a857f5c0dff1d8bad534590ba662694d02c4",
       "installedAt": "2026-07-06T20:01:35.884Z",
       "updatedAt": "2026-08-07T01:11:53.301Z"
-    },
-    "aws-blocks": {
-      "source": "aws/agent-toolkit-for-aws",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
-      "skillPath": "skills/core-skills/aws-blocks/SKILL.md",
-      "skillFolderHash": "3b99b8f25fa86e316a11edac229cd34bab5d215d",
-      "installedAt": "2026-07-06T20:01:35.885Z",
-      "updatedAt": "2026-07-07T02:57:29.929Z"
     },
     "aws-cdk": {
       "source": "aws/agent-toolkit-for-aws",
@@ -177,9 +171,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-observability/SKILL.md",
-      "skillFolderHash": "2a33e815f4664a0ff16c893c6e3b0e02d234b2e7",
+      "skillFolderHash": "34ae3089dc36d41191c7dcaf5a2b313019b152c9",
       "installedAt": "2026-07-06T20:01:35.887Z",
-      "updatedAt": "2026-11-17T17:04:55.909Z"
+      "updatedAt": "2026-11-26T00:06:27.815Z",
+      "commit": "04afec8286a31958b9e5c5308f8fbf0e98818933"
     },
     "aws-sdk-js-v3-usage": {
       "source": "aws/agent-toolkit-for-aws",
@@ -213,9 +208,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "skills/core-skills/aws-serverless/SKILL.md",
-      "skillFolderHash": "34b1aae374ec433ef327f7090393d4b2c6593c79",
+      "skillFolderHash": "0da7b6c24aee4b846fb0ff95a5aa9320c03c62f2",
       "installedAt": "2026-07-06T20:01:35.889Z",
-      "updatedAt": "2026-11-17T17:04:56.214Z"
+      "updatedAt": "2026-11-26T00:06:28.000Z",
+      "commit": "04afec8286a31958b9e5c5308f8fbf0e98818933"
     },
     "signing-in-to-aws": {
       "source": "aws/agent-toolkit-for-aws",
@@ -303,9 +299,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/aws/agent-toolkit-for-aws.git",
       "skillPath": "plugins/aws-data-analytics/skills/amazon-opensearch-service/SKILL.md",
-      "skillFolderHash": "649758c661a01a0cc20f526b831b9279c6ced552",
+      "skillFolderHash": "af9bd9a65ec49c7eddce2bceb0e32cfb768c599a",
       "installedAt": "2026-07-07T02:57:29.936Z",
-      "updatedAt": "2026-09-04T03:07:37.655Z"
+      "updatedAt": "2026-11-26T00:06:28.473Z",
+      "commit": "04afec8286a31958b9e5c5308f8fbf0e98818933"
     },
     "connecting-to-data-source": {
       "source": "aws/agent-toolkit-for-aws",
@@ -492,9 +489,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/jgraph/drawio-mcp.git",
       "skillPath": "plugins/claude-code/skills/drawio/SKILL.md",
-      "skillFolderHash": "c449b1ac5d593a1ae5168e912ef70065cd83f435",
+      "skillFolderHash": "af8307a0a5229d4e307befe7575d9df965ab941e",
       "installedAt": "2026-07-07T02:57:53.841Z",
-      "updatedAt": "2026-10-27T15:48:13.711Z"
+      "updatedAt": "2026-11-26T00:06:28.519Z",
+      "commit": "b7941af5541ba45edb72d6db164302294bf6cb40"
     },
     "herdr": {
       "source": "herdrdev/herdr",
@@ -575,9 +573,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/usestrix/strix.git",
       "skillPath": "skills/managed-pentesting-with-strix/SKILL.md",
-      "skillFolderHash": "6f869119c820804a9a85c0a873a14e4e83292c07",
+      "skillFolderHash": "3966dcdd4732d7d5a32150350b2020a11a16c4b4",
       "installedAt": "2026-10-20T16:58:57.050Z",
-      "updatedAt": "2026-10-20T16:58:57.050Z"
+      "updatedAt": "2026-11-26T00:06:28.577Z",
+      "commit": "9ed84f99c8f13fc921baebc59e0c696108cfab3e"
     },
     "owasp-top-10-testing": {
       "source": "usestrix/strix",
